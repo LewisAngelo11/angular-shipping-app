@@ -1,0 +1,12 @@
+<main class="main">
+    <h1>{{ title }}</h1> <!-- Muestra el título dinámico desde el TypeScript -->
+    <div class="componente">
+      <h2>¡¡Bienvenido!!</h2>
+      <label>Usuario:</label>
+      <input type="text" name="username">
+      <label>Contraseña</label>
+      <input type="password" name="password">
+      <button (click)="login()">Iniciar Sesión</button> <!-- Llama al método login -->
+      <a routerLink="/registro" routerLinkActive="active" ariaCurrentWhenActive="page">Cree una cuenta</a>
+    </div>
+  </main>

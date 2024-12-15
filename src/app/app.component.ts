@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, inject} from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-root', // Vincula el componente a una etiqueta HTML <app-root>
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink],
+  templateUrl: './app.component.html', // Ruta del archivo HTML asociado
+  styleUrls: ['./app.component.css'] // Ruta(s) del archivo CSS asociado
 })
 export class AppComponent {
-  title = 'paqueteria';
+
 }
+

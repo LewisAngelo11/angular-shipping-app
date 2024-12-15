@@ -1,0 +1,30 @@
+<main class="main">
+    <div class="componente">
+      <h1>{{title}}</h1>
+      <div class="nombres">
+        <label>Nombre:</label>
+        <input type="text" name="name">
+
+        <label>Apellido Paterno:</label>
+        <input type="text" name="lastname1">
+
+        <label>Apellido Materno:</label>
+        <input type="text" name="lastname2">
+      </div>
+      
+      <label>Fecha de Nacimiento:</label>
+      <input type="date" name="date" id="date">
+
+      <label>Correo electrónico:</label>
+      <input type="email" name="email">
+      <div class="credenciales">
+        <label>Nombre de usuario:</label>
+        <input type="text" name="username">
+        
+        <label>Contraseña:</label>
+        <input type="password" name="password">
+      </div>
+      <button (click)="registrar()">Registrar cuenta</button>
+    </div>
+  </main>
+  
