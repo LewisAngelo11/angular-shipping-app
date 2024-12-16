@@ -1,23 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-   title = 'Iniciar Sesion'; // Título dinámico
-   usuario: string = ''; // Variable vinculada al input de Usuario
-   contraseña: string = ''; // Variable vinculada al input de Contraseña
-   mensaje: string = ''; // Mensaje dinámico para mostrar resultados
+  title = 'Iniciar Sesión'
+  @ViewChild('username') usernameInput!: ElementRef;
+  @ViewChild('password') passwordInput!: ElementRef;
 
-   login() {
-    if (this.usuario.trim() === '' || this.contraseña.trim() === '') { // Verificar que se llenen los campos
-      this.mensaje = 'Por favor, completa todos los campos.';
-      return;
-    }
+  constructor(private authService: AuthService) {}
 
-    alert('¡Bienvenido!');
+  login() {
+    const usuario = this.usernameInput.nativeElement.value;
+    const contrasena = this.passwordInput.nativeElement.value;
+
+    this.authService.login(usuario, contrasena).subscribe(
+      (response) => {
+        if (response.status === 'success') {
+          alert('Inicio de sesión exitoso: ' + response.rol);
+          // Redirige al usuario a la página correspondiente
+        } else {
+          alert('Credenciales incorrectas');
+        }
+      },
+      (error) => {
+        console.error('Error en el inicio de sesión:', error);
+        alert('Error en el servidor. Intente más tarde.');
+      }
+    );
   }
 }

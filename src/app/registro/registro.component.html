@@ -2,29 +2,22 @@
     <div class="componente">
       <h1>{{title}}</h1>
       <div class="nombres">
-        <label>Nombre:</label>
-        <input type="text" name="name">
-
-        <label>Apellido Paterno:</label>
-        <input type="text" name="lastname1">
-
-        <label>Apellido Materno:</label>
-        <input type="text" name="lastname2">
+        <input type="text" name="name" placeholder="Nombre" #nombre>
+        <input type="text" name="lastname1" placeholder="Apellido Paterno" #apellido1>
+        <input type="text" name="lastname2" placeholder="Apellido Materno" #apellido2>
       </div>
-      
-      <label>Fecha de Nacimiento:</label>
-      <input type="date" name="date" id="date">
-
-      <label>Correo electrónico:</label>
-      <input type="email" name="email">
+      <div class="fecha">
+        <label>Fecha de Nacimiento:</label>
+        <input type="date" name="date" id="date" #fecha>
+      </div>
+      <input type="email" name="email" placeholder="Correo electrónico" #correo>
       <div class="credenciales">
-        <label>Nombre de usuario:</label>
-        <input type="text" name="username">
-        
-        <label>Contraseña:</label>
-        <input type="password" name="password">
+        <input type="text" name="username" placeholder="Usuario" #usuario>
+        <input type="password" name="password" placeholder="Contraseña" #contraseña>
       </div>
-      <button (click)="registrar()">Registrar cuenta</button>
+      <button (click)="register()">Registrar cuenta</button>
+      <a routerLink="/login">Ya tengo una cuenta</a>
     </div>
   </main>
+  <router-outlet></router-outlet>
   

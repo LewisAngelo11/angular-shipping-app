@@ -1,0 +1,22 @@
+<nav class="menu">
+    <ul>
+        <a routerLink="/login"></a>
+        <a routerLink="/registro"></a>
+    </ul>
+</nav>
+<main class="main">
+    <h1>Menu Principal</h1> <!-- Muestra el título dinámico desde el TypeScript -->
+    <div class="componente">
+      <h2>¡¡Bienvenido!!</h2>
+      <div class="rastreo">
+        <input type="text" placeholder="Número de rastreo">
+        <button id="rastrear">Rastrear</button>
+      </div>
+      <div class="opciones">
+        <button>Cotizar Envio</button>
+        <button>Atención al cliente</button>
+        <button (click)="irLogin()">Iniciar sesión</button>
+        <button>Cerrar sesión</button>
+      </div>
+    </div>
+  </main>

@@ -16,14 +16,13 @@
     margin: 10px auto; /* Centra el div en el contenedor */
     background-color: #f9f9f9; /* Fondo gris claro */
     width: 300px; /* Ancho del div */
-    font-size: 12px; /* Tamaño de fuente */
   }
   
   
   .componente label {
     margin-top: 5px;
     display: block; /* Hace que los labels se apilen verticalmente */
-    margin-bottom: 10px; /* Añade un espacio debajo de los labels */
+    margin-bottom: 8px; /* Añade un espacio debajo de los labels */
   }
   
   .componente input {
@@ -38,14 +37,6 @@
   .nombres {
     justify-content: center; /* Centra en el eje principal (horizontal) */
     width: 90%;
-  }
-
-  .fecha{
-    display: flex;
-  }
-
-  .fecha label {
-    font-size: 12px;
   }
   
   button {
