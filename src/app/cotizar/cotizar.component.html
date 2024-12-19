@@ -1,0 +1,65 @@
+<main class="main">
+  <p>No sabes tu CP</p>
+
+  <div class="OrigenComponent">
+    <h1>{{ title }}</h1>
+    <label>Código Postal Origen</label>
+    <input type="text" name="CP" #CP placeholder="CP" class="CPRow">
+    <button (click)="buscarCPorigen()" class="Boton">Buscar</button>
+
+    <label>Ciudad</label>
+    <input type="text" #Ciudad placeholder="Ciudad">
+
+    <label>Municipio</label>
+    <input type="text" #Municipio placeholder="Municipio">
+
+    <label>Estado</label>
+    <input type="text" #Estado placeholder="Estado">
+  </div>
+
+  <div class="DestinoComponent">
+    <h1>{{ title2 }}</h1>
+    <label>Código Postal Destino</label>
+    <input type="text" #CPD placeholder="CP" class="CPRow">
+    <button (click)="buscarCPdestino()" class="Boton">Buscar</button>
+
+    <label>Ciudad</label>
+    <input type="text" #CiudadD placeholder="Ciudad">
+
+    <label>Municipio</label>
+    <input type="text" #MunicipioD placeholder="Municipio">
+
+    <label>Estado</label>
+    <input type="text" #EstadoD placeholder="Estado">
+  </div>
+
+  <div class="container">
+    <h1>{{ title3 }}</h1>
+    <div class="paquete-row">
+      <div>
+        <label for="peso">Peso (Kg): </label>
+        <input type="text" #Peso name="peso" required>
+      </div>
+      <div>
+        <label for="dimensiones">Dimensiones (L x A x H) Cm:</label>
+        <input type="text" #Largo name="largo" placeholder="Largo" required>
+        <input type="text" #Ancho name="ancho" placeholder="Ancho" required>
+        <input type="text" #Alto name="alto" placeholder="Alto" required>
+      </div>
+    </div>
+    <button (click)="enviarDatos()" class="Boton">Cotizar</button>
+  </div>
+</main>
+
+<div *ngIf="contenidoVisible" class="detalle-servicio">
+  <h1>Detalle Servicio</h1>
+  <p>Peso físico: {{txtPeso}}</p>
+  <p>Peso volumétrico: {{txtPesoVM}}</p>
+  <p>Tarifa: {{txtTarifa}}</p>
+  <p>IVA: {{txtIVA}}</p>
+  <p>Distancia: {{txtDistancia}}</p>
+  <p>Costo envío: {{txtCosto}}</p>
+  <button class="Boton">Hacer envío</button>
+</div>
+
+<router-outlet></router-outlet>

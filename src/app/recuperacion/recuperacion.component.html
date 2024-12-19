@@ -1,15 +1,12 @@
 <main class="main">
     <div class="componente">
       <h1>Recuperar Contraseña</h1>
-      <label>Correo electrónico:</label>
-      <input type="email" name="email">
+      <input type="email" name="email" #email placeholder="Correo electrónico">
       <div class="contrasena">
-        <label>Nueva Contraseña:</label>
-        <input type="password" name="password1">
-        <label>Verificar Contraseña:</label>
-        <input type="password" name="password2">
+        <input type="password" name="password1" #password1 placeholder="Nueva Contraseña">
+        <input type="password" name="password2" #password2 placeholder="Verificar Contraseña">
       </div>
-      <button>Cambiar contraseña</button>
+      <button (click)="actualizarContrasena()">Cambiar contraseña</button>
     </div>
   </main>
   <router-outlet></router-outlet>

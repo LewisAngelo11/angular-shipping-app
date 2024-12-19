@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   @ViewChild('username') usernameInput!: ElementRef;
   @ViewChild('password') passwordInput!: ElementRef;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
     const usuario = this.usernameInput.nativeElement.value;
@@ -24,6 +25,7 @@ export class LoginComponent {
         if (response.status === 'success') {
           alert('Inicio de sesión exitoso: ' + response.rol);
           // Redirige al usuario a la página correspondiente
+          this.router.navigate(['/menu']);
         } else {
           alert('Credenciales incorrectas');
         }

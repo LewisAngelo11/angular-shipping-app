@@ -1,39 +1,36 @@
 .main {
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 20px;
+    padding: 0px;
   }
 
-  .componente {
+        /* El div .menu ocupa toda la parte superior */
+.menu {
+    width: 100%; /* Abarca todo el ancho */
+    height: 60px; /* Ajusta la altura a lo que necesites */
+    background-color: #1e5ad0; /* Fondo para que se vea */
+    color: white;
     display: flex;
-    flex-direction: column; /* Organiza los elementos en una columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    justify-content: center; /* Centra los elementos verticalmente */
-    height: 400px; /* Usa el 100% del alto de la ventana */
-    border: 2px solid #000000; /* Borde de 2px verde */
-    padding: 20px; /* Espacio interno */
-    border-radius: 8px; /* Bordes redondeados */
-    margin: 10px auto; /* Centra el div en el contenedor */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    width: 300px; /* Ancho del div */
+    justify-content: left; /* Centra el contenido horizontalmente */
+    margin-left: 0px;
+    align-items: center; /* Centra el contenido verticalmente */
   }
+
+  nav ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    margin-left: 20px;
+}
+
+.menu a{
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: #ffffff;
+}
+
   
-  
-  .componente label {
-    margin-top: 15px;
-    display: block; /* Hace que los labels se apilen verticalmente */
-    margin-bottom: 8px; /* Añade un espacio debajo de los labels */
-  }
-  
-  .componente input {
-    display: block; /* Hace que los inputs se apilen verticalmente */
-    width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-    padding: 10px;
-    margin-bottom: 12px; /* Añade un espacio debajo de los inputs */
-    margin-left: 8px;
-  }
-  
-  button {
+button {
     padding: 10px 20px;
     background-color: #1e5ad0;
     color: white;
@@ -47,7 +44,4 @@
     background-color:  #002fff;
   }
 
-  .componente a{
-    margin: 8px; /* Margen del componente */
-  }
   

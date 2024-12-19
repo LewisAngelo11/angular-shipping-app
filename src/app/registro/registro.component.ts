@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { response } from 'express';
 
@@ -19,7 +19,7 @@ export class RegistroComponent {
   @ViewChild('usuario') usuarioInput!: ElementRef;
   @ViewChild('contraseña') contraenaInput!: ElementRef;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   register(){
       // Extraer los valores del formulario y crear el objeto body
@@ -38,6 +38,7 @@ export class RegistroComponent {
       (response) => {
         if (response.status === 'success'){
           alert('Usuario creado exitosamente: ' + response.rol);
+          this.router.navigate(['/login']); // Navega a la ruta '/login'
         } else {
           alert('Error al registrar el usuario');
         }
