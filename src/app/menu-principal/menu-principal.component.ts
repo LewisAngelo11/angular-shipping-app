@@ -22,13 +22,17 @@ export class MenuPrincipalComponent {
   }
 
   IrCotizarEnvio(){
-    this.router.navigate(['/CotizarEnvio'])
+    this.router.navigate(['/CotizarEnvio']);
   }
 
   // Cerrar sesión: eliminar el token y redirigir al login
   cerrarSesion(): void {
     this.authService.logout();  // Eliminar el token del localStorage
     this.router.navigate(['/login']);  // Redirigir a la página de login
+  }
+
+  miCuenta(){
+    this.router.navigate(['/miCuenta']);
   }
 
   irRastreo(){

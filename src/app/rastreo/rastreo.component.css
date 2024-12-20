@@ -15,7 +15,7 @@
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
     height: 400px; /* Usa el 100% del alto de la ventana */
-    padding: 20px; /* Espacio interno */
+
     border-radius: 8px; /* Bordes redondeados */
     margin: 10px auto; /* Centra el div en el contenedor */
     background-color: #f9f9f9; /* Fondo gris claro */
@@ -73,4 +73,42 @@ button:hover {
 
 .opciones button{
   gap: 5px;
+}
+
+.EstatusEnvio {
+  display: flex;                  /* Utiliza Flexbox para la disposición de los elementos */
+  align-items: center;            /* Centra los elementos horizontalmente */
+  justify-content: center;        /* Centra los elementos verticalmente */
+  height: 80px;                  /* Toma toda la altura de la ventana */
+  text-align: center;             /* Centra el texto dentro de cada label */
+}
+
+.EstatusEnvio label {
+  border: 2px solid #000000; /* Borde de 2px verde */
+  background-color: #002fff;        /* Fondo azul para cada label */
+  color: white;                   /* Texto blanco */
+  padding: 10px 20px;             /* Espaciado interno de los labels */
+  margin: 10px 0;                 /* Espaciado entre los labels */
+  border-radius: 5px;             /* Bordes redondeados */
+  width: 50%;                     /* Ancho del label, puedes ajustarlo */
+  max-width: 250px;               /* Ancho máximo de los labels */
+}
+
+.EstatusEnvio p {
+  font-size: 20px;
+  font-style: oblique;
+}
+
+.DetalleEnvio{
+  text-align: left;
+  margin-left: 0; /* Asegura que esté al borde izquierdo */
+  padding-left: 10px; /* Opcional: espacio interno para evitar que pegue demasiado al borde */
+}
+
+.estatusCompletado {
+  color: rgb(194, 3, 3); /* Color para los estatus completados o previos */
+}
+
+.estatusPendiente {
+  color: #002fff; /* Color para los estatus pendientes o futuros */
 }

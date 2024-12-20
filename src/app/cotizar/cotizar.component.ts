@@ -15,7 +15,9 @@ export class CotizarComponent {
   contenidoVisible = false;
   title = "Origen"
   title2 = "Destino"
-  title3 = "Paquetes"
+  title3 = "Paquete"
+  title4 = "Remitente"
+  title5 = "Destinatario"
   txtPeso = "Mi peso"
   txtPesoVM = ""
   txtTarifa = ""
@@ -34,7 +36,16 @@ export class CotizarComponent {
   @ViewChild('Largo') Largo!: ElementRef;
   @ViewChild('Alto')Alto!: ElementRef;
   @ViewChild('Ancho') Ancho!: ElementRef;
+  @ViewChild('nombreR') NombreR!: ElementRef;
+  @ViewChild('ape1R') Apellido1R!: ElementRef;
+  @ViewChild('ape2R') Apellido2R!: ElementRef;
+  @ViewChild('emailR') EmailR!: ElementRef;
+  @ViewChild('nombreD') NombreD!: ElementRef;
+  @ViewChild('ape1D') Apellido1D!: ElementRef;
+  @ViewChild('ape2D') Apellido2D!: ElementRef;
+  @ViewChild('emailD') EmailD!: ElementRef;
   @ViewChild('Tarifa') Tarifa!: ElementRef;
+  @ViewChild('fechaR') FechaR!: ElementRef;
   constructor(private authService: AuthService) {}
 
   buscarCPorigen(){
@@ -109,7 +120,6 @@ export class CotizarComponent {
     this.authService.CotizarPaquete(body).subscribe(
       (response) => {
         if (response.status === 'success'){
-          alert('datos obtenidos exitosamente: ' + response.rol);
           this.contenidoVisible = true; 
           this.txtTarifa = "$" + response.tarifa;
           this.txtPeso = this.Peso.nativeElement.value + " Kg";
@@ -117,7 +127,6 @@ export class CotizarComponent {
           this.txtIVA = String("$" + (Number(response.tarifa)*16)/100)
           this.txtCosto = "$" + String((Number(response.tarifa) + (Number(response.tarifa)*16)/100))
           this.txtDistancia = response.distancia + " Km";
-
         } else {
           alert('Error al registrar el usuario');
         }
@@ -132,5 +141,45 @@ export class CotizarComponent {
     this.contenidoVisible = !this.contenidoVisible; 
     this.txtPeso = this.Peso.nativeElement.value;
   }
+
+
+  EnviarPaquete(){
+
+    const body = {
+      tarifa: this.txtCosto,
+      Origen: this.Entidad.nativeElement.value + "," + this.CD.nativeElement.value,
+      Destino: this.EntidadD.nativeElement.value + "," + this.CDD.nativeElement.value + "," + this.MunD.nativeElement.value,
+      Peso: this.Peso.nativeElement.value,
+      Alto: this.Alto.nativeElement.value,
+      Largo: this.Largo.nativeElement.value,
+      Ancho: this.Ancho.nativeElement.value,
+      NombreR: this.NombreR.nativeElement.value,
+      ApellidoR: this.Apellido1R.nativeElement.value,
+      Apellido2R: this.Apellido2R.nativeElement.value,
+      EmailR: this.EmailR.nativeElement.value,
+      NombreD: this.NombreD.nativeElement.value,
+      ApellidoD: this.Apellido1D.nativeElement.value,
+      Apellido2D: this.Apellido2D.nativeElement.value,
+      EmailD: this.EmailD.nativeElement.value,
+      FechaR: this.FechaR.nativeElement.value
+
+    }
+
+    this.authService.enviarpaquete(body).subscribe(
+      (response) => {
+        if (response.status === 'success'){
+          alert('entrega añadida Codigo de rastreo: ' + response.Rastreo_Code);
+        } else {
+          alert('Error al registrar el usuario');
+        }
+      },
+      (error) =>{
+        console.error('Hubo un error:', error);
+        alert('Error en el servidor. Intente más tarde.');
+      }
+    );
+
+  }
+
     //PesoH = this.Peso.nativeElement.value;
 }

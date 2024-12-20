@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class AuthService {
   private urlCotizar = 'http://localhost:5000/Cotizar/CP';
   private urlCotizarpqte = 'http://localhost:5000/Cotizar/Paquete';
   private urlCambiarContrasena = 'http://localhost:5000/usuario/cambiar'; // URL para el cambio de contraseña
+  private urlRastrearPaquete = 'http://localhost:5000/rastrear/rastreo'; // URL para rastrear un envio
+  private urlEnvios = 'http://localhost:5000/Cotizar/Envio';
 
   constructor(private http: HttpClient) {}
 
@@ -44,6 +47,14 @@ export class AuthService {
     localStorage.removeItem('authToken');
   }
 
+  getDecodedToken(): any {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      // return jwt_decode(token);  // Decodifica el token y regresa el payload
+    }
+    return null;
+  }
+
   // Modificar la función register para aceptar un objeto
   register(body: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -63,5 +74,26 @@ export class AuthService {
   cambiarContrasena(body:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<any>(this.urlCambiarContrasena, body, { headers });
+  }
+
+  consultarInfo(body:any): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<any>(this.urlCambiarContrasena, body, { headers });
+  }
+
+  enviarpaquete(body:any): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.urlEnvios, body, { headers });
+    
+  }
+
+  rastrearPaquete(rastreo: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  
+  // Usar el cuerpo de la solicitud para enviar el número de rastreo
+    const body = { Rastreo: rastreo };
+  
+    // Llamada GET con los parámetros
+    return this.http.post<any>(this.urlRastrearPaquete, body, { headers });
   }
 }

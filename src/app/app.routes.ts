@@ -7,6 +7,7 @@ import { RecuperacionComponent } from './recuperacion/recuperacion.component';
 import { CotizarComponent } from './cotizar/cotizar.component';
 import { RastreoComponent } from './rastreo/rastreo.component';
 import { PreguntasComponent } from './preguntas/preguntas.component';
+import { CuentaComponent } from './cuenta/cuenta.component';
 
 
 export const routes: Routes = [
@@ -14,6 +15,7 @@ export const routes: Routes = [
     {path: 'menu', component: MenuPrincipalComponent}, // Ruta para la pantalla de menu principal
     {path: 'login', component: LoginComponent}, // Ruta para la pantalla de login
     {path: 'registro', component: RegistroComponent}, // Ruta para la pantalla de registrarse
+    {path: 'miCuenta', component: CuentaComponent}, // Ruta para editar la cuenta
     {path: 'recuperacion', component: RecuperacionComponent}, // Ruta para la pantalla de recuperar contraseña
     {path: 'CotizarEnvio',component: CotizarComponent},
     {path: 'rastreo', component: RastreoComponent}, // Ruta para rastrear un paquete

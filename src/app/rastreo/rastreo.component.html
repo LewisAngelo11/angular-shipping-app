@@ -1,11 +1,31 @@
 <nav class="menu">
   </nav>
   <main class="main">
-    <h1>Menu Principal</h1> <!-- Muestra el título dinámico desde el TypeScript -->
+    <h1>Rastrear un Paquete</h1> <!-- Muestra el título dinámico desde el TypeScript -->
     <div class="componente">
+      <h3>Ingrese un número de rastreo compuesto de 20 dígitos.</h3>
+      <p>Ejemplo: 01234567899876543210</p>
       <div class="rastreo">
-        <label for="">Número de rastreo:</label>
-        <label for=""></label>
+        <input type="text" #numRastreo placeholder="Número de rastreo">
+        <button (click)="rastrear()" id="rastrear">Rastrear</button>
       </div>
+    </div>
+    <h2>Estado del Envío</h2>
+    <div *ngIf="contenidoVisible" class="EstatusEnvio">
+      <label [ngClass]="getColorForStatus('Recibido')">EN PROCESO</label>
+      <p>----</p>
+      <label [ngClass]="getColorForStatus('En Tránsito')">ENVIADO</label>
+      <p>----</p>
+      <label [ngClass]="getColorForStatus('En proceso de entrega a domicilio')">EN ENTREGA A DOMICILIO</label>
+      <p>----</p>
+      <label [ngClass]="getColorForStatus('Entregado')">ENTREGADO</label>
+    </div>
+    <div *ngIf="contenidoVisible" class="DetalleEnvio">
+      <h2>Detalle del Envío</h2>
+      <p><strong>Número de Envío:</strong> {{ idEnvio }}</p>
+      <p><strong>Número de Paquete:</strong> {{ idPaquete }}</p>
+      <p><strong>Estatus:</strong> {{ estatus }}</p>
+      <p><strong>Remitente:</strong> {{ remitente }}</p>
+      <p><strong>Destinatario:</strong> {{ destinatario }}</p>
     </div>
   </main>
