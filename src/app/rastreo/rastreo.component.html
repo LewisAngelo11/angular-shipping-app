@@ -12,13 +12,13 @@
     </div>
     <h2>Estado del Envío</h2>
     <div *ngIf="contenidoVisible" class="EstatusEnvio">
-      <label [ngClass]="getColorForStatus('Recibido')">EN PROCESO</label>
-      <p>----</p>
-      <label [ngClass]="getColorForStatus('En Tránsito')">ENVIADO</label>
-      <p>----</p>
-      <label [ngClass]="getColorForStatus('En proceso de entrega a domicilio')">EN ENTREGA A DOMICILIO</label>
-      <p>----</p>
-      <label [ngClass]="getColorForStatus('Entregado')">ENTREGADO</label>
+      <label [ngStyle]="{'background-color': getStatusColor('EN PROCESO')}">EN PROCESO</label>
+      <p>➟</p>
+      <label [ngStyle]="{'background-color': getStatusColor('ENVIADO')}">ENVIADO</label>
+      <p>➟</p>
+      <label [ngStyle]="{'background-color': getStatusColor('ENTREGA')}">EN ENTREGA A DOMICILIO</label>
+      <p>➟</p>
+      <label [ngStyle]="{'background-color': getStatusColor('ENTREGADO')}">ENTREGADO</label>
     </div>
     <div *ngIf="contenidoVisible" class="DetalleEnvio">
       <h2>Detalle del Envío</h2>

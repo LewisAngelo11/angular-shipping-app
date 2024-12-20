@@ -28,6 +28,11 @@
     padding: 0px; /* Elimina el relleno si lo hay */
   }
 
+.preguntas{
+  margin: 0px; /* Elimina el margen entre párrafos */
+  padding: 0px; /* Elimina el relleno si lo hay */
+}
+
 .rastreo{
     height: 50px;
     display: flex;

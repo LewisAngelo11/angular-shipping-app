@@ -14,6 +14,8 @@
     flex-direction: column; /* Organiza los elementos en una columna */
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
+    border: 2px solid #000000; /* Borde de 2px verde */
+    border-radius: 8px; /* Bordes redondeados */
     height: 400px; /* Usa el 100% del alto de la ventana */
     border-radius: 8px; /* Bordes redondeados */
     background-color: #f9f9f9; /* Fondo gris claro */

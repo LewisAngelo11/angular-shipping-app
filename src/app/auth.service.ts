@@ -14,6 +14,8 @@ export class AuthService {
   private urlCambiarContrasena = 'http://localhost:5000/usuario/cambiar'; // URL para el cambio de contraseña
   private urlRastrearPaquete = 'http://localhost:5000/rastrear/rastreo'; // URL para rastrear un envio
   private urlEnvios = 'http://localhost:5000/Cotizar/Envio';
+  private urlConsultarUser = 'http://localhost:5000/usuario/consultar';
+  private urlEliminarUser = 'http://localhost:5000/eliminarUsers';
 
   constructor(private http: HttpClient) {}
 
@@ -76,15 +78,20 @@ export class AuthService {
     return this.http.put<any>(this.urlCambiarContrasena, body, { headers });
   }
 
-  consultarInfo(body:any): Observable<any>{
+  ConsultarUser(body:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<any>(this.urlCambiarContrasena, body, { headers });
+    return this.http.post<any>(this.urlConsultarUser, body, { headers });
+  }
+
+  EliminarUser(body:any): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.urlEliminarUser, body, { headers });
+
   }
 
   enviarpaquete(body:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.urlEnvios, body, { headers });
-    
   }
 
   rastrearPaquete(rastreo: string): Observable<any> {

@@ -15,7 +15,8 @@
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
     height: 400px; /* Usa el 100% del alto de la ventana */
-
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border: 2px solid #00000076; /* Borde de 2px verde */
     border-radius: 8px; /* Bordes redondeados */
     margin: 10px auto; /* Centra el div en el contenedor */
     background-color: #f9f9f9; /* Fondo gris claro */
@@ -95,7 +96,7 @@ button:hover {
 }
 
 .EstatusEnvio p {
-  font-size: 20px;
+  font-size: 30px;
   font-style: oblique;
 }
 
@@ -103,12 +104,27 @@ button:hover {
   text-align: left;
   margin-left: 0; /* Asegura que esté al borde izquierdo */
   padding-left: 10px; /* Opcional: espacio interno para evitar que pegue demasiado al borde */
+  background-color: #f9f9f9; /* Fondo gris claro */
+  border: 2px solid #00000076; /* Borde de 2px verde */
+  border-radius: 8px; /* Bordes redondeados */
 }
 
-.estatusCompletado {
-  color: rgb(194, 3, 3); /* Color para los estatus completados o previos */
+.proceso {
+  background-color: rgb(186, 0, 0);
 }
 
-.estatusPendiente {
-  color: #002fff; /* Color para los estatus pendientes o futuros */
+.enviado {
+  background-color: rgb(186, 0, 0);
+}
+
+.entrega {
+  background-color: rgb(186, 0, 0);
+}
+
+.entregado {
+  background-color: rgb(15, 220, 1);
+}
+
+.default {
+  background-color: #002fff;
 }

@@ -70,7 +70,6 @@ export class CotizarComponent {
         alert('Error en el servidor. Intente más tarde.');
       }
     );
-
   }
 
   buscarCPdestino(){
