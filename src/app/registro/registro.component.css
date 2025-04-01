@@ -1,7 +1,25 @@
 .main {
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 20px;
+  }
+
+  .backgroundLogin {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.966) 0%, rgba(114, 114, 114, 0.588) 20%, rgba(130, 130, 130, 0.407) 70%, rgba(255, 255, 255, 0.785) 100%);
+  }
+
+  .video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el video al div */
+    z-index: -1;
   }
 
   .componente {
@@ -9,14 +27,16 @@
     flex-direction: column; /* Organiza los elementos en una columna */
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
-    height: 400px; /* Usa el 100% del alto de la ventana */
-    border: 2px solid #000000; /* Borde de 2px verde */
+    height: 450px; /* Usa el 100% del alto de la ventana */
     padding: 20px; /* Espacio interno */
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 20px; /* Bordes redondeados */
     margin: 10px auto; /* Centra el div en el contenedor */
-    background-color: #f9f9f9; /* Fondo gris claro */
+    margin-top: 110px;
+    background-color: #f9f9f98e; /* Fondo gris claro */
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
     width: 300px; /* Ancho del div */
     font-size: 12px; /* Tamaño de fuente */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
   }
   
   
@@ -29,10 +49,19 @@
   .componente input {
     display: block; /* Hace que los inputs se apilen verticalmente */
     width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-    height: 5px;
+    height: 10px;
     padding: 10px;
     margin-bottom: 10px; /* Añade un espacio debajo de los inputs */
+    background-color: #f9f9f98e; /* Fondo gris claro */
     margin-left: 8px;
+    border-radius: 15px;
+    border: 0px;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
+    transition: all 0.2s ease-in;
+  }
+
+  input:focus{
+    transform: scale(1.04); /* Aumentar ligeramente el tamaño */
   }
 
   .nombres {
@@ -50,16 +79,20 @@
   
   button {
     padding: 10px 20px;
-    background-color: #1e5ad0;
+    background-color: #002671;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 80%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
+    transition: all 0.2s ease-in; /* Transición suave para el texto */
   }
   
   button:hover {
-    background-color:  #002fff;
+    background-color: #002d85;
+    transform: scale(1.04); /* Aumentar ligeramente el tamaño */
   }
 
   .componente a{
@@ -72,4 +105,71 @@
 
 .credenciales{
     width: 80%;
+}
+
+footer{
+  height: 200px;
+  background-color: #002671;
+  gap: 30px;
+}
+
+.space{
+  height: 30px;
+}
+
+.endPage {
+  display: flex;
+  gap: 50px;
+}
+
+.legales{
+  color: rgb(211, 210, 210);
+  gap: 10px;
+  align-items: start;
+  text-align: left;
+  padding-left: 50px;
+}
+
+.legales h3 {
+  color: white;
+  margin: 0px;
+  margin-left: 35px;
+}
+
+.legales ul{
+  list-style: none;
+  text-align: left;
+}
+
+.legales ul li{
+  margin-bottom: 5px;
+}
+
+.legales a{
+  text-decoration: none;
+  color: rgb(173, 171, 171);
+  font-size: 12px;
+}
+
+.contacto {
+  color: white;
+  text-align: left;
+}
+
+.contacto h3 {
+  margin: 0px;
+  color: white;
+}
+
+.contacto ul {
+  list-style: none;
+  text-align: left;
+  padding-left: 0px;
+}
+
+.contacto a, p{
+  text-decoration: none;
+  color: rgb(173, 171, 171);
+  font-size: 12px;
+  padding-left: 5px;
 }
