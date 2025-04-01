@@ -21,6 +21,10 @@ export class MenuPrincipalComponent {
     this.router.navigate(['/login']); // Navega a la ruta '/login'
   }
 
+  irCrearCuenta(){
+    this.router.navigate(['/registro']); // Navega a la ruta '/registro'
+  }
+
   IrCotizarEnvio(){
     this.router.navigate(['/CotizarEnvio']);
   }

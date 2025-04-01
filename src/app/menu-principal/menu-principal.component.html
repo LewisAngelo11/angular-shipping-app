@@ -1,16 +1,70 @@
 <nav class="menu">
 </nav>
 <main class="main">
-  <div class="componente">
-    <h1>PAQUETERIA</h1>
-    <h2>¡¡Bienvenido!!</h2>
-    <div class="opciones">
-      <button (click)="irRastreo()" id="rastrear">Rastrear</button>
-      <button (click)="IrCotizarEnvio()">Cotizar Envio</button>
-      <button (click)="irPreguntas()">Preguntas Frecuentes</button>
-      <button *ngIf="!isAuthenticated()" (click)="irLogin()">Iniciar sesión</button>
-      <button *ngIf="isAuthenticated()" (click)="cerrarSesion()" >Cerrar sesión</button>
-      <button *ngIf="isAuthenticated()" (click)="miCuenta()" >Mi Cuenta</button>
+  <div class="background">
+    <video autoplay loop muted playsinline class="video-bg">
+      <source src="/6169088-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="componente">
+      <p>Ingresa un número de rastreo compuesto de 20 dígitos.</p>
+      <div class="tracking">
+        <input type="text" #rastreoMain placeholder="Número de rastreo">
+        <button (click)="irRastreo()" id="rastrear"><strong>Rastrear</strong></button>
+      </div>
+      <div class="messages">
+        <h1>¡¡Bienvenido!!</h1>
+        <h3>Cotiza, envía y rastrea, fácil y rápido tus paquetes.</h3>
+        <p></p>
+      </div>
+      <div class="opciones">
+        <button (click)="IrCotizarEnvio()"><strong>Cotizar Envio</strong></button>
+        <button (click)="irPreguntas()"><strong>Preguntas Frecuentes</strong></button>
+        <button *ngIf="!isAuthenticated()" (click)="irLogin()"><strong>Iniciar sesión</strong></button>
+        <button *ngIf="isAuthenticated()" (click)="cerrarSesion()"><strong>Cerrar sesión</strong></button>
+        <button *ngIf="isAuthenticated()" (click)="miCuenta()"><strong>Mi Cuenta</strong></button>
+      </div>
     </div>
   </div>
+  <div class="info">
+    <h2>Nuestros Servicios</h2>
+    <p id="infoServices">Servicios de paqueteria con garantía de seguridad y rapidez</p>
+  </div>
+  <div class="notify">
+      <div class="rastrear">
+        <h3>Rastrea tus Paquetes</h3>
+        <p>Prueba rastrear tu pedido facil y rapido con tu número de rastreo o número de envio.</p>
+        <img src="/map-regular-24.png"/>
+      </div>
+      <div class="cotizar">
+        <h3>Cotíza y Envía</h3>
+        <p>Cotíza tus envíos y prueba los diferentes servicios de envíos que ofrecemos, elige el que mas vaya acorde a tus necesidades.</p>
+        <button (click)="IrCotizarEnvio()">Cotizar Envio</button>
+      </div>
+      <div class="account">
+        <h3>Cree una Cuenta</h3>
+        <p>¿Quieres aprovechar las ventajas que tiene ser miembro? Cree una cuenta o inicie sesión para tener más beneficios.</p>
+        <button (click)="irCrearCuenta()">Cree una cuenta</button>
+      </div>
+  </div>
+  <footer>
+    <div class="space"></div>
+    <div class="endPage">
+      <div class="legales">
+        <h3>LEGALES</h3>
+        <ul>
+          <li><a href="">Aviso de privacidad</a></li>
+          <li><a href="">¿Que debo hacer para iniciar una reclamación?</a></li>
+          <li><a href="">Políticas de aceptación de mercancias</a></li>
+        </ul>
+      </div>
+      <div class="contacto">
+        <h3>CONTÁCTANOS</h3>
+        <ul>
+          <li><a href="">+52000-000-0000</a></li>
+          <li><a href="">paqueteria&#64;example.com</a></li>
+        </ul>
+        <p>Lunes a viernes de 8 a 19 hrs. <br>Sábados de 8 a 14 hrs.</p>
+      </div>
+    </div>
+  </footer>
 </main>

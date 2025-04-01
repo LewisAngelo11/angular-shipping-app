@@ -1,26 +1,45 @@
 .main {
     font-family: Arial, sans-serif;
+    align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 0px;
   }
 
 .menu{
     width: 100%; /* Ancho del nav */
-    background-color: #1e5ad0; /* Fondo azul */
+    background-color: #002671; /* Fondo azul */
   }
 
+.background {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.966) 0%, rgba(114, 114, 114, 0.588) 20%, rgba(130, 130, 130, 0.407) 70%, rgba(255, 255, 255, 0.785) 100%);
+}
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta el video al div */
+  z-index: -1;
+}
+
 .componente {
+    position: relative;
+    z-index: 1; /* Para que quede sobre el video */
     display: flex;
     flex-direction: column; /* Organiza los elementos en una columna */
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
-    border: 2px solid #000000; /* Borde de 2px verde */
-    border-radius: 8px; /* Bordes redondeados */
     height: 400px; /* Usa el 100% del alto de la ventana */
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Fondo gris claro */
     width: 100%; /* Ancho del div */
     gap: 5px;
+    color: white;
   }
 
 .componente h2{
@@ -40,22 +59,60 @@
   }
   
 button {
-    padding: 10px 20px;
-    background-color: #1e5ad0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 200px;
+  position: relative;
+  overflow: hidden; /* Asegura que el gradiente no se salga del botón */
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 0px solid transparent; /* Transparente para que no se vea el borde cuando no se hace hover */
+  background-color: #002671; /* Azul de fondo inicial */
+  color: white; /* Color del texto */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in; /* Transición suave para el texto */
+  width: 180px;
+  height: 35px;
+  box-shadow: 0px 0px 10px rgb(74, 74, 74);
   }
-  
+
+
 button:hover {
-    background-color:  #002fff;
+  background-color: #002d85;
+  transform: scale(1.04); /* Aumentar ligeramente el tamaño */
+}
+
+.tracking{
+    height: 50px;
+    display: flex;
+    width: 50%;
+    gap: 10px;
   }
+
+.tracking input{
+  height: 15px;
+  border: 0px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  transition: all 0.3s ease; /* Transición suave para otros cambios */
+  box-shadow: 0px 0px 10px rgb(74, 74, 74);
+}
+
+input:hover{
+  border-bottom: 2px solid #ff6f00; /* Cambia el color del borde inferior */
+}
+
+.tracking button{
+  border-radius: 15px;
+  height: 35px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.601);
+}
 
 .componente a{
     margin: 8px; /* Margen del componente */
   }
+
+.componente p {
+  font-size: 12px;
+}
 
 .rastreo{
     height: 50px;
@@ -70,15 +127,127 @@ button:hover {
     margin-bottom: 5px;
 }
 
-#rastrear{
-    height: 40px;
-    width: 80;
-}
-
 .opciones {
   display: flex; /* Activa el modo Flexbox */
   gap: 20px; /* Espacio de 20px entre los botones */
   justify-content: flex-start; /* Los botones se alinean hacia la izquierda */
   align-items: center; /* Los botones se alinean verticalmente en el centro */
   padding: 10px; /* Espacio interior para que no toquen los bordes del div */
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info h2{
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+#infoServices{
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.notify {
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row; /* Organiza los elementos en una columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  gap: 20px;
+  padding: 20px;
+}
+
+.notify div{
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px gray;
+  width: 350px;
+  height: 200px;
+  padding: 20px;
+}
+
+.rastrear{
+  text-align: left;
+}
+
+.cotizar{
+  text-align: left;
+}
+
+.account{
+  text-align: left;
+}
+
+footer{
+  margin-top: 30px;
+  height: 200px;
+  background-color: #002671;
+  gap: 30px;
+}
+
+.space{
+  height: 30px;
+}
+
+.endPage {
+  display: flex;
+  gap: 50px;
+}
+
+.legales{
+  color: rgb(211, 210, 210);
+  gap: 10px;
+  align-items: start;
+  text-align: left;
+  padding-left: 50px;
+}
+
+.legales h3 {
+  color: white;
+  margin: 0px;
+  margin-left: 35px;
+}
+
+.legales ul{
+  list-style: none;
+  text-align: left;
+}
+
+.legales ul li{
+  margin-bottom: 5px;
+}
+
+.legales a{
+  text-decoration: none;
+  color: rgb(173, 171, 171);
+  font-size: 12px;
+}
+
+.contacto {
+  color: white;
+  text-align: left;
+}
+
+.contacto h3 {
+  margin: 0px;
+  color: white;
+}
+
+.contacto ul {
+  list-style: none;
+  text-align: left;
+  padding-left: 0px;
+}
+
+.contacto a, p{
+  text-decoration: none;
+  color: rgb(173, 171, 171);
+  font-size: 12px;
+  padding-left: 5px;
 }
