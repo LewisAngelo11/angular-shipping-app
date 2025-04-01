@@ -14,14 +14,13 @@
     flex-direction: column; /* Organiza los elementos en una columna */
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
-    height: 400px; /* Usa el 100% del alto de la ventana */
+    height: 300px; /* Usa el 100% del alto de la ventana */
     background-color: #f9f9f9; /* Fondo gris claro */
-    border: 2px solid #00000076; /* Borde de 2px verde */
     border-radius: 8px; /* Bordes redondeados */
-    margin: 10px auto; /* Centra el div en el contenedor */
     background-color: #f9f9f9; /* Fondo gris claro */
     width: 100%; /* Ancho del div */
     gap: 5px;
+    box-shadow: 5px 5px 10px gray;
   }
   
 .componente label {
@@ -65,11 +64,14 @@ button:hover {
 .rastreo input{
     height: 15px;
     margin-bottom: 5px;
+    border-radius: 15px;
 }
 
 #rastrear{
+    border-radius: 15px;
     height: 40px;
     width: 80;
+    box-shadow: 5px 5px 10px gray;
 }
 
 .opciones button{
@@ -101,12 +103,15 @@ button:hover {
 }
 
 .DetalleEnvio{
+  margin-top: 30px;
+  width: 40%;
   text-align: left;
   margin-left: 0; /* Asegura que esté al borde izquierdo */
-  padding-left: 10px; /* Opcional: espacio interno para evitar que pegue demasiado al borde */
+  padding: 5px; /* Espacio interno en el contenedor */
+  padding-left: 20px; /* Opcional: espacio interno para evitar que pegue demasiado al borde */
   background-color: #f9f9f9; /* Fondo gris claro */
-  border: 2px solid #00000076; /* Borde de 2px verde */
   border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 5px 5px 10px gray;
 }
 
 .proceso {
@@ -127,4 +132,8 @@ button:hover {
 
 .default {
   background-color: #002fff;
+}
+
+.error {
+  color: rgb(219, 0, 0);
 }
