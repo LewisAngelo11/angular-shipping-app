@@ -1,11 +1,43 @@
 <main class="main">
-    <div class="componente">
-      <h1>{{ title }}</h1> <!-- Muestra el título dinámico desde el TypeScript -->
-      <input type="text" #username placeholder="Usuario">
-      <input type="password" #password placeholder="Contraseña">
-      <button (click)="login()">Iniciar Sesión</button> <!-- Llama al método login -->
-      <a routerLink="/registro">Cree una cuenta</a>
-      <a routerLink="/recuperacion">Olvide mi Contraseña</a>
+  <div class="backgroundLogin">
+    <video autoplay loop muted playsinline class="video-bg">
+      <source src="/6169088-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    </video>
+      <div class="componente">
+        <h1>{{ title }}</h1> <!-- Muestra el título dinámico desde el TypeScript -->
+        <input type="text" #username placeholder="Usuario">
+        <input type="password" #password placeholder="Contraseña">
+        <p *ngIf="mensajeError" class="loginError">{{ mensajeError }}</p>
+        <button (click)="login()"><strong>Iniciar Sesión</strong></button> <!-- Llama al método login -->
+        <div class="accountGoogle">
+          <button><strong>Ingrese con Google</strong><img src="/google-icon.png" id="google-logo"></button>
+        </div>
+        <div class="moreInfo">
+          <a routerLink="/registro">Cree una cuenta</a>
+          <a routerLink="/recuperacion">Olvide mi Contraseña</a>
+        </div>
+      </div>
+  </div>
+  <footer>
+    <div class="space"></div>
+    <div class="endPage">
+      <div class="legales">
+        <h3>LEGALES</h3>
+        <ul>
+          <li><a href="">Aviso de privacidad</a></li>
+          <li><a href="">¿Que debo hacer para iniciar una reclamación?</a></li>
+          <li><a href="">Políticas de aceptación de mercancias</a></li>
+        </ul>
+      </div>
+      <div class="contacto">
+        <h3>CONTÁCTANOS</h3>
+        <ul>
+          <li><a href="">+52000-000-0000</a></li>
+          <li><a href="">paqueteria&#64;example.com</a></li>
+        </ul>
+        <p>Lunes a viernes de 8 a 19 hrs. <br>Sábados de 8 a 14 hrs.</p>
+      </div>
     </div>
-  </main>
+  </footer>
+</main>
 <router-outlet></router-outlet>

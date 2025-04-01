@@ -1,7 +1,25 @@
 .main {
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 20px;
+  }
+
+  .backgroundLogin {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.966) 0%, rgba(114, 114, 114, 0.588) 20%, rgba(130, 130, 130, 0.407) 70%, rgba(255, 255, 255, 0.785) 100%);
+  }
+
+  .video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el video al div */
+    z-index: -1;
   }
 
   .componente {
@@ -9,39 +27,165 @@
     flex-direction: column; /* Organiza los elementos en una columna */
     align-items: center; /* Centra los elementos horizontalmente */
     justify-content: center; /* Centra los elementos verticalmente */
-    height: 300px; /* Usa el 100% del alto de la ventana */
-    border: 2px solid #000000; /* Borde de 2px verde */
+    height: 440px; /* Usa el 100% del alto de la ventana */
     padding: 20px; /* Espacio interno */
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 20px; /* Bordes redondeados */
     margin: 5px auto; /* Centra el div en el contenedor */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    width: 250px; /* Ancho del div */
+    margin-top: 110px;
+    background-color: #f9f9f98e; /* Fondo gris claro */
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
+    width: 300px; /* Ancho del div */
+    gap: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
   }
-  
-  
+
+  .componente h1{
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+
   .componente input {
     display: block; /* Hace que los inputs se apilen verticalmente */
     width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
     padding: 10px;
-    margin-bottom: 12px; /* Añade un espacio debajo de los inputs */
+    margin-bottom: 15px; /* Añade un espacio debajo de los inputs */
+    border: 10px #000000;
+    background-color: #f9f9f98e; /* Fondo gris claro */
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
+    transition: all 0.2s ease-in;
   }
-  
+
+  input:focus{
+    transform: scale(1.04); /* Aumentar ligeramente el tamaño */
+  }
+
   button {
+    margin-top: 10px;
     padding: 10px 20px;
-    background-color: #1e5ad0;
+    background-color: #002671;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 80%;
+    width: 70%;
+    height: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgb(74, 74, 74);
+    transition: all 0.2s ease-in; /* Transición suave para el texto */
   }
   
   button:hover {
-    background-color:  #002fff;
+    background-color: #002d85;
+    transform: scale(1.04); /* Aumentar ligeramente el tamaño */
   }
 
   .componente a{
     margin: 8px; /* Margen del componente */
-    font-size: 12px; /* Tamaño de la fuente */
+    font-size: 14px; /* Tamaño de la fuente */
+  }
+
+  .accountGoogle{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .accountGoogle button{
+    background-color: #0141c0;
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 5px;
+  }
+
+  .moreInfo{
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en una columna */
+    margin-top: 0px;
+  }
+
+  .moreInfo a{
+    text-decoration: none;
+    transition: all 0.3s ease-in;
+  }
+
+  a:hover{
+    transform: scale(1.03); /* Aumentar ligeramente el tamaño */
+  }
+
+  footer{
+    height: 200px;
+    background-color: #002671;
+    gap: 30px;
+  }
+
+  .space{
+    height: 30px;
   }
   
+  .endPage {
+    display: flex;
+    gap: 50px;
+  }
+  
+  .legales{
+    color: rgb(211, 210, 210);
+    gap: 10px;
+    align-items: start;
+    text-align: left;
+    padding-left: 50px;
+  }
+  
+  .legales h3 {
+    color: white;
+    margin: 0px;
+    margin-left: 35px;
+  }
+  
+  .legales ul{
+    list-style: none;
+    text-align: left;
+  }
+  
+  .legales ul li{
+    margin-bottom: 5px;
+  }
+  
+  .legales a{
+    text-decoration: none;
+    color: rgb(173, 171, 171);
+    font-size: 12px;
+  }
+  
+  .contacto {
+    color: white;
+    text-align: left;
+  }
+  
+  .contacto h3 {
+    margin: 0px;
+    color: white;
+  }
+  
+  .contacto ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0px;
+  }
+  
+  .contacto a, p{
+    text-decoration: none;
+    color: rgb(173, 171, 171);
+    font-size: 12px;
+    padding-left: 5px;
+  }
+
+  .loginError{
+    color: rgb(219, 0, 0);
+    margin: 0px;
+    font-size: 14px;
+  }
