@@ -1,23 +1,49 @@
 <main class="main">
-    <div class="componente">
-      <h1>{{title}}</h1>
-      <div class="nombres">
-        <input type="text" name="name" placeholder="Nombre" #nombre>
-        <input type="text" name="lastname1" placeholder="Apellido Paterno" #apellido1>
-        <input type="text" name="lastname2" placeholder="Apellido Materno" #apellido2>
+  <div class="backgroundLogin">
+    <video autoplay loop muted playsinline class="video-bg">
+      <source src="/6169088-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    </video>
+      <div class="componente">
+        <h1>{{title}}</h1>
+        <div class="nombres">
+          <input type="text" name="name" placeholder="Nombre" #nombre>
+          <input type="text" name="lastname1" placeholder="Apellido Paterno" #apellido1>
+          <input type="text" name="lastname2" placeholder="Apellido Materno" #apellido2>
+        </div>
+        <div class="fecha">
+          <label>Fecha de Nacimiento:</label>
+          <input type="date" name="date" id="date" #fecha>
+        </div>
+        <input type="email" name="email" placeholder="Correo electrónico" #correo>
+        <div class="credenciales">
+          <input type="text" name="username" placeholder="Usuario" #usuario>
+          <input type="password" name="password" placeholder="Contraseña" #contraseña>
+        </div>
+        <button (click)="register()"><strong>Registrar cuenta</strong></button>
+        <a routerLink="/login">Ya tengo una cuenta</a>
       </div>
-      <div class="fecha">
-        <label>Fecha de Nacimiento:</label>
-        <input type="date" name="date" id="date" #fecha>
+  </div>
+  <footer>
+    <div class="space"></div>
+    <div class="endPage">
+      <div class="legales">
+        <h3>LEGALES</h3>
+        <ul>
+          <li><a href="">Aviso de privacidad</a></li>
+          <li><a href="">¿Que debo hacer para iniciar una reclamación?</a></li>
+          <li><a href="">Políticas de aceptación de mercancias</a></li>
+        </ul>
       </div>
-      <input type="email" name="email" placeholder="Correo electrónico" #correo>
-      <div class="credenciales">
-        <input type="text" name="username" placeholder="Usuario" #usuario>
-        <input type="password" name="password" placeholder="Contraseña" #contraseña>
+      <div class="contacto">
+        <h3>CONTÁCTANOS</h3>
+        <ul>
+          <li><a href="">+52000-000-0000</a></li>
+          <li><a href="">paqueteria&#64;example.com</a></li>
+        </ul>
+        <p>Lunes a viernes de 8 a 19 hrs. <br>Sábados de 8 a 14 hrs.</p>
       </div>
-      <button (click)="register()">Registrar cuenta</button>
-      <a routerLink="/login">Ya tengo una cuenta</a>
     </div>
+  </footer>
   </main>
   <router-outlet></router-outlet>
   
