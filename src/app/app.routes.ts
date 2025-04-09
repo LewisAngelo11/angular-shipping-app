@@ -17,7 +17,7 @@ export const routes: Routes = [
     {path: 'registro', component: RegistroComponent}, // Ruta para la pantalla de registrarse
     {path: 'miCuenta', component: CuentaComponent}, // Ruta para editar la cuenta
     {path: 'recuperacion', component: RecuperacionComponent}, // Ruta para la pantalla de recuperar contraseña
-    {path: 'CotizarEnvio',component: CotizarComponent},
+    {path: 'CotizarEnvio',component: CotizarComponent}, // Ruta para la pantalla de cotizar envios
     {path: 'rastreo', component: RastreoComponent}, // Ruta para rastrear un paquete
     {path: 'preguntas', component: PreguntasComponent} // Ruta para las preguntas frecuentes
 ];
