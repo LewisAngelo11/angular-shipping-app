@@ -1,13 +1,11 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { response } from 'express';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cotizar',
-  imports: [RouterOutlet, RouterLink,CommonModule],
+  imports: [RouterOutlet ,CommonModule],
   templateUrl: './cotizar.component.html',
   styleUrl: './cotizar.component.css'
 })
