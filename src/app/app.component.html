@@ -1,11 +1,14 @@
-<div class="menu">
-  <nav>
-    <ul>
-      <li><a routerLink="/menu"><strong>Menú Principal</strong></a></li>
-      <li><a routerLink="/CotizarEnvio"><strong>Cotizar Envio</strong></a></li>
-      <li><a routerLink="/preguntas"><strong>Preguntas frecuentes</strong></a></li>
-      <li><a routerLink=""><strong>Sucursales</strong></a></li>
-    </ul>
-  </nav>
-</div>
+<nav class="navbar">
+  <div class="logo"><a href="/menu">"LOGO"</a></div>
+  <div class="menu">
+    <a class="cotizar" href="/CotizarEnvio">Cotizar Envio</a>
+    <a class="preguntas" href="/preguntas">Preguntas frecuentes</a>
+    <a class="sucursales" href="#">Sucursales</a>
+  </div>
+  <!-- Icono de usuario -->
+  <div class="auth-button">
+    <button *ngIf="!isAuthenticated()" (click)="irLogin()"><i class='bx bx-user'></i></button> <!-- Icono de iniciar sesion -->
+    <button *ngIf="isAuthenticated()" (click)="miCuenta()"><i class='bx bx-user-circle'></i></button> <!-- Icono de mi cuenta -->
+  </div>
+</nav>
 <router-outlet></router-outlet>
