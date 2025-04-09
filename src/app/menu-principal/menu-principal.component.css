@@ -1,14 +1,9 @@
 .main {
-    font-family: Arial, sans-serif;
-    align-items: center;
-    text-align: center;
-    padding: 0px;
-  }
-
-.menu{
-    width: 100%; /* Ancho del nav */
-    background-color: #002671; /* Fondo azul */
-  }
+  font-family: Arial, sans-serif;
+  align-items: center;
+  text-align: center;
+  padding: 0px;
+}
 
 .background {
   position: relative;
@@ -16,6 +11,10 @@
   height: 450px;
   overflow: hidden;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.966) 0%, rgba(114, 114, 114, 0.588) 20%, rgba(130, 130, 130, 0.407) 70%, rgba(255, 255, 255, 0.785) 100%);
+}
+
+h1 {
+  margin-bottom: 10px;
 }
 
 .video-bg {
@@ -30,65 +29,70 @@
 }
 
 .componente {
-    position: relative;
-    z-index: 1; /* Para que quede sobre el video */
-    display: flex;
-    flex-direction: column; /* Organiza los elementos en una columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    justify-content: center; /* Centra los elementos verticalmente */
-    height: 400px; /* Usa el 100% del alto de la ventana */
-    width: 100%; /* Ancho del div */
-    gap: 5px;
-    color: white;
-  }
+  position: relative;
+  z-index: 1; /* Para que quede sobre el video */
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en una columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  height: 400px; /* Usa el 100% del alto de la ventana */
+  width: 100%; /* Ancho del div */
+  gap: 5px;
+  color: white;
+}
 
 .componente h2{
   margin-top: 0px;
 }
   
 .componente label {
-    margin-top: 15px;
-    margin-bottom: 8px; /* Añade un espacio debajo de los labels */
-  }
+  margin-top: 15px;
+  margin-bottom: 8px; /* Añade un espacio debajo de los labels */
+}
   
 .componente input {
-    width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-    padding: 10px;
-    margin-bottom: 12px; /* Añade un espacio debajo de los inputs */
-    margin-left: 8px;
-  }
+  width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
+  padding: 10px;
+  margin-bottom: 12px; /* Añade un espacio debajo de los inputs */
+  margin-left: 8px;
+}
   
 button {
   position: relative;
+  justify-content: center;
   overflow: hidden; /* Asegura que el gradiente no se salga del botón */
   padding: 10px 20px;
   border-radius: 15px;
   border: 0px solid transparent; /* Transparente para que no se vea el borde cuando no se hace hover */
-  background-color: #002671; /* Azul de fondo inicial */
+  background-color: #1c1c1c; /* Azul de fondo inicial */
   color: white; /* Color del texto */
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease-in; /* Transición suave para el texto */
-  width: 180px;
-  height: 35px;
+  width: 196px;
+  height: 40px;
   box-shadow: 0px 0px 10px rgb(74, 74, 74);
   }
 
-
 button:hover {
-  background-color: #002d85;
+  background-color: #363636;
   transform: scale(1.04); /* Aumentar ligeramente el tamaño */
 }
 
+#rastreo-mensaje {
+  color: white;
+}
+
 .tracking{
-    height: 50px;
-    display: flex;
-    width: 50%;
-    gap: 10px;
-  }
+  margin-top: 10px;
+  height: 50px;
+  display: flex;
+  width: 50%;
+  gap: 10px;
+}
 
 .tracking input{
-  height: 15px;
+  height: 35px;
   border: 0px;
   margin-bottom: 5px;
   border-radius: 15px;
@@ -101,30 +105,30 @@ input:hover{
 }
 
 .tracking button{
-  border-radius: 15px;
-  height: 35px;
+  border-radius: 20px;
+  width: 150px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.601);
 }
 
 .componente a{
-    margin: 8px; /* Margen del componente */
-  }
+  margin: 8px; /* Margen del componente */
+}
 
 .componente p {
   font-size: 12px;
 }
 
 .rastreo{
-    height: 50px;
-    display: flex;
-    margin-bottom: 10px;
-    width: 50%;
-    gap: 5px;
-  }
+  height: 50px;
+  display: flex;
+  margin-bottom: 10px;
+  width: 50%;
+  gap: 5px;
+}
 
 .rastreo input{
-    height: 15px;
-    margin-bottom: 5px;
+  height: 15px;
+  margin-bottom: 5px;
 }
 
 .opciones {
@@ -172,6 +176,14 @@ input:hover{
   padding: 20px;
 }
 
+.notify p {
+  margin-bottom: 10px;
+}
+
+.notify button {
+  width: 150px;
+}
+
 .rastrear{
   text-align: left;
 }
@@ -187,7 +199,7 @@ input:hover{
 footer{
   margin-top: 30px;
   height: 200px;
-  background-color: #002671;
+  background-color: #ececec;
   gap: 30px;
 }
 
@@ -198,6 +210,7 @@ footer{
 .endPage {
   display: flex;
   gap: 50px;
+  padding-bottom: 20px;
 }
 
 .legales{
@@ -205,13 +218,14 @@ footer{
   gap: 10px;
   align-items: start;
   text-align: left;
-  padding-left: 50px;
+  padding-left: 40px;
 }
 
 .legales h3 {
-  color: white;
+  color: #1c1c1c;
   margin: 0px;
-  margin-left: 35px;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .legales ul{
@@ -236,13 +250,15 @@ footer{
 
 .contacto h3 {
   margin: 0px;
-  color: white;
+  color: #1c1c1c;
+  margin-bottom: 5px;
 }
 
 .contacto ul {
   list-style: none;
   text-align: left;
   padding-left: 0px;
+  margin-bottom: 5px;
 }
 
 .contacto a, p{
@@ -250,4 +266,134 @@ footer{
   color: rgb(173, 171, 171);
   font-size: 12px;
   padding-left: 5px;
+}
+
+/* Telefonos pequeños (hasta 600px) */
+@media (max-width: 600px) {
+  .background {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+  }
+
+  .componente input{
+    height: 30px;
+    width: 60%;
+    margin: 0%;
+  }
+
+  .tracking {
+    height: 75px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 90%;
+  }
+
+  .tracking input[type="text"]{
+    width: 80%;
+  }
+
+  #rastreoMain {
+    height: 30px;
+    width: 60%;
+    margin: 0%;
+  }
+
+  #rastrear {
+    width: 130px;
+  }
+
+  .messages{
+    text-align: center;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .rastreo,
+  .notify,
+  .opciones {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .notify {
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 20px;
+    align-items: center;
+  }
+
+  .notify div {
+    width: 90%;
+    height: auto;
+  }
+  
+  .opciones{
+    padding: 0px;
+  }
+
+  footer {
+    height: 100%;
+  }
+
+  .endPage {
+    flex-direction: row;
+    gap: 20px;
+    height: 100%;
+  }
+
+  .legales,
+  .contacto {
+    padding-left: 20px;
+    width: 100%;
+    padding-right: 20px;
+
+  }
+}
+
+/* Tablets (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .notify {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .notify div {
+    width: 80%;
+  }
+
+  .rastreo,
+  .tracking {
+    width: 80%;
+  }
+
+  footer {
+    height: 100%;
+  }
+
+  .endPage {
+    flex-direction: row;
+    gap: 20px;
+    height: 100%;
+  }
+
+  .legales,
+  .contacto {
+    padding-left: 20px;
+    width: 100%;
+    padding-right: 20px;
+  }
 }

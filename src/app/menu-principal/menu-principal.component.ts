@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';  // Importar CommonModule
+import { EventEmitter } from 'node:stream';
 
 @Component({
   selector: 'app-menu-principal',
@@ -11,7 +12,6 @@ import { CommonModule } from '@angular/common';  // Importar CommonModule
 })
 export class MenuPrincipalComponent {
   constructor(private router: Router, private authService: AuthService) {}
-
   // Método para verificar si el usuario está autenticado (si el token existe)
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();

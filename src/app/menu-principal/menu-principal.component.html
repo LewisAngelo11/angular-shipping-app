@@ -1,24 +1,25 @@
 <nav class="menu">
 </nav>
 <main class="main">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <div class="background">
     <video autoplay loop muted playsinline class="video-bg">
       <source src="/6169088-uhd_3840_2160_25fps.mp4" type="video/mp4">
     </video>
     <div class="componente">
-      <p>Ingresa un número de rastreo compuesto de 20 dígitos.</p>
+      <p id="rastreo-mensaje">Ingresa un número de rastreo compuesto de 20 dígitos.</p>
       <div class="tracking">
         <input type="text" #rastreoMain placeholder="Número de rastreo">
         <button (click)="irRastreo()" id="rastrear"><strong>Rastrear</strong></button>
       </div>
       <div class="messages">
+        <p></p>
         <h1>¡¡Bienvenido!!</h1>
         <h3>Cotiza, envía y rastrea, fácil y rápido tus paquetes.</h3>
         <p></p>
       </div>
       <div class="opciones">
         <button (click)="IrCotizarEnvio()"><strong>Cotizar Envio</strong></button>
-        <button (click)="irPreguntas()"><strong>Preguntas Frecuentes</strong></button>
         <button *ngIf="!isAuthenticated()" (click)="irLogin()"><strong>Iniciar sesión</strong></button>
         <button *ngIf="isAuthenticated()" (click)="cerrarSesion()"><strong>Cerrar sesión</strong></button>
         <button *ngIf="isAuthenticated()" (click)="miCuenta()"><strong>Mi Cuenta</strong></button>
