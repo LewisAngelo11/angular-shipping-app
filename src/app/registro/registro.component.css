@@ -34,7 +34,7 @@
     margin-top: 110px;
     background-color: #f9f9f98e; /* Fondo gris claro */
     backdrop-filter: blur(5px); /* Aplica el desenfoque */
-    width: 300px; /* Ancho del div */
+    width: 320px; /* Ancho del div */
     font-size: 12px; /* Tamaño de fuente */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
   }
@@ -48,8 +48,8 @@
   
   .componente input {
     display: block; /* Hace que los inputs se apilen verticalmente */
-    width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-    height: 10px;
+    width: 90%; /* Hace que los inputs ocupen el 100% del contenedor */
+    height: 15px;
     padding: 10px;
     margin-bottom: 10px; /* Añade un espacio debajo de los inputs */
     background-color: #f9f9f98e; /* Fondo gris claro */
@@ -79,19 +79,19 @@
   
   button {
     padding: 10px 20px;
-    background-color: #002671;
+    background-color: #1c1c1c;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 80%;
+    width: 70%;
     border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
     transition: all 0.2s ease-in; /* Transición suave para el texto */
   }
   
   button:hover {
-    background-color: #002d85;
+    background-color: #363636;
     transform: scale(1.04); /* Aumentar ligeramente el tamaño */
   }
 
@@ -105,71 +105,4 @@
 
 .credenciales{
     width: 80%;
-}
-
-footer{
-  height: 200px;
-  background-color: #002671;
-  gap: 30px;
-}
-
-.space{
-  height: 30px;
-}
-
-.endPage {
-  display: flex;
-  gap: 50px;
-}
-
-.legales{
-  color: rgb(211, 210, 210);
-  gap: 10px;
-  align-items: start;
-  text-align: left;
-  padding-left: 50px;
-}
-
-.legales h3 {
-  color: white;
-  margin: 0px;
-  margin-left: 35px;
-}
-
-.legales ul{
-  list-style: none;
-  text-align: left;
-}
-
-.legales ul li{
-  margin-bottom: 5px;
-}
-
-.legales a{
-  text-decoration: none;
-  color: rgb(173, 171, 171);
-  font-size: 12px;
-}
-
-.contacto {
-  color: white;
-  text-align: left;
-}
-
-.contacto h3 {
-  margin: 0px;
-  color: white;
-}
-
-.contacto ul {
-  list-style: none;
-  text-align: left;
-  padding-left: 0px;
-}
-
-.contacto a, p{
-  text-decoration: none;
-  color: rgb(173, 171, 171);
-  font-size: 12px;
-  padding-left: 5px;
 }
