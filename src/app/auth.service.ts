@@ -1,21 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private urlLogin = 'http://localhost:5000/login'; // URL del procedimiento login
-  private urlCrear = 'http://localhost:5000/api/usuario'; // URL del procedimiento crear_usuario
-  private urlCotizar = 'http://localhost:5000/Cotizar/CP';
-  private urlCotizarpqte = 'http://localhost:5000/Cotizar/Paquete';
-  private urlCambiarContrasena = 'http://localhost:5000/usuario/cambiar'; // URL para el cambio de contraseña
-  private urlRastrearPaquete = 'http://localhost:5000/rastrear/rastreo'; // URL para rastrear un envio
-  private urlEnvios = 'http://localhost:5000/Cotizar/Envio';
-  private urlConsultarUser = 'http://localhost:5000/usuario/consultar';
-  private urlEliminarUser = 'http://localhost:5000/eliminarUsers';
+  private port_server = '5000'; // Cambiar al puerto del servido si es necesario
+  private ip_server = 'localhost'; // Cambiar la IP del servidor si es necesario
+  private urlLogin = `http://${this.ip_server}:${this.port_server}/login`; // URL del procedimiento login
+  private urlCrear = `http://${this.ip_server}:${this.port_server}/api/usuario`; // URL del procedimiento crear_usuario
+  private urlCotizar = `http://${this.ip_server}:${this.port_server}/Cotizar/CP`; // URL del procedimiento Cotizar por codigo postal
+  private urlCotizarpqte = `http://${this.ip_server}:${this.port_server}/Cotizar/Paquete`; // URL del procedimiento CotizarPaquete
+  private urlCambiarContrasena = `http://${this.ip_server}:${this.port_server}/usuario/cambiar`; // URL para el cambio de contraseña
+  private urlRastrearPaquete = `http://${this.ip_server}:${this.port_server}/rastrear/rastreo`; // URL para rastrear un envio
+  private urlEnvios = `http://${this.ip_server}:${this.port_server}/Cotizar/Envio`;
+  private urlConsultarUser = `http://${this.ip_server}:${this.port_server}/usuario/consultar`;
+  private urlEliminarUser = `http://${this.ip_server}:${this.port_server}/eliminarUsers`;
 
   constructor(private http: HttpClient) {}
 
