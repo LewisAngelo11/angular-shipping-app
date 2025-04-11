@@ -10,7 +10,7 @@
   padding: 20px;
   flex-direction: column; /* Organiza los elementos en una columna */
   align-items: center; /* Centra los elementos horizontalmente */
-  height: 160px; /* Usa el 100% del alto de la ventana */
+  height: 120px; /* Usa el 100% del alto de la ventana */
   width: 100%; /* Ancho del div */
   gap: 5px;
 }
@@ -34,7 +34,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 200px;
+  width: 150px;
 }
   
 button:hover {
@@ -46,23 +46,41 @@ button:hover {
 }
 
 .rastreo{
-  height: 50px;
-  display: flex;
-  width: 50%;
-  gap: 5px;
+  position: relative;
+  width: 60%;
 }
 
 .rastreo input{
-  height: 35px;
+  position: relative;
+  height: 60px;
   margin-bottom: 5px;
-  border-radius: 15px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 0 10px rgb(92, 92, 92);
+  width: 100%;
+  padding-right: 60px;
+  padding-left: 20px;
+  font-size: 18px;
 }
 
 #rastrear{
-  border-radius: 15px;
-  height: 35px;
-  width: 80;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
   box-shadow: 5px 5px 10px gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #ececec;
+  transition: all 0.2s;
+}
+
+#rastrear:hover{
+  background-color: #363636;
 }
 
 .opciones button{
