@@ -11,7 +11,9 @@
   background: linear-gradient(to right, rgba(255, 255, 255, 0.966) 0%, rgba(114, 114, 114, 0.588) 20%, rgba(130, 130, 130, 0.407) 70%, rgba(255, 255, 255, 0.785) 100%);
 }
 
-.video-bg {
+.photo-bg {
+  background-image: url('/pexels-polina-tankilevitch-4440841.jpg');
+  background-position: 50% 50%;
   position: absolute;
   top: 50%;
   left: 50%;
