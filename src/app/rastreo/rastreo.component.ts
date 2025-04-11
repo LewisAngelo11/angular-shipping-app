@@ -21,6 +21,30 @@ export class RastreoComponent {
   status: string = 'DESCONOCIDO'; // Aquí se guarda el estado actual del paquete
   mensajeError: string | null = null; // Nuevo campo para manejar errores
 
+  // Este metodo se ejecuta en cuanto se carga el componente
+  ngOnInit(): void {
+    this.solicitarUbicacion();
+  }
+
+  // Función para solicitar la ubicacion actual del usuario
+  solicitarUbicacion() {
+    // Verifica si la geolocalización está disponible en el navegador
+    if (navigator.geolocation) {
+      // Solicita la ubicación actual del usuario
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log('Ubicación obtenida:', position.coords); // Muestra la ubicación obtenida en la consola
+        },
+        (error) => {
+          console.error('Error al obtener ubicación:', error.message);
+        }
+      );
+    } else {
+      // Si la geolocalización no está soportada, se muestra un mensaje en la consola
+      console.error('Geolocalización no soportada por el navegador.');
+    }
+  }
+
   rastrear() {
     const rastreo = this.NumRastreo.nativeElement.value.trim(); // Elimina espacios en blanco
 
