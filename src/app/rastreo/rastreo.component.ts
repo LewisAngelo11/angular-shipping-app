@@ -80,7 +80,7 @@ export class RastreoComponent {
 
   getStatusColor(status: string) {
     // Cambia el color de acuerdo con el estatus
-    if (this.status !== status) return '#002fff'; // Azul por defecto
+    if (this.status !== status) return '#363636'; // Gris por defecto
 
     switch (status) {
       case 'EN PROCESO':
@@ -88,14 +88,13 @@ export class RastreoComponent {
       case 'EN ENTREGA A DOMICILIO':
         return 'rgb(186, 0, 0)'; // Rojo
       case 'ENTREGADO':
-        return 'rgb(15, 220, 1)' // Verde
+        return 'rgb(14, 204, 0)' // Verde
       default:
-        return '#002fff' // Si no es el estatus actual, no cambiar el color
+        return '#363636' // Si no es el estatus actual, no cambiar el color
     }
   }
   
   mostrarContenido(){
     this.contenidoVisible = !this.contenidoVisible; 
   }
-
 }

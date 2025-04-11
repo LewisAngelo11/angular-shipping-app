@@ -1,25 +1,51 @@
-<nav class="menu">
-  </nav>
-  <main class="main">
-    <div class="componente">
-      <h1>Rastrear un Paquete</h1> <!-- Muestra el título dinámico desde el TypeScript -->
-      <h3>Ingrese un número de rastreo compuesto de 20 dígitos.</h3>
-      <p><strong>Ejemplo:</strong> 01234567899876543210</p>
-      <div class="rastreo">
-        <input type="text" #numRastreo placeholder="Número de rastreo">
-        <button (click)="rastrear()" id="rastrear"><strong>Rastrear</strong></button>
-      </div>
-      <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
+<main class="main">
+  <div class="componente">
+    <h3>Ingrese un número de rastreo compuesto de 20 dígitos.</h3>
+    <p><strong>Ejemplo:</strong> 01234567899876543210</p>
+    <div class="rastreo">
+      <input type="text" #numRastreo placeholder="Número de rastreo">
+      <button (click)="rastrear()" id="rastrear"><strong>Rastrear</strong></button>
     </div>
-    <h2>Estado del Envío</h2>
+    <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
+  </div>
+  <div class="more-info">
+    <p *ngIf="!contenidoVisible" style="color: #363636;">Ingrese un número de rastreo para que pueda ver el estado de su envio.</p>
+    <h2 *ngIf="contenidoVisible">Estatus</h2>
     <div *ngIf="contenidoVisible" class="EstatusEnvio">
-      <label [ngStyle]="{'background-color': getStatusColor('EN PROCESO')}">EN PROCESO</label>
-      <p>➟</p>
-      <label [ngStyle]="{'background-color': getStatusColor('ENVIADO')}">ENVIADO</label>
-      <p>➟</p>
-      <label [ngStyle]="{'background-color': getStatusColor('EN ENTREGA A DOMICILIO')}">EN ENTREGA A DOMICILIO</label>
-      <p>➟</p>
-      <label [ngStyle]="{'background-color': getStatusColor('ENTREGADO')}">ENTREGADO</label>
+      <div class="status">
+        <div class="labels-icons">
+          <!-- Icono de EN PROCESO -->
+          <div class="labels-text">
+            <label [ngStyle]="{'background-color': getStatusColor('EN PROCESO')}">
+              <i class='bx bx-package' style='color:#ececec'  ></i>
+            </label>
+            <span>EN PROCESO</span>
+          </div>
+          <!-- Icono de ENVIADO -->
+          <div class="labels-text">
+            <label [ngStyle]="{'background-color': getStatusColor('ENVIADO')}">
+              <i class='bx bxs-truck' style='color:#ececec' ></i>
+            </label>
+            <span>ENVIADO</span>
+          </div>
+          <!-- Icono de EN ENTREGA A DOMICILIO -->
+          <div class="labels-text">
+            <label [ngStyle]="{'background-color': getStatusColor('EN ENTREGA A DOMICILIO')}">
+              <i class='bx bx-home' style='color:#ececec' ></i>
+            </label>
+            <span>EN ENTREGA A DOMICILIO</span>
+          </div>
+          <!-- Icono de EN ENTREGADO -->
+          <div class="labels-text">
+            <label [ngStyle]="{'background-color': getStatusColor('ENTREGADO')}">
+              <i class='bx bx-check' style='color:#ececec' ></i>
+            </label>
+            <span>ENTREGADO</span>
+          </div>
+
+        </div>
+        <p class="linea"></p>
+      </div>
     </div>
     <div *ngIf="contenidoVisible" class="DetalleEnvio">
       <h2>Detalle del Envío</h2>
@@ -29,4 +55,5 @@
       <p><strong>Remitente:</strong> {{ remitente }}</p>
       <p><strong>Destinatario:</strong> {{ destinatario }}</p>
     </div>
-  </main>
+  </div>
+</main>

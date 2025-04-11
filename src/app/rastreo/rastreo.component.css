@@ -1,139 +1,240 @@
 .main {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
-
-.menu{
-    width: 100%; /* Ancho del nav */
-    background-color: #1e5ad0; /* Fondo azul */
-  }
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #1c1c1c;
+}
 
 .componente {
-    display: flex;
-    flex-direction: column; /* Organiza los elementos en una columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    justify-content: center; /* Centra los elementos verticalmente */
-    height: 300px; /* Usa el 100% del alto de la ventana */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    width: 100%; /* Ancho del div */
-    gap: 5px;
-    box-shadow: 5px 5px 10px gray;
-  }
+  background-color: #c1bfbf;
+  display: flex;
+  padding: 20px;
+  flex-direction: column; /* Organiza los elementos en una columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  height: 160px; /* Usa el 100% del alto de la ventana */
+  width: 100%; /* Ancho del div */
+  gap: 5px;
+}
   
 .componente label {
-    margin-top: 15px;
-    margin-bottom: 8px; /* Añade un espacio debajo de los labels */
-  }
+  margin-top: 15px;
+  margin-bottom: 8px; /* Añade un espacio debajo de los labels */
+}
   
 .componente input {
-    width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-    padding: 10px;
-    margin-bottom: 12px; /* Añade un espacio debajo de los inputs */
-    margin-left: 8px;
-  }
+  width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
+  padding: 10px;
+  margin-bottom: 12px; /* Añade un espacio debajo de los inputs */
+  margin-left: 8px;
+}
   
 button {
-    padding: 10px 20px;
-    background-color: #1e5ad0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 200px;
-  }
+  padding: 10px 20px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+}
   
 button:hover {
-    background-color:  #002fff;
-  }
+  background-color:  #363636;
+}
 
 .componente a{
-    margin: 8px; /* Margen del componente */
-  }
+  margin: 8px; /* Margen del componente */
+}
 
 .rastreo{
-    height: 50px;
-    display: flex;
-    margin-bottom: 12px;
-    width: 50%;
-    gap: 5px;
-  }
+  height: 50px;
+  display: flex;
+  width: 50%;
+  gap: 5px;
+}
 
 .rastreo input{
-    height: 15px;
-    margin-bottom: 5px;
-    border-radius: 15px;
+  height: 35px;
+  margin-bottom: 5px;
+  border-radius: 15px;
 }
 
 #rastrear{
-    border-radius: 15px;
-    height: 40px;
-    width: 80;
-    box-shadow: 5px 5px 10px gray;
+  border-radius: 15px;
+  height: 35px;
+  width: 80;
+  box-shadow: 5px 5px 10px gray;
 }
 
 .opciones button{
   gap: 5px;
 }
 
+/* Apartado del estatus del paquete rastreado */
+/* Contenedor principal */
+.more-info{
+  padding: 20px;
+  height: 500px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Puedes usar center si quieres todo al centro vertical */
+  gap: 30px; /* Espacio entre h2, estatus y detalles */
+  overflow: hidden; /* Previene desbordes si algo es muy grande */
+  box-sizing: border-box; /* Asegura que padding no rompa el layout */
+}
+
 .EstatusEnvio {
-  display: flex;                  /* Utiliza Flexbox para la disposición de los elementos */
-  align-items: center;            /* Centra los elementos horizontalmente */
-  justify-content: center;        /* Centra los elementos verticalmente */
-  height: 80px;                  /* Toma toda la altura de la ventana */
-  text-align: center;             /* Centra el texto dentro de cada label */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
 }
 
-.EstatusEnvio label {
-  border: 2px solid #000000; /* Borde de 2px verde */
-  background-color: #002fff;        /* Fondo azul para cada label */
-  color: white;                   /* Texto blanco */
-  padding: 10px 20px;             /* Espaciado interno de los labels */
-  margin: 10px 0;                 /* Espaciado entre los labels */
-  border-radius: 5px;             /* Bordes redondeados */
-  width: 50%;                     /* Ancho del label, puedes ajustarlo */
-  max-width: 250px;               /* Ancho máximo de los labels */
+.EstatusEnvio i {
+  font-size: 35px;
 }
 
-.EstatusEnvio p {
-  font-size: 30px;
-  font-style: oblique;
+/* Contenedor de todos los iconos del estado del envio */
+.status {
+  position: relative;
+  width: 80%;
+  margin: auto;
 }
+
+.labels-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cada icono de los cuatro estatus por separado */
+.labels-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px; /* el mismo ancho para ícono y texto */
+}
+
+.labels-text label {
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.labels-text span {
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: center;
+  width: 100px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* linea indicadora del estado del envio */
+.linea {
+  height: 4px;
+  background-color: #999;
+  position: absolute;
+  top: 33%; /* Posición */
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
 
 .DetalleEnvio{
-  margin-top: 30px;
-  width: 40%;
+  margin-top: 20px;
+  width: 50%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
   text-align: left;
-  margin-left: 0; /* Asegura que esté al borde izquierdo */
-  padding: 5px; /* Espacio interno en el contenedor */
-  padding-left: 20px; /* Opcional: espacio interno para evitar que pegue demasiado al borde */
-  background-color: #f9f9f9; /* Fondo gris claro */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 5px 5px 10px gray;
-}
-
-.proceso {
-  background-color: rgb(186, 0, 0);
-}
-
-.enviado {
-  background-color: rgb(186, 0, 0);
-}
-
-.entrega {
-  background-color: rgb(186, 0, 0);
-}
-
-.entregado {
-  background-color: rgb(15, 220, 1);
-}
-
-.default {
-  background-color: #002fff;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px gray;
 }
 
 .error {
   color: rgb(219, 0, 0);
+}
+
+@media (max-width: 600px) {
+  .componente {
+    padding: 20px;
+    align-items: center; /* Centra los elementos horizontalmente */
+    height: 250px; /* Usa el 100% del alto de la ventana */
+    gap: 5px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 130px;
+  }
+  
+  .rastreo{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    gap: 5px;
+  }
+
+  .more-info{
+    padding: 20px;
+    height: 500px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Center para todo al centro vertical */
+    gap: 30px; /* Espacio entre h2, estatus y detalles */
+    overflow: hidden; /* Previene desbordes si algo es muy grande */
+    box-sizing: border-box; /* Asegura que padding no rompa el layout */
+  }
+
+  .EstatusEnvio i {
+    font-size: 25px;
+  }
+
+  .labels-text label {
+    height: 60px;
+    width: 60px;
+  }
+  
+  .labels-text span {
+    display: none;
+  }
+
+  /* linea indicadora del estado del envio */
+  .linea {
+    top: 50%; /* Posición */
+  }
+
+  .DetalleEnvio{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+  }
 }
