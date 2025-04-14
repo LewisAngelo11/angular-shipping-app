@@ -4,7 +4,7 @@
       <input type="text" #numRastreo placeholder="Número de rastreo">
       <button (click)="rastrear()" id="rastrear"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
     </div>
-    <p *ngIf="mensajeError" class="error" style="font-size: 14px;">{{ mensajeError }}</p>
+    <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
   </div>
   <div class="more-info">
     <p *ngIf="!contenidoVisible" style="color: #363636;">Ingrese un número de rastreo para que pueda ver el estado de su envio.</p>

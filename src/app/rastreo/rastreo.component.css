@@ -47,7 +47,7 @@ button:hover {
 
 .rastreo{
   position: relative;
-  width: 60%;
+  width: 50%;
 }
 
 .rastreo input{
@@ -190,14 +190,19 @@ button:hover {
 
 .error {
   color: rgb(219, 0, 0);
+  font-size: 14px;
 }
 
 @media (max-width: 600px) {
   .componente {
     padding: 20px;
     align-items: center; /* Centra los elementos horizontalmente */
-    height: 250px; /* Usa el 100% del alto de la ventana */
+    height: 120px; /* Usa el 100% del alto de la ventana */
     gap: 5px;
+  }
+
+  .error {
+    font-size: 12px;
   }
 
   button {
