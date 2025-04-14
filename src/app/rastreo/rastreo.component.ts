@@ -1,17 +1,19 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';  // Importar CommonModule
+import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rastreo',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule ],
   templateUrl: './rastreo.component.html',
   styleUrl: './rastreo.component.css'
 })
 export class RastreoComponent {
+  rastreoMenu: string = '';
   @ViewChild('numRastreo') NumRastreo!: ElementRef;
-
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private route: ActivatedRoute) {}
   contenidoVisible = false;
   idEnvio: number | null = null;
   idPaquete: number | null = null;
@@ -24,6 +26,12 @@ export class RastreoComponent {
   // Este metodo se ejecuta en cuanto se carga el componente
   ngOnInit(): void {
     this.solicitarUbicacion();
+    this.route.queryParams.subscribe(params => {
+    this.rastreoMenu = params['rastreoMenu'] || '';
+      if (this.rastreoMenu !== ''){
+        this.rastrear(this.rastreoMenu);
+      }
+    });
   }
 
   // Función para solicitar la ubicacion actual del usuario
@@ -45,17 +53,17 @@ export class RastreoComponent {
     }
   }
 
-  rastrear() {
-    const rastreo = this.NumRastreo.nativeElement.value.trim(); // Elimina espacios en blanco
+  rastrear(rastreo: string) {
+    const rastreoLimpio = rastreo.trim(); // Eliminar espacios en blanco
 
-    if (!rastreo || rastreo.length !== 20) { // Validación previa en frontend
+    if (!rastreoLimpio || rastreoLimpio.length !== 20) { // Validación previa en frontend
       this.mensajeError = 'Por favor, ingrese un número de rastreo válido de 20 dígitos.';
       return;
     }
 
     this.mensajeError = ''; // Borra el mensaje si todo está bien
     
-    this.authService.rastrearPaquete(rastreo).subscribe(
+    this.authService.rastrearPaquete(rastreoLimpio).subscribe(
       (response) => {
         if (response.status === 'success') {
           this.contenidoVisible = !this.contenidoVisible;

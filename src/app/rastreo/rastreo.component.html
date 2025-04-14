@@ -1,8 +1,8 @@
 <main class="main">
   <div class="componente">
     <div class="rastreo">
-      <input type="text" #numRastreo placeholder="Número de rastreo">
-      <button (click)="rastrear()" id="rastrear"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
+      <input type="text" #numRastreo [(ngModel)]="rastreoMenu" placeholder="Número de rastreo">
+      <button (click)="rastrear(rastreoMenu)" id="rastrear"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
     </div>
     <p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
   </div>
