@@ -1,10 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { jwtDecode } from "jwt-decode";
-import { response } from 'express';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // Aquí se importa FormsModule
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cuenta',
@@ -33,59 +31,30 @@ export class CuentaComponent {
   @ViewChild('Apellido2') Apellido2!: ElementRef;
   @ViewChild('Correo') Correo!: ElementRef;
   @ViewChild('NombreB') NombreB!: ElementRef;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    // Obtener el token del localStorage (suponiendo que ya se ha guardado al iniciar sesión)
-    const token = localStorage.getItem('authToken'); // O donde tengas el token almacenado
-    
-    if (token) {
-      // Decodificar el token
-      const decodedToken: any = jwtDecode(token);
-      
-      // Asignar los valores del token a las variables
-      this.nombre = decodedToken.nombre;
-      this.apellidoPaterno = decodedToken.apellidoPaterno;
-      this.apellidoMaterno = decodedToken.apellidoMaterno;
-      this.email = decodedToken.email;
-      this.username = decodedToken.username;
-      this.password = decodedToken.password;  // Si el token tiene la contraseña (aunque no es recomendado)
-    }
-  }
-
-  ConsultarInfo(){
-    this.ContenidoVisibleDelete = false;
-    this.ContenidoVisibleInfo = true;
-
-    console.log(this.NombreB.nativeElement.value);
-
-    const body = {
-      username: this.NombreB.nativeElement.value,
-
-    }
-
-    this.authService.ConsultarUser(body).subscribe(
-      (response) => {
-        if (response.status === 'success'){
-          this.Nombre.nativeElement.value = response.username;
-          this.Apellido1.nativeElement.value = response.Apellido1;
-          this.Apellido2.nativeElement.value = response.Apellido2;
-          this.Correo.nativeElement.value = response.Email;
-          this.User.nativeElement.value = response.User;
-          this.ContraseñaC.nativeElement = response.Contraseña;
-
-
-        } else {
-          alert('Error al registrar el usuario');
-        }
+  ngOnInit() {
+    this.authService.ConsultarUser().subscribe(
+      perfil => {
+        this.nombre = perfil.Nombre;
+        this.apellidoPaterno = perfil.Apellido1;
+        this.apellidoMaterno = perfil.Apellido2;
+        this.email = perfil.Email;
+        this.username = perfil.User;
       },
-      (error) =>{
-        console.error('Hubo un error:', error);
-        alert('Error en el servidor. Intente más tarde.');
+      error => {
+        console.error("Error al obtener el perfil:",error);
       }
     );
   }
 
+  // Cerrar sesión: eliminar el token y redirigir al login
+  cerrarSesion(): void {
+    this.authService.logout();  // Eliminar el token del localStorage
+    this.router.navigate(['/menu']);  // Redirigir a la página del menu
+  }
+
+  
   EliminarInfo(): void {
     this.ContenidoVisibleInfo = false;
     this.ContenidoVisibleDelete = true;
