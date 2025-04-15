@@ -79,9 +79,10 @@ export class AuthService {
     return this.http.put<any>(this.urlCambiarContrasena, body, { headers });
   }
 
-  ConsultarUser(body:any): Observable<any>{
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.urlConsultarUser, body, { headers });
+  ConsultarUser(): Observable<any>{
+    const token = localStorage.getItem('authToken')
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    return this.http.get<any>(this.urlConsultarUser, { headers });
   }
 
   EliminarUser(body:any): Observable<any>{
