@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
-import { AppComponent } from './app.component';
 import { MenuPrincipalComponent } from './menu-principal/menu-principal.component';
 import { RecuperacionComponent } from './recuperacion/recuperacion.component';
 import { CotizarComponent } from './cotizar/cotizar.component';
 import { RastreoComponent } from './rastreo/rastreo.component';
 import { PreguntasComponent } from './preguntas/preguntas.component';
 import { CuentaComponent } from './cuenta/cuenta.component';
+import { SucursalComponent } from './sucursal/sucursal.component';
 
 
 export const routes: Routes = [
@@ -19,5 +19,6 @@ export const routes: Routes = [
     {path: 'recuperacion', component: RecuperacionComponent}, // Ruta para la pantalla de recuperar contraseña
     {path: 'CotizarEnvio',component: CotizarComponent}, // Ruta para la pantalla de cotizar envios
     {path: 'rastreo', component: RastreoComponent}, // Ruta para rastrear un paquete
-    {path: 'preguntas', component: PreguntasComponent} // Ruta para las preguntas frecuentes
+    {path: 'preguntas', component: PreguntasComponent}, // Ruta para las preguntas frecuentes
+    {path: 'sucursales', component: SucursalComponent} // Ruta para las sucursales
 ];
