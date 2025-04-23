@@ -4,25 +4,34 @@
     <div class="info">
       <label for="full-name">Nombre Completo:</label>
       <div class="name">
-        <input type="text" id="nombre" [(ngModel)]="nombre" [disabled]="isDisabled" #Nombre>
-        <input type="text" id="apellidoPaterno" [(ngModel)]="apellidoPaterno" [disabled]="isDisabled" #Apellido1>
-        <input type="text" id="apellidoMaterno" [(ngModel)]="apellidoMaterno" [disabled]="isDisabled" #Apellido2>
+        <input type="text" id="nombre" [(ngModel)]="nombre" [disabled]="!edicion.name" #Nombre>
+        <input type="text" id="apellidoPaterno" [(ngModel)]="apellidoPaterno" [disabled]="!edicion.name" #Apellido1>
+        <input type="text" id="apellidoMaterno" [(ngModel)]="apellidoMaterno" [disabled]="!edicion.name" #Apellido2>
+        <a class="edit-name" (click)="habilitarEdicion('edit-name')"><i class='bx bxs-edit' ></i></a>
+        <a class="edit-mail" (click)="confirmarEdicion('edit-name')" *ngIf="edicion.name"><i class='bx bx-check'></i></a>
       </div>
       <label for="email">Correo:</label>
       <div class="mail">
-        <input type="text" id="email" [(ngModel)]="email" [disabled]="isDisabled" #Correo>
+        <input type="text" id="email" [(ngModel)]="email" [disabled]="!edicion.mail" #Correo>
+        <a class="edit-mail" (click)="habilitarEdicion('edit-mail')"><i class='bx bxs-edit' ></i></a>
+        <a class="edit-mail" (click)="confirmarEdicion('edit-mail')" *ngIf="edicion.mail"><i class='bx bx-check'></i></a>
       </div>
       <label for="username">Usuario:</label>
-      <input type="text" id="username" [(ngModel)]="username" [disabled]="isDisabled"  #User>
+      <div class="username">
+        <input type="text" id="username" [(ngModel)]="username" [disabled]="!edicion.user"  #User>
+        <a class="edit-user" (click)="habilitarEdicion('edit-user')"><i class='bx bxs-edit' ></i></a>
+        <a class="edit-mail" (click)="confirmarEdicion('edit-user')" *ngIf="edicion.user"><i class='bx bx-check'></i></a>
+      </div>
+      <div class="buttons">
+        <button (click)="cerrarSesion()">Cerrar Sesión</button>
+        <button (click)="EliminarInfo()">Eliminar mi cuenta</button>
+      </div>
     </div>
 
     <div *ngIf="ContenidoVisibleDelete" class="info">
       <label for="nombre">Contraseña:</label>
-      <input type="text" id="nombre" [(ngModel)]="nombre" [disabled]="isDisabled" #Contraseña>
+      <input type="text" id="nombre" [(ngModel)]="nombre" #Contraseña>
     </div>
-
-    <button (click)="cerrarSesion()">Cerrar Sesión</button>
-    <button (click)="EliminarInfo()">Eliminar mi cuenta</button>
   </div>
 </main>
 

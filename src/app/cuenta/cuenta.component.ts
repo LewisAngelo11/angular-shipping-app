@@ -12,7 +12,13 @@ import { Router } from '@angular/router';
 })
 export class CuentaComponent {
   title = "Mi Cuenta."
-  isDisabled: boolean = true;   // Variable para controlar el estado de los inputs (inicialmente deshabilitados)
+  // Estrucutra para manejar el control de edicion dependiendo que boton se haya accionado
+  edicion = {
+    name: false,
+    mail: false,
+    user: false
+  };
+
   ContenidoVisibleInfo = false;
   ContenidoVisibleDelete = false;
   // Función para habilitar los inputs al presionar el botón
@@ -48,6 +54,32 @@ export class CuentaComponent {
     );
   }
 
+  // Funcion para habilitar los inputs
+  habilitarEdicion(id: string){
+    this.edicion.name = false;
+    this.edicion.mail = false;
+    this.edicion.user = false;
+
+    if (id === 'edit-name'){
+      this.edicion.name = true;
+    } else if (id === 'edit-mail'){
+      this.edicion.mail = true;
+    } else if (id === 'edit-user'){
+      this.edicion.user = true;
+    }
+  }
+
+  // Funcion para desabilitar los inputs (Proximamente se implementará el metodo PUT)
+  confirmarEdicion(id: string){
+    if (id === 'edit-name'){
+      this.edicion.name = false;
+    } else if (id === 'edit-mail'){
+      this.edicion.mail = false;
+    } else if (id === 'edit-user'){
+      this.edicion.user = false;
+    }
+  }
+
   // Cerrar sesión: eliminar el token y redirigir al login
   cerrarSesion(): void {
     this.authService.logout();  // Eliminar el token del localStorage
@@ -58,7 +90,7 @@ export class CuentaComponent {
   EliminarInfo(): void {
     this.ContenidoVisibleInfo = false;
     this.ContenidoVisibleDelete = true;
-    this.isDisabled = false;  // Cambia el estado de isDisabled para habilitar los inputs
+    // Cambia el estado de isDisabled para habilitar los inputs
     //this.Nombre2.nativeElement.value = String(45);
     console.log(this.nombre);
 
