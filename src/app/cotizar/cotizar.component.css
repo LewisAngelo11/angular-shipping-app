@@ -1,67 +1,460 @@
 .main {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    background-color: #f0f0f0;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 40px 30px;
+  font-family: system-ui, sans-serif, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  height: auto;
+}
   
-  .OrigenComponent, .DestinoComponent, .container, .RemitenteComponent, .DestinatarioComponent {
+.CP,
+.remitente-destinatario {
+  display: flex;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgb(74, 74, 74);
+  padding: 20px;
+  height: 330px;
+}
+
+.OrigenComponent,
+.DestinoComponent {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 300px;
+}
+
+.RemitenteComponent,
+.DestinatarioComponent {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 210px;
+  margin: 10px;
+  gap: 10px;
+}
+
+.RemitenteComponent input,
+.DestinatarioComponent input {
+  border-radius: 0;
+  border-bottom: 2px #363636 solid;
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.RemitenteComponent input:focus,
+.DestinatarioComponent input:focus {
+  outline: none; /* elimina el contorno por defecto */
+  border-bottom: 2px #e64d11 solid;
+}
+
+.fecha-entrega {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border: none;
+  width: 160px;
+  margin-top: 53px;
+  gap: 10px;
+}
+
+.fecha-entrega input {
+  width: 130px;
+  border-bottom: 2px #363636 solid;
+  box-shadow: none;
+  border-radius: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.fecha-entrega input:focus {
+  outline: none; /* elimina el contorno por defecto */
+  border-bottom: 2px #e64d11 solid;
+}
+
+.paquete-detalle {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  padding: 0 35px;
+  margin-top: 40px;
+  margin-right: auto;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  border: none;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgb(74, 74, 74);
+  width: 350px;
+  height: 410px;
+  margin-right: auto;
+  gap: 10px;
+}
+
+.container .peso {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.container .dimensiones {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+  
+label {
+  margin-top: 10px;
+  color: #e64d11;
+}
+
+.cp-origen,
+.cp-destino {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cp-origen input,
+.cp-destino input {
+  position: relative;
+  width: 190px;
+  padding-right: 50px;
+  margin: 0;
+}
+
+.cp-origen button,
+.cp-destino button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 35px;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  margin: 0;
+}
+  
+.origen-info,
+.destino-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  width: 90%;
+}
+
+.origen-info input,
+.destino-info input {
+  width: 75%;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  border-bottom: 2px #363636 solid;
+}
+
+input {
+  height: 35px;
+  width: 180px;
+  margin-top: 5px;
+  padding: 10px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.581);
+  border-radius: 20px;
+}
+  
+.Boton {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+  
+.Boton:hover {
+  background-color: #e64d11;
+}
+  
+.paquete-row {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.detalle-servicio{
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  border: none;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgb(74, 74, 74);
+  width: 340px;
+  height: 410px;
+  margin-right: auto;
+  gap: 10px;
+}
+
+/* Telefonos pequeños (hasta 600px) */
+@media (max-width: 600px) {
+  .main {
     display: flex;
     flex-direction: column;
-    border: 2px solid #000;
+    justify-content: center;
+    padding: 40px 30px;
+    font-family: system-ui, sans-serif, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    height: auto;
+    gap: 30px;
+  }
+  
+  .CP,
+  .remitente-destinatario {
+    flex-direction: column;
     padding: 20px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+  }
+
+  .origen-info,
+  .destino-info {
+    width: 80%;
+  }
+
+  .origen-info input,
+  .destino-info input {
+    width: 100%;
+  }
+
+  .RemitenteComponent,
+  .DestinatarioComponent {
+    width: 90%;
     margin: 10px;
+    gap: 10px;
   }
-  
-  .OrigenComponent h1, .DestinoComponent h1, .container h1 {
-    font-size: 1.5em;
+
+  .RemitenteComponent input,
+  .DestinatarioComponent input {
+    width: 100%;
+  }
+
+  .fecha-entrega {
+    margin-top: 0;
     margin-bottom: 10px;
+    gap: 10px;
   }
-  
-  label {
-    margin-top: 10px;
-    font-weight: bold;
+
+  .paquete-detalle {
+    padding: 0;
+    margin-top: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
   }
-  
-  input {
-    height: 30px;
-    margin-top: 5px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .Boton {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
+
+  .container {
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
+    height: 410px;
+    gap: 10px;
   }
   
-  .Boton:hover {
-    background-color: #0056b3;
+  .container .peso {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
   }
   
-  .paquete-row {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+  .container .dimensiones {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
   }
 
   .detalle-servicio{
-    margin-top: 10px;
-    width: 40%;
-    background-color: #f9f9f9; /* Fondo gris claro */
-    border: 2px solid #000000; /* Borde de 2px verde */
-    padding: 20px; /* Espacio interno */
-    border-radius: 8px; /* Bordes redondeados */
+    width: 100%;
   }
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 30px;
+    font-family: system-ui, sans-serif, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    height: auto;
+    gap: 30px;
+  }
+  
+  .CP,
+  .remitente-destinatario {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+  }
+
+  .paquete-detalle {
+    padding: 0;
+    margin-top: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .container {
+    border: none;
+    width: 50%;
+    height: 410px;
+    gap: 10px;
+  }
+  
+  .container .peso {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+  
+  .container .dimensiones {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 30px;
+    font-family: system-ui, sans-serif, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    height: auto;
+    gap: 30px;
+  }
+  
+  .CP,
+  .remitente-destinatario {
+    flex-direction: row;
+    padding: 20px;
+    height: auto;
+    width: 100%;
+  }
+
+  .paquete-detalle {
+    padding: 0;
+    margin-top: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .container {
+    border: none;
+    width: 48%;
+    height: 410px;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .detalle-servicio{
+    display: flex;
+    width: 48%;
+    height: 410px;
+    margin-right: auto;
+    gap: 10px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1025px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+  
+  .CP{
+    flex-direction: row;
+    padding: 20px;
+    height: auto;
+    width: 48%;
+  }
+
+  .remitente-destinatario {
+    justify-content: space-around;
+    width: 48%;
+    gap: 5px;
+  }
+
+  .RemitenteComponent,
+  .DestinatarioComponent {
+    width: 150px;
+    margin: 10px;
+    gap: 10px;
+  }
+
+  .RemitenteComponent input,
+  .DestinatarioComponent input {
+    width: 100%;
+  }
+
+  .paquete-detalle {
+    padding: 0;
+    margin-top: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .container {
+    border: none;
+    width: 48%;
+    height: 410px;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .detalle-servicio{
+    display: flex;
+    width: 48%;
+    height: 410px;
+    margin-right: auto;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .container button,
+  .detalle-servicio button {
+    width: 200px;
+  }
+}
