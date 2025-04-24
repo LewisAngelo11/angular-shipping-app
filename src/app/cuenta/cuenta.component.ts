@@ -111,6 +111,5 @@ export class CuentaComponent {
         alert('Error en el servidor. Intente más tarde.');
       }
     );
-
   }
 }
