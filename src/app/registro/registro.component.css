@@ -27,7 +27,7 @@
   flex-direction: column; /* Organiza los elementos en una columna */
   align-items: center; /* Centra los elementos horizontalmente */
   justify-content: center; /* Centra los elementos verticalmente */
-  height: 480px; /* Usa el 100% del alto de la ventana */
+  height: 500px; /* Usa el 100% del alto de la ventana */
   padding: 20px; /* Espacio interno */
   border-radius: 20px; /* Bordes redondeados */
   margin: 10px auto; /* Centra el div en el contenedor */
@@ -35,7 +35,7 @@
   gap: 10px;
   background-color: #f9f9f98e; /* Fondo gris claro */
   backdrop-filter: blur(5px); /* Aplica el desenfoque */
-  width: 320px; /* Ancho del div */
+  width: 360px; /* Ancho del div */
   font-size: 12px; /* Tamaño de fuente */
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
 }

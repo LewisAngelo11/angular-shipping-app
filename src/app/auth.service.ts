@@ -17,6 +17,7 @@ export class AuthService {
   private urlEnvios = `http://${this.ip_server}:${this.port_server}/Cotizar/Envio`;
   private urlConsultarUser = `http://${this.ip_server}:${this.port_server}/usuario/consultar`;
   private urlEliminarUser = `http://${this.ip_server}:${this.port_server}/eliminarUsers`;
+  private urlUsuarioActualizar = `http://${this.ip_server}:${this.port_server}/usuario/actualizar`
 
   constructor(private http: HttpClient) {}
 
@@ -67,8 +68,8 @@ export class AuthService {
   EnocntrarCP(body:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.urlCotizar,body,{headers})
-
   }
+  
   CotizarPaquete(body:any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.urlCotizarpqte,body,{headers})
@@ -104,5 +105,17 @@ export class AuthService {
   
     // Llamada GET con los parámetros
     return this.http.post<any>(this.urlRastrearPaquete, body, { headers });
+  }
+
+  actualizarDatosUsuario(datos: any): Observable<any> {
+    const token = localStorage.getItem('authToken');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.patch(this.urlUsuarioActualizar, datos, { headers });
+  
   }
 }

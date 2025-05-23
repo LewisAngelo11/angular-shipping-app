@@ -73,7 +73,11 @@
 }
 
 footer{
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
   background-color: #ececec;
   gap: 30px;
 }
@@ -84,7 +88,8 @@ footer{
 
 .endPage {
   display: flex;
-  gap: 50px;
+  align-items: center;justify-content: center;
+  gap: 100px;
   padding-bottom: 20px;
 }
 
@@ -93,24 +98,24 @@ footer{
   gap: 10px;
   align-items: start;
   text-align: left;
-  padding-left: 40px;
+  justify-content: center;
 }
 
 .legales h3 {
   color: #1c1c1c;
   margin: 0px;
-  margin-left: 10px;
+  margin-top: 20px;
   margin-bottom: 5px;
 }
 
 .legales ul{
   list-style: none;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.legales ul li{
-  margin-bottom: 5px;
-}
 
 .legales a{
   text-decoration: none;
@@ -143,6 +148,54 @@ footer{
   padding-left: 5px;
 }
 
+.redes-sociales {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-medias1,
+.social-medias2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.social-medias1 a,
+.social-medias2 a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  color: #363636;
+  transition: all 0.2s ease-in;
+}
+
+.social-medias1 a:hover,
+.social-medias2 a:hover {
+  color: #e64d11;
+}
+
+.FAQS {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.FAQS  a{
+  text-decoration: none;
+  color: #363636;
+}
+
+.derechos-reservados {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 600px) {
   .navbar .logo {
     margin-left: 20px;
@@ -156,19 +209,38 @@ footer{
     display: block;
   }
 
+  footer {
+    height: auto;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 0 20px;
+  }
+
   .endPage {
     margin: 0;
-    flex-direction: row;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
     padding: 0;
   }
 
   .legales,
   .contacto {
-    padding-left: 20px;
     width: 100%;
-    padding-right: 20px;
+    padding: 0 20px;
+  }
 
+  .redes-sociales {
+    width: 293px;
+    padding: 0 20px;
+    align-items: start;
+  }
+
+  .FAQS a{
+    width: 293px;
+    padding: 0 20px;
   }
 }
 

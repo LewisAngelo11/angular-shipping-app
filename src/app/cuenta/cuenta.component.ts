@@ -69,15 +69,36 @@ export class CuentaComponent {
     }
   }
 
-  // Funcion para desabilitar los inputs (Proximamente se implementará el metodo PUT)
+  // Funcion para desabilitar los inputs (Proximamente se implementará el metodo PATCH)
   confirmarEdicion(id: string){
+    let datos: any = {}
+
     if (id === 'edit-name'){
       this.edicion.name = false;
+
+      // Solo agrega si hay cambios o siempre si lo deseas
+      datos.Nombre = this.nombre;
+      datos.Apellido1 = this.apellidoPaterno;
+      datos.Apellido2 = this.apellidoMaterno;
     } else if (id === 'edit-mail'){
       this.edicion.mail = false;
+      datos.Email = this.email;
     } else if (id === 'edit-user'){
       this.edicion.user = false;
+      datos.Usuario = this.username
     }
+
+      // Llamar al servicio si hay al menos un campo
+    if (Object.keys(datos).length > 0) {
+    this.authService.actualizarDatosUsuario(datos).subscribe({
+      next: (response) => {
+        console.log('Datos actualizados:', response);
+      },
+      error: (error) => {
+        console.error('Error al actualizar:', error);
+      }
+    });
+  }
   }
 
   // Cerrar sesión: eliminar el token y redirigir al login

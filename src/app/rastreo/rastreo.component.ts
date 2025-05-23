@@ -25,7 +25,6 @@ export class RastreoComponent {
 
   // Este metodo se ejecuta en cuanto se carga el componente
   ngOnInit(): void {
-    this.solicitarUbicacion();
     this.route.queryParams.subscribe(params => {
     this.rastreoMenu = params['rastreoMenu'] || '';
       if (this.rastreoMenu !== ''){
@@ -34,24 +33,6 @@ export class RastreoComponent {
     });
   }
 
-  // Función para solicitar la ubicacion actual del usuario
-  solicitarUbicacion() {
-    // Verifica si la geolocalización está disponible en el navegador
-    if (navigator.geolocation) {
-      // Solicita la ubicación actual del usuario
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          console.log('Ubicación obtenida:', position.coords); // Muestra la ubicación obtenida en la consola
-        },
-        (error) => {
-          console.error('Error al obtener ubicación:', error.message);
-        }
-      );
-    } else {
-      // Si la geolocalización no está soportada, se muestra un mensaje en la consola
-      console.error('Geolocalización no soportada por el navegador.');
-    }
-  }
 
   rastrear(rastreo: string) {
     const rastreoLimpio = rastreo.trim(); // Eliminar espacios en blanco
