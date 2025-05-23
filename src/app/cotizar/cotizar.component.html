@@ -1,78 +1,127 @@
 <main class="main">
-  <div class="CP">
-    <div class="OrigenComponent">
-      <h2>{{ title }}</h2>
-      <label>CP Origen</label>
-      <div class="cp-origen">
-        <input type="text" name="CP" #CP placeholder="CP" class="CPRow">
-        <button (click)="buscarCPorigen()" class="Boton"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
-      </div>
+  <div class="cotizacion-info">
+    <h2>Obtenga una Cotización de un Envío Gratuito en Línea</h2>
+    <p class="line"></p>
+    <p>Te ofrecemos un sistema de cotización facil, rápido, y práctico para tus envíos <br>
+      tanto para paquetes pequeños como paquetes grandes, con alto volumen. Completa <br>
+      los detalles de el envío a continuación.
+    </p>
+  </div>
+  <div class="cotizacion">
+    <h2>Realizar Cotización de Envío</h2>
+    <p class="line-2"></p>
+  </div>
+  <div class="CP-container">
+    <div class="CP">
+      <h2 style="padding: 0 20px;">{{ title }}</h2>
+      <div class="OrigenComponent">
+        <div class="cp-origen">
+          <label>CP Origen</label>
+          <input type="text" name="CP" #CP placeholder="CP" class="CPRow">
+          <button (click)="buscarCPorigen()" class="Boton"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
+        </div>
   
-      <div class="origen-info">
-        <input type="text" #Ciudad placeholder="Ciudad de Origen" disabled>
-        <input type="text" #Municipio placeholder="Municipio de Origen" disabled>
-        <input type="text" #Estado placeholder="Estado de Origen" disabled>
+        <div class="origen-info">
+          <input type="text" #Ciudad placeholder="Ciudad de Origen" disabled>
+          <input type="text" #Municipio placeholder="Municipio de Origen" disabled>
+          <input type="text" #Estado placeholder="Estado de Origen" disabled>
+        </div>
       </div>
-    </div>
-    <div class="DestinoComponent">
-      <h2>{{ title2 }}</h2>
-      <label>CP Destino</label>
-      <div class="cp-destino">
-        <input type="text" #CPD placeholder="CP" class="CPRow">
-        <button (click)="buscarCPdestino()" class="Boton"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
-      </div>
-      
-      <div class="destino-info">
-        <input type="text" #CiudadD placeholder="Ciudad de Destino" disabled>
-        <input type="text" #MunicipioD placeholder="Municipio de Destino" disabled>
-        <input type="text" #EstadoD placeholder="Estado de Destino" disabled>
+      <div class="DestinoComponent">
+        <div class="cp-destino">
+          <label>CP Destino</label>
+          <input type="text" #CPD placeholder="CP" class="CPRow">
+          <button (click)="buscarCPdestino()" class="Boton"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
+        </div>
+        
+        <div class="destino-info">
+          <input type="text" #CiudadD placeholder="Ciudad de Destino" disabled>
+          <input type="text" #MunicipioD placeholder="Municipio de Destino" disabled>
+          <input type="text" #EstadoD placeholder="Estado de Destino" disabled>
+        </div>
       </div>
     </div>
   </div>
-  <div class="remitente-destinatario">
-    <div class="RemitenteComponent">
-      <h3>{{ title4 }}</h3>
-      <input type="text" #nombreR placeholder="Nombre" class="CPRow" [(ngModel)]="nombre">
-      <input type="text" #ape1R placeholder="Apellido Paterno" [(ngModel)]="apellidoPaterno">
-      <input type="text" #ape2R placeholder="Apellido Materno" [(ngModel)]="apellidoMaterno">
-      <input type="text" #emailR placeholder="Email" [(ngModel)]="email">
-    </div>
-    <div class="DestinatarioComponent">
-      <h3>{{ title5 }}</h3>
-      <input type="text" #nombreD placeholder="Nombre" class="CPRow">
-      <input type="text" #ape1D placeholder="Apellido Paterno">
-      <input type="text" #ape2D placeholder="Apellido Materno">
-      <input type="text" #emailD placeholder="Email">
-    </div>
-    <div class="fecha-entrega">
-      <label>Fecha de entrega:</label>
-      <input type="date" name="date" id="date" #fechaR >
+  <div class="rem-dest-component">
+    <div class="remitente-destinatario">
+      <div class="RemitenteComponent">
+        <h3>{{ title4 }}</h3>
+        <input type="text" #nombreR placeholder="Nombre" class="CPRow" [(ngModel)]="nombre">
+        <input type="text" #ape1R placeholder="Apellido Paterno" [(ngModel)]="apellidoPaterno">
+        <input type="text" #ape2R placeholder="Apellido Materno" [(ngModel)]="apellidoMaterno">
+        <input type="text" #emailR placeholder="Email" [(ngModel)]="email">
+      </div>
+      <div class="DestinatarioComponent">
+        <h3>{{ title5 }}</h3>
+        <input type="text" #nombreD placeholder="Nombre" class="CPRow">
+        <input type="text" #ape1D placeholder="Apellido Paterno">
+        <input type="text" #ape2D placeholder="Apellido Materno">
+        <input type="text" #emailD placeholder="Email">
+      </div>
+      <div class="fecha-entrega">
+        <label>Fecha de entrega:</label>
+        <input type="date" name="date" id="date" #fechaR >
+      </div>
     </div>
   </div>
   <div class="paquete-detalle">
     <div class="container">
       <h2>{{ title3 }}</h2>
-      <div class="peso">
-        <label for="peso">Peso del paquete: </label>
-        <input type="text" #Peso name="peso" required placeholder="KG">
+      <div class="contador-paquetes">
+        <button (click)="quitarFila()"><i class='bx bx-minus'></i></button>
+        <span>{{ rows }}</span>
+        <button (click)="agregarFila()"><i class='bx bx-plus' ></i></button>
       </div>
-      <div class="dimensiones">
-        <label for="dimensiones">Dimensiones (L x A x H) Cm:</label>
-        <input type="text" #Largo name="largo" placeholder="Largo" required>
-        <input type="text" #Ancho name="ancho" placeholder="Ancho" required>
-        <input type="text" #Alto name="alto" placeholder="Alto" required>
+      <div class="paquetes">
+        <div class="cabeceros-paquetes">
+          <label class="label-peso">Peso del paquete: </label>
+          <label for="dimensiones" class="cabecero-dimensiones">Dimensiones (L x A x H) Cm:</label>
+        </div>
+        <div *ngFor="let row of rowsData; let i = index" class="dimensiones">
+          <div class="peso">
+            <label class="label-peso-movil">Peso del paquete:</label>
+            <input type="text" [(ngModel)]="rowsData[i].peso" name="peso" required placeholder="Kg">
+          </div>
+          <div class="detail-dimensions">
+            <label class="label-dimensiones-movil">Dimensiones:</label>
+            <input type="text" [(ngModel)]="rowsData[i].largo" name="largo" placeholder="Largo" required>
+            <label><i class='bx bx-x'></i></label>
+            <input type="text" [(ngModel)]="rowsData[i].ancho" name="ancho" placeholder="Ancho" required>
+            <label><i class='bx bx-x'></i></label>
+            <input type="text" [(ngModel)]="rowsData[i].alto" name="alto" placeholder="Alto" required>
+          </div>
+        </div>
       </div>
       <button (click)="enviarDatos()" class="Boton">Cotizar</button>
     </div>
-
-    <div *ngIf="contenidoVisible" class="detalle-servicio">
+  </div>
+  <div *ngIf="contenidoVisible" class="detalle-servicio">
+    <div class="container-detalle-servicio">
       <h2>Detalle del Servicio</h2>
       <p>Peso físico: {{txtPeso}}</p>
       <p>Peso volumétrico: {{txtPesoVM}}</p>
       <p>Distancia: {{txtDistancia}}</p>
-      <p>Costo inicial: {{txtTarifa}}</p>
-      <p>IVA: {{txtIVA}}</p>
-      <p>Total: {{txtCosto}}</p>
+      <table border="1">
+        <thead>
+          <tr>
+            <th colspan="2">Costos del servicio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Costo inicial:</td>
+            <td>{{txtTarifa}}</td>
+          </tr>
+          <tr>
+            <td>IVA:</td>
+            <td>{{txtIVA}}</td>
+          </tr>
+          <tr class="total-servicio">
+            <td>Total:</td>
+            <td>{{txtCosto}}</td>
+          </tr>
+        </tbody>
+      </table>
       <button (click)="EnviarPaquete()"class="Boton">Hacer envío</button>
     </div>
   </div>
