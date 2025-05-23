@@ -6,14 +6,12 @@
 .componente {
   display: flex;
   flex-direction: column; /* Organiza los elementos en una columna */
-  align-items: left; /* Centra los elementos horizontalmente */
-  justify-content: left; /* Centra los elementos verticalmente */
-  height: 100vb; /* Usa el 100% del alto de la ventana */
-  padding: 20px; /* Espacio interno */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  height: auto; /* Usa el 100% del alto de la ventana */
   border-radius: 8px; /* Bordes redondeados */
   background-color: #f9f9f9; /* Fondo gris claro */
   width: 100%; /* Ancho del div */
-  gap: 5px;
 }
 
 .componente h2 {
@@ -26,38 +24,46 @@
   padding: 0px; /* Elimina el relleno si lo hay */
 }
 
+.background {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.966) 0%, rgba(114, 114, 114, 0.588) 20%, rgba(130, 130, 130, 0.407) 70%, rgba(255, 255, 255, 0.785) 100%);
+  background-image: url('/mujer-que-trabaja-en-un-centro-de-llamadas-hablando-con-clientes-usando-auriculares-y-microfono.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150%; /* Aumenta el tamaño de la imagen de fondo al 150% */
+}
+
+.principal-label {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: center;
+  width: 80%;
+  background-color: #ececec;
+  height: auto;
+  padding: 30px;
+  position: relative;
+  bottom: 45px;
+  z-index: 2;
+}
+
 .preguntas {
   margin: 0px; /* Elimina el margen entre párrafos */
   padding: 20px; /* Elimina el relleno si lo hay */
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  width: 80%;
+  gap: 3rem;
+  box-shadow: 0px 0px 2px rgba(74, 74, 74, 0.444);
+  position: relative;
+  bottom: 48px;
+  z-index: 1;
 }
 
 .preguntas div {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.rastreo {
-  height: 50px;
-  display: flex;
-  margin-bottom: 12px;
-  width: 50%;
-  gap: 5px;
-}
-
-.rastreo input {
-  height: 15px;
-  margin-bottom: 5px;
-}
-
-#rastrear {
-  height: 40px;
-  width: 80;
-}
-
-.opciones button{
-  gap: 5px;
 }
