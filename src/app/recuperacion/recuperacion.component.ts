@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrl: './recuperacion.component.css'
 })
 export class RecuperacionComponent {
-  @ViewChild('email') email!: ElementRef;
+  @ViewChild('user') user!: ElementRef;
   @ViewChild('password1') pass1!: ElementRef;
   @ViewChild('password2') pass2!: ElementRef;
   constructor(private authService: AuthService, private router: Router) {}
@@ -24,7 +24,7 @@ actualizarContrasena() {
   // Crea el objeto que se enviará al backend para cambiar la contraseña.
   // Incluye el email y la nueva contraseña que se ha introducido en el formulario.
   const body = {
-    Email: this.email.nativeElement.value, // Se obtiene el email del usuario
+    Email: this.user.nativeElement.value, // Se obtiene el email del usuario
     NuevaContrasena: password1Value,  // Se incluye la primera contraseña (nueva) para actualizarla
   };
   // Compara si las dos contraseñas introducidas son iguales

@@ -1,10 +1,15 @@
 <main class="main">
     <div class="componente">
-      <h1>Recuperar Contraseña</h1>
-      <input type="email" name="email" #email placeholder="Correo electrónico">
-      <div class="contrasena">
+      <div class="titulo">
+        <h2>Recupere su Contraseña</h2>
+      </div>
+      <div class="mail">
+        <input type="email" name="email" #email placeholder="Correo">
+        <button class="Boton"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
+      </div>
+      <div class="new-passw">
         <input type="password" name="password1" #password1 placeholder="Nueva Contraseña">
-        <input type="password" name="password2" #password2 placeholder="Verificar Contraseña">
+        <input type="password" name="password2" #password2 placeholder="Confirmar Contraseña">
       </div>
       <button (click)="actualizarContrasena()">Cambiar contraseña</button>
     </div>

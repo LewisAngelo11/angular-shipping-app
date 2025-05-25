@@ -1,66 +1,107 @@
 .main {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px 0;
+}
 
-  .componente {
-    display: flex;
-    flex-direction: column; /* Organiza los elementos en una columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    justify-content: center; /* Centra los elementos verticalmente */
-    height: 400px; /* Usa el 100% del alto de la ventana */
-    border: 2px solid #000000; /* Borde de 2px verde */
-    padding: 20px; /* Espacio interno */
-    border-radius: 8px; /* Bordes redondeados */
-    margin: 10px auto; /* Centra el div en el contenedor */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    width: 300px; /* Ancho del div */
-  }
+.componente {
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en una columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  height: auto; /* Usa el 100% del alto de la ventana */
+  padding: 25px; /* Espacio interno */
+  border-radius: 20px; /* Bordes redondeados */
+  margin: 10px auto; /* Centra el div en el contenedor */
+  background-color: #f9f9f98e; /* Fondo gris claro */
+  backdrop-filter: blur(5px); /* Aplica el desenfoque */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
+  width: 300px; /* Ancho del div */
+  gap: 1rem;
+}
   
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 250px;
+}
   
-  .componente label {
-    margin-top: 5px;
-    display: block; /* Hace que los labels se apilen verticalmente */
-    margin-bottom: 8px; /* Añade un espacio debajo de los labels */
-  }
+.componente label {
+  margin-top: 5px;
+  display: block; /* Hace que los labels se apilen verticalmente */
+  margin-bottom: 8px; /* Añade un espacio debajo de los labels */
+}
   
-  .componente input {
-    display: block; /* Hace que los inputs se apilen verticalmente */
-    width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-    height: 5px;
-    padding: 10px;
-    margin-bottom: 10px; /* Añade un espacio debajo de los inputs */
-    margin-left: 8px;
-  }
+.componente input {
+  width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
+  padding: 10px;
+  border: 10px #000000;
+  background-color: #f9f9f98e; /* Fondo gris claro */
+  backdrop-filter: blur(5px); /* Aplica el desenfoque */
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
+  transition: all 0.2s ease-in;
+}
 
-  .nombres {
-    justify-content: center; /* Centra en el eje principal (horizontal) */
-    width: 90%;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #1e5ad0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 80%;
-  }
-  
-  button:hover {
-    background-color:  #002fff;
-  }
+.mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
-  .componente a{
-    margin: 8px; /* Margen del componente */
-  }
+.mail button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  bottom: 37px;
+  left: 88px;
+}
 
-  #date {
-    width: 100px;
-  }
+.new-passw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.mail input,
+.new-passw input {
+  width: 90%;
+  position: relative;
+  height: 40px;
+  border-radius: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 70%;
+  height: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgb(74, 74, 74);
+  transition: all 0.1s ease-in; /* Transición suave para el texto */
+}
+  
+button:hover {
+  background-color: #363636;
+}
+
 
 .credenciales{
-    width: 80%;
+  width: 80%;
 }
