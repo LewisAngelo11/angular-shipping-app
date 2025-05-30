@@ -1,9 +1,11 @@
-import { Component,ViewChild,ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // Aquí se importa FormsModule
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-cotizar',
@@ -59,22 +61,26 @@ export class CotizarComponent {
   @ViewChild('emailD') EmailD!: ElementRef;
   @ViewChild('fechaR') FechaR!: ElementRef;
   @ViewChild('Tarifa') Tarifa!: ElementRef;
-  constructor(private authService: AuthService, private router: Router) {}
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,
+  private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.solicitarUbicacion();
-    if (this.authService.isAuthenticated()){
-      this.authService.ConsultarUser().subscribe(
-        perfil => {
-          this.nombre = perfil.Nombre;
-          this.apellidoPaterno = perfil.Apellido1;
-          this.apellidoMaterno = perfil.Apellido2;
-          this.email = perfil.Email;
-        },
-        error => {
-          console.error("Error al obtener el perfil:",error);
-        }
-      );  
+    if(isPlatformBrowser(this.platformId)) {
+      this.solicitarUbicacion();
+      if (this.authService.isAuthenticated()){
+        this.authService.ConsultarUser().subscribe(
+          perfil => {
+            this.nombre = perfil.Nombre;
+            this.apellidoPaterno = perfil.Apellido1;
+            this.apellidoMaterno = perfil.Apellido2;
+            this.email = perfil.Email;
+          },
+          error => {
+            console.error("Error al obtener el perfil:",error);
+          }
+        );  
+      }
     }
   }
 

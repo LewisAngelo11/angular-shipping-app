@@ -540,6 +540,13 @@ table .total-servicio {
     left: 98px;
   }
 
+  .origen-info,
+  .destino-info {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
   .paquete-detalle {
     padding: 0;
     margin-top: 0;
@@ -569,6 +576,89 @@ table .total-servicio {
     gap: 5px;
     width: 100%;
   }
+
+  .paquete-detalle {
+    padding: 50px 0;
+    margin-top: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    border: none;
+    width: 80%;
+    height: auto;
+    gap: 10px;
+  }
+
+  .paquetes {
+    margin-bottom: 10px;
+    gap: 2rem;
+  }
+
+  .detail-dimensions {
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+
+  .detail-dimensions label {
+    margin-left: 10px;
+  }
+
+    .container .cabecero-dimensiones {
+    display: none;
+  }
+
+  .container .dimensiones {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .paquetes {
+    margin-bottom: 10px;
+    gap: 2rem;
+  }
+
+  .detail-dimensions {
+    flex-direction: column;
+    align-items: start;
+    gap: 3px;
+  }
+
+  .detail-dimensions label {
+    margin-left: 10px;
+  }
+
+  .detalle-servicio{
+    width: 100%;
+  }
+
+  .container-detalle-servicio {
+    width: 80%;
+  }
+
+  .container-detalle-servicio table {
+    width: 70%;
+  }
+
+  .container-detalle-servicio .Boton {
+    width: 40%;
+  }
+
+  .label-peso{
+    display: none;
+  }
+
+  .label-peso-movil {
+    display: flex
+  }
+  
+  .label-dimensiones-movil {
+    display: flex;
+  }
 }
 
 @media (min-width: 701px) and (max-width: 1024px) {
@@ -585,6 +675,16 @@ table .total-servicio {
     padding: 20px;
     height: auto;
     width: 90%;
+  }
+
+  .origen-info input,
+  .destino-info input {
+    width: 80%;
+  }
+
+  .OrigenComponent,
+  .DestinoComponent {
+    gap: 4rem;
   }
 
   .CP {
@@ -622,6 +722,12 @@ table .total-servicio {
     box-sizing: border-box;
   }
 
+  .origen-info,
+  .destino-info {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
 
   .dimensiones input{
     width: 80%;
