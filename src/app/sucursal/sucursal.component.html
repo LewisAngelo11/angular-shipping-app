@@ -1,11 +1,23 @@
-<p>sucursal works!</p>
-<div class="locations">
-    @for(location of $locations(); track location){
-        <div class="location-contnent">
-            <div class="location-info">
-                <dt>{{ location.name }}</dt>
-                <dt>{{ location.description }}</dt>
+<div class="principal-container">
+    <div class="locations">
+        @for(location of $locations(); track location){
+            <div class="location-contnent">
+                <div class="location-info">
+                    <dt class="name-location">{{ location.name }}</dt>
+                    <dt class="description-location">{{ location.description }}</dt>
+                </div>
             </div>
+        }
+    </div>
+    <div style="height: 600px; width: 100%;">
+        <div class="map">
+            <google-map
+            [height]="'100%'"
+            [width]="'100%'"
+            [zoom]="zoom()"
+            [center]="center()">
+        </google-map>
         </div>
-    }
+    </div>
 </div>
+

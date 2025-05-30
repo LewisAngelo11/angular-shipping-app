@@ -1,0 +1,35 @@
+.principal-container {
+    font-family: system-ui, sans-serif, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.26);
+}
+
+.locations {
+    width: 45%;
+    max-height: 600px; /* Ajusta según el tamaño que necesites */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 20px;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.321);
+}
+
+.name-location {
+    font-size: 20px;
+    font-style: inherit;
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+}
