@@ -6,6 +6,8 @@
 }
 
 .navbar {
+  position: relative;
+  z-index: 2;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: space-between;
@@ -13,6 +15,7 @@
   padding: 15px 30px;
   background-color: #ececec;
   height: 70px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.26);
 }
 
 /* Logo */

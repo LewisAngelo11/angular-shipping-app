@@ -1,7 +1,21 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { RouterLink, RouterOutlet, Router} from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';import { initializeApp } from "firebase/app";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDIjO8LB-EXmB11K4LYydDBDFFplHUbFHI",
+  authDomain: "paqueteria-autentificacion.firebaseapp.com",
+  projectId: "paqueteria-autentificacion",
+  storageBucket: "paqueteria-autentificacion.firebasestorage.app",
+  messagingSenderId: "269192440178",
+  appId: "1:269192440178:web:c0d0e2a8d60e23336095eb"
+};
+
+const provider = new GoogleAuthProvider();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 
 @Component({
@@ -17,6 +31,30 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
   mensajeError: string = ''; // Nuevo campo para manejar errores
+
+  login_google(){
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        if (credential) {
+          const token = credential.accessToken;
+          // Puedes usar el token si necesitas mandarlo a tu backend
+        }
+        const user = result.user;
+        alert('Bienvenido ${user.displayName}');
+        // Redirigir al menú tras el login exitoso
+        this.router.navigate(['/menu']);
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  }
 
   login() {
     const usuario = this.usernameInput.nativeElement.value;
