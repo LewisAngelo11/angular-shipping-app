@@ -22,12 +22,36 @@
         <a class="edit-user" (click)="habilitarEdicion('edit-user')"><i class='bx bxs-edit' ></i></a>
         <a class="edit-mail" (click)="confirmarEdicion('edit-user')" *ngIf="edicion.user"><i class='bx bx-check'></i></a>
       </div>
-      <div class="buttons">
+    </div>
+    <h3>Historial de Envios</h3>
+    <div class="lista-envios-realizado">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Fecha</th>
+            <th>Código de Rastreo</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let envio of envios; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ envio.Fecha_Envio }}</td>
+            <td>{{ envio.Codigo_Rastreo }}</td>
+            <td>{{ envio.Origen }}</td>
+            <td>{{ envio.Destino }}</td>
+            <td>{{ envio.Estatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="buttons">
         <button (click)="cerrarSesion()">Cerrar Sesión</button>
         <button (click)="EliminarInfo()">Eliminar mi cuenta</button>
       </div>
-    </div>
-
     <div *ngIf="ContenidoVisibleDelete" class="info">
       <label for="nombre">Contraseña:</label>
       <input type="text" id="nombre" [(ngModel)]="nombre" #Contraseña>

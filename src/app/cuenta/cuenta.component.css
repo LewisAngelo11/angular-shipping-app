@@ -10,12 +10,13 @@
   flex-direction: column; /* Organiza los elementos en una columna */
   align-items: center; /* Centra los elementos horizontalmente */
   justify-content: center; /* Centra los elementos verticalmente */
-  height: 550px; /* Usa el 100% del alto de la ventana */
+  padding: 50px;
+  height: auto;
   border: none;
   border-radius: 20px; /* Bordes redondeados */
   background-color: #f9f9f9; /* Fondo gris claro */
   width: 100%;
-  gap: 20px;
+  gap: 2rem;
 }
 
 .componente input {
@@ -29,13 +30,15 @@
 }
 
 .info {
-  width: 90%; /* Hace que los inputs ocupen el 100% del contenedor */
+  width: 450px; /* Hace que los inputs ocupen el 100% del contenedor */
   display: flex;
   align-items: start; /* Centra los elementos horizontalmente */
   justify-content: center; /* Centra los elementos verticalmente */
   flex-direction: column;
   height: auto;
-  padding: 20px;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #1c1c1c26;
 }
 
 .name,
@@ -102,6 +105,31 @@ button:hover {
 .edit-mail:hover,
 .edit-user:hover {
   color: #e64d11;
+}
+
+.lista-envios-realizado {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #1c1c1c26;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+}
+
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
 /* Telefonos pequeños (hasta 600px) */

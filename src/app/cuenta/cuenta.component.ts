@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // Aquí se importa FormsModule
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Envio } from '../models/envio';
 
 @Component({
   selector: 'app-cuenta',
@@ -18,6 +19,8 @@ export class CuentaComponent {
     mail: false,
     user: false
   };
+
+  envios: Envio[] = [];
 
   ContenidoVisibleInfo = false;
   ContenidoVisibleDelete = false;
@@ -39,6 +42,7 @@ export class CuentaComponent {
   @ViewChild('NombreB') NombreB!: ElementRef;
   constructor(private authService: AuthService, private router: Router) {}
 
+
   ngOnInit() {
     this.authService.ConsultarUser().subscribe(
       perfil => {
@@ -50,6 +54,12 @@ export class CuentaComponent {
       },
       error => {
         console.error("Error al obtener el perfil:",error);
+      }
+    );
+
+    this.authService.ConsultarHistorialEnvios().subscribe(
+      data => {
+        this.envios = data;
       }
     );
   }

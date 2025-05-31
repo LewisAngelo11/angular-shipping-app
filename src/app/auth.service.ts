@@ -5,6 +5,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private port_server = '5000'; // Cambiar al puerto del servido si es necesario
   private ip_server = 'localhost'; // Cambiar la IP del servidor si es necesario
@@ -18,6 +19,7 @@ export class AuthService {
   private urlConsultarUser = `http://${this.ip_server}:${this.port_server}/usuario/consultar`;
   private urlEliminarUser = `http://${this.ip_server}:${this.port_server}/eliminarUsers`;
   private urlUsuarioActualizar = `http://${this.ip_server}:${this.port_server}/usuario/actualizar`
+  private urlConsultarHistorialEnvios = `http://${this.ip_server}:${this.port_server}/usuario/historial`
 
   constructor(private http: HttpClient) {}
 
@@ -86,10 +88,15 @@ export class AuthService {
     return this.http.get<any>(this.urlConsultarUser, { headers });
   }
 
+  ConsultarHistorialEnvios(): Observable<any>{
+    const token = localStorage.getItem('authToken')
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    return this.http.get<any>(this.urlConsultarHistorialEnvios, { headers });
+  }
+
   EliminarUser(body:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.urlEliminarUser, body, { headers });
-
   }
 
   enviarpaquete(body:any): Observable<any>{
@@ -100,7 +107,7 @@ export class AuthService {
   rastrearPaquete(rastreo: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   
-  // Usar el cuerpo de la solicitud para enviar el número de rastreo
+    // Usar el cuerpo de la solicitud para enviar el número de rastreo
     const body = { Rastreo: rastreo };
   
     // Llamada GET con los parámetros
