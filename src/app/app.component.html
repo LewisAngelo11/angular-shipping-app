@@ -1,15 +1,15 @@
 <!-- Menu superior de la pagina -->
 <nav class="navbar">
-  <div class="logo"><a href="/menu"><img src="/Logo_PapuExpress.png" alt=""></a></div>
+  <div class="logo"><a href="/menu"><img alt="">"LOGO"</a></div>
   <div class="menu">
-    <a class="cotizar" href="/CotizarEnvio">Cotizar Envio</a>
-    <a class="preguntas" href="/preguntas">Preguntas frecuentes</a>
-    <a class="sucursales" href="/sucursales">Sucursales</a>
+    <a class="cotizar">Cotizar Envio</a>
+    <a class="preguntas">Preguntas frecuentes</a>
+    <a class="sucursales">Sucursales</a>
   </div>
   <!-- Icono de usuario -->
   <div class="auth-button">
     <button *ngIf="!isAuthenticated()" (click)="irLogin()"><i class='bx bx-user'></i></button> <!-- Icono de iniciar sesion -->
-    <button *ngIf="isAuthenticated()" (click)="miCuenta()"><i class='bx bx-user-circle'></i></button> <!-- Icono de mi cuenta -->
+    <button *ngIf="isAuthenticated()"><i class='bx bx-user-circle'></i></button> <!-- Icono de mi cuenta -->
   </div>
 </nav>
 <router-outlet></router-outlet>
