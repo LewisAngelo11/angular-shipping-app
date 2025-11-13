@@ -20,7 +20,7 @@ const auth = getAuth(app);
 
 @Component({
   selector: 'app-login',
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

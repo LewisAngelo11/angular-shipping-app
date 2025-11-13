@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
 })
 
 export class AuthService {
-  private port_server = '5000'; // Cambiar al puerto del servido si es necesario
+  private port_server = '5001'; // Cambiar al puerto del servido si es necesario
   private ip_server = 'localhost'; // Cambiar la IP del servidor si es necesario
   private urlLogin = `http://${this.ip_server}:${this.port_server}/login`; // URL del procedimiento login
   private urlCrear = `http://${this.ip_server}:${this.port_server}/api/usuario`; // URL del procedimiento crear_usuario

@@ -1,0 +1,130 @@
+* {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-color: #ececec;
+    gap: 30px;
+}
+
+.space{
+    height: 30px;
+}
+
+.endPage {
+    display: flex;
+    align-items: center;justify-content: center;
+    gap: 100px;
+    padding-bottom: 20px;
+}
+
+.legales{
+    color: rgb(211, 210, 210);
+    gap: 10px;
+    align-items: start;
+    text-align: left;
+    justify-content: center;
+}
+
+.legales h3 {
+    color: #1c1c1c;
+    margin: 0px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.legales ul{
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.legales a{
+    text-decoration: none;
+    color: rgb(173, 171, 171);
+    font-size: 12px;
+}
+
+.contacto {
+    color: white;
+    text-align: left;
+}
+
+.contacto h3 {
+    margin: 0px;
+    color: #1c1c1c;
+    margin-bottom: 5px;
+}
+
+.contacto ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0px;
+    margin-bottom: 5px;
+}
+
+.contacto a, p{
+    text-decoration: none;
+    color: rgb(173, 171, 171);
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+.redes-sociales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-medias1,
+.social-medias2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.social-medias1 a,
+.social-medias2 a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #363636;
+    transition: all 0.2s ease-in;
+}
+
+.social-medias1 a:hover,
+.social-medias2 a:hover {
+    color: #e64d11;
+}
+
+.FAQS {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.FAQS  a{
+    text-decoration: none;
+    color: #363636;
+}
+
+.derechos-reservados {
+    margin-bottom: 20px;
+}

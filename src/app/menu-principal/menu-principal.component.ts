@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';  // Importar CommonModule
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-menu-principal',
-  imports: [CommonModule, FormsModule ], // Se importa CommonModule para usar ngIF en el HTML
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent], // Se importa CommonModule para usar ngIF en el HTML
   templateUrl: './menu-principal.component.html',
   styleUrl: './menu-principal.component.css'
 })

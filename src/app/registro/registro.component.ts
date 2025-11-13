@@ -5,7 +5,7 @@ import { response } from 'express';
 
 @Component({
   selector: 'app-registro',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterLink],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
