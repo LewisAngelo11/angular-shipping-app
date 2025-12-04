@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';  // Aquí se importa FormsModule
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Envio } from '../models/envio';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-cuenta',
@@ -40,7 +41,11 @@ export class CuentaComponent {
   @ViewChild('Apellido2') Apellido2!: ElementRef;
   @ViewChild('Correo') Correo!: ElementRef;
   @ViewChild('NombreB') NombreB!: ElementRef;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
 
 
   ngOnInit() {
@@ -53,7 +58,7 @@ export class CuentaComponent {
         this.username = perfil.User;
       },
       error => {
-        console.error("Error al obtener el perfil:",error);
+        console.error("Error al obtener el perfil:", error);
       }
     );
 
@@ -65,50 +70,50 @@ export class CuentaComponent {
   }
 
   // Funcion para habilitar los inputs
-  habilitarEdicion(id: string){
+  habilitarEdicion(id: string) {
     this.edicion.name = false;
     this.edicion.mail = false;
     this.edicion.user = false;
 
-    if (id === 'edit-name'){
+    if (id === 'edit-name') {
       this.edicion.name = true;
-    } else if (id === 'edit-mail'){
+    } else if (id === 'edit-mail') {
       this.edicion.mail = true;
-    } else if (id === 'edit-user'){
+    } else if (id === 'edit-user') {
       this.edicion.user = true;
     }
   }
 
   // Funcion para desabilitar los inputs (Proximamente se implementará el metodo PATCH)
-  confirmarEdicion(id: string){
+  confirmarEdicion(id: string) {
     let datos: any = {}
 
-    if (id === 'edit-name'){
+    if (id === 'edit-name') {
       this.edicion.name = false;
 
       // Solo agrega si hay cambios o siempre si lo deseas
       datos.Nombre = this.nombre;
       datos.Apellido1 = this.apellidoPaterno;
       datos.Apellido2 = this.apellidoMaterno;
-    } else if (id === 'edit-mail'){
+    } else if (id === 'edit-mail') {
       this.edicion.mail = false;
       datos.Email = this.email;
-    } else if (id === 'edit-user'){
+    } else if (id === 'edit-user') {
       this.edicion.user = false;
       datos.Usuario = this.username
     }
 
-      // Llamar al servicio si hay al menos un campo
+    // Llamar al servicio si hay al menos un campo
     if (Object.keys(datos).length > 0) {
-    this.authService.actualizarDatosUsuario(datos).subscribe({
-      next: (response) => {
-        console.log('Datos actualizados:', response);
-      },
-      error: (error) => {
-        console.error('Error al actualizar:', error);
-      }
-    });
-  }
+      this.authService.actualizarDatosUsuario(datos).subscribe({
+        next: (response) => {
+          console.log('Datos actualizados:', response);
+        },
+        error: (error) => {
+          console.error('Error al actualizar:', error);
+        }
+      });
+    }
   }
 
   // Cerrar sesión: eliminar el token y redirigir al login
@@ -117,7 +122,7 @@ export class CuentaComponent {
     this.router.navigate(['/menu']);  // Redirigir a la página del menu
   }
 
-  
+
   EliminarInfo(): void {
     this.ContenidoVisibleInfo = false;
     this.ContenidoVisibleDelete = true;
@@ -131,15 +136,15 @@ export class CuentaComponent {
 
     this.authService.EliminarUser(body).subscribe(
       (response) => {
-        if (response.status === 'success'){
-          alert('hecho')
+        if (response.status === 'success') {
+          this.notificationService.success('Cuenta eliminada exitosamente');
         } else {
-          alert('Error al registrar el usuario');
+          this.notificationService.error('Error al eliminar la cuenta');
         }
       },
-      (error) =>{
+      (error) => {
         console.error('Hubo un error:', error);
-        alert('Error en el servidor. Intente más tarde.');
+        this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
   }

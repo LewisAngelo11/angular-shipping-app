@@ -8,6 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-cotizar',
@@ -64,13 +65,17 @@ export class CotizarComponent {
   @ViewChild('fechaR') FechaR!: ElementRef;
   @ViewChild('Tarifa') Tarifa!: ElementRef;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,
-  private authService: AuthService, private router: Router) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit() {
-    if(isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
       this.solicitarUbicacion();
-      if (this.authService.isAuthenticated()){
+      if (this.authService.isAuthenticated()) {
         this.authService.ConsultarUser().subscribe(
           perfil => {
             this.nombre = perfil.Nombre;
@@ -79,9 +84,9 @@ export class CotizarComponent {
             this.email = perfil.Email;
           },
           error => {
-            console.error("Error al obtener el perfil:",error);
+            console.error("Error al obtener el perfil:", error);
           }
-        );  
+        );
       }
     }
   }
@@ -105,66 +110,66 @@ export class CotizarComponent {
     }
   }
 
-  buscarCPorigen(){
+  buscarCPorigen() {
     const body = {
       CP: this.CP.nativeElement.value,
     };
 
     this.authService.EnocntrarCP(body).subscribe(
       (response) => {
-        if (response.status === 'success'){
+        if (response.status === 'success') {
           this.Mun.nativeElement.value = response.municipio
           this.CD.nativeElement.value = response.localidad
           this.Entidad.nativeElement.value = response.entidad
         } else {
-          alert('Error al registrar el usuario');
+          this.notificationService.error('Error al buscar el código postal');
         }
       },
-      (error) =>{
+      (error) => {
         console.error('Error en el inicio de sesión:', error);
-        alert('Error en el servidor. Intente más tarde.');
+        this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
   }
 
-  buscarCPdestino(){
+  buscarCPdestino() {
     const body = {
       CP: this.CPD.nativeElement.value,
     };
 
     this.authService.EnocntrarCP(body).subscribe(
       (response) => {
-        if (response.status === 'success'){
+        if (response.status === 'success') {
           //alert('datos obtenidos exitosamente: ' + response.rol);
           this.MunD.nativeElement.value = response.municipio
           this.CDD.nativeElement.value = response.localidad
           this.EntidadD.nativeElement.value = response.entidad
         } else {
-          alert('Error al registrar el usuario');
+          this.notificationService.error('Error al buscar el código postal');
         }
       },
-      (error) =>{
+      (error) => {
         console.error('Error en el inicio de sesión:', error);
-        alert('Error en el servidor. Intente más tarde.');
+        this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
   }
 
-  agregarFila(){
+  agregarFila() {
     if (this.rows < 10) {
       this.rows++;
       this.rowsData.push({ peso: '', largo: '', ancho: '', alto: '' });
     }
   }
 
-  quitarFila(){
+  quitarFila() {
     if (this.rows > 1) {
       this.rows--;
       this.rowsData.pop();
     }
   }
 
-  enviarDatos(){
+  enviarDatos() {
     // Ejemplo de envío al backend si deseas enviar todos los paquetes
     const paquetes = this.rowsData.map(row => ({
       largo: row.largo,
@@ -188,7 +193,7 @@ export class CotizarComponent {
     //Lamo al servicio cotizarpaquete que lo que hara es llamar al web service calculador del peso volumetrico
     this.authService.CotizarPaquete(body).subscribe(
       (response) => {
-        if (response.status === 'success'){
+        if (response.status === 'success') {
           this.contenidoVisible = true;
 
           this.txtTarifa = "$" + response.tarifa;
@@ -200,21 +205,21 @@ export class CotizarComponent {
           this.txtCosto = "$" + (tarifa + (tarifa * 0.16)).toFixed(2);
           this.txtDistancia = response.distancia + " Km";
         } else {
-          alert('Error al registrar el usuario');
+          this.notificationService.error('Error al cotizar el paquete');
         }
       },
-      (error) =>{
+      (error) => {
         console.error('Hubo un error:', error);
-        alert('Error en el servidor. Intente más tarde.');
+        this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
   }
 
-  mostrarContenido() { 
-    this.contenidoVisible = !this.contenidoVisible; 
+  mostrarContenido() {
+    this.contenidoVisible = !this.contenidoVisible;
   }
 
-  EnviarPaquete(){
+  EnviarPaquete() {
     const paquetes = this.rowsData.map(row => ({
       largo: row.largo,
       ancho: row.ancho,
@@ -240,15 +245,15 @@ export class CotizarComponent {
 
     this.authService.enviarpaquete(body).subscribe(
       (response) => {
-        if (response.status === 'success'){
-          alert('Entrega añadida Codigo de rastreo: ' + response.Rastreo_Code);
+        if (response.status === 'success') {
+          this.notificationService.success('Entrega añadida. Código de rastreo: ' + response.Rastreo_Code);
         } else {
-          alert('Error al registrar la entrega');
+          this.notificationService.error('Error al registrar la entrega');
         }
       },
-      (error) =>{
+      (error) => {
         console.error('Hubo un error:', error);
-        alert('Error en el servidor. Intente más tarde.');
+        this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
   }

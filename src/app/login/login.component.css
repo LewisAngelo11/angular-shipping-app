@@ -1,145 +1,395 @@
+/* Main Container */
 .main {
   position: relative;
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center; /* centra verticalmente */
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-.backgroundLogin {
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== LEFT SIDE - BRANDING ========== */
+.login-left {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.966) 0%,
-    rgba(114, 114, 114, 0.588) 20%,
-    rgba(130, 130, 130, 0.407) 70%,
-    rgba(255, 255, 255, 0.785) 100%
-  );
-  display: flex; /* ✅ convierte a flex container */
-  justify-content: center; /* centra horizontalmente */
-  align-items: center; /* centra verticalmente */
+  background: linear-gradient(135deg, #1c1c1c 0%, #363636 100%);
 }
 
 .photo-bg {
-  position: fixed; /* o absolute, pero fixed asegura que cubra el viewport */
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw; /* viewport width */
-  height: 100vh; /* viewport height */
+  width: 100%;
+  height: 100%;
   background-image: url('/pexels-polina-tankilevitch-4440841.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; /* <- clave */
-  z-index: -1; /* detrás del contenido */
+  background-size: cover;
+  opacity: 0.3;
+  z-index: 0;
 }
 
-.componente {
+.brand-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 60px;
+  max-width: 600px;
+}
+
+.brand-text h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: white;
+}
+
+.brand-text>p {
+  font-size: 20px;
+  margin-bottom: 50px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+}
+
+.brand-features {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 450px;
-  width: 350px;
-  padding: 20px;
-  border-radius: 20px;
-  background-color: rgba(249, 249, 249, 0.55); /* un poco más transparente */
-  backdrop-filter: blur(5px);
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
-  gap: 10px;
-  text-align: center;
+  gap: 25px;
 }
 
-.componente h1{
-  margin-top: 0px;
-  margin-bottom: 30px;
-}
-
-.componente input {
-  display: block; /* Hace que los inputs se apilen verticalmente */
-  width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
-  padding: 10px;
-  margin-bottom: 15px; /* Añade un espacio debajo de los inputs */
-  border: 10px #000000;
-  background-color: #f9f9f98e; /* Fondo gris claro */
-  backdrop-filter: blur(5px); /* Aplica el desenfoque */
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
-  transition: all 0.2s ease-in;
-}
-
-input:focus{
-  transform: scale(1.04); /* Aumentar ligeramente el tamaño */
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #1c1c1c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 70%;
-  height: 40px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgb(74, 74, 74);
-  transition: all 0.1s ease-in; /* Transición suave para el texto */
-}
-  
-button:hover {
-  background-color: #363636;
-  transform: scale(1.04); /* Aumentar ligeramente el tamaño */
-}
-
-.componente a{
-  margin: 8px; /* Margen del componente */
-  font-size: 14px; /* Tamaño de la fuente */
-}
-
-.accountGoogle{
-  width: 100%;
+.feature {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.accountGoogle button{
-  background-color: #1c1c1c;
-  display: flex;
-  align-items: center; /* Centra verticalmente */
-  justify-content: center; /* Centra horizontalmente */
-  gap: 5px;
+.feature:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(10px);
 }
 
-.accountGoogle button:hover {
-  background-color: #363636;
-}
-
-.moreInfo{
-  display: flex;
-  flex-direction: column; /* Organiza los elementos en una columna */
-  margin-top: 0px;
-}
-
-.moreInfo a{
-  color: #1c1c1c;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.moreInfo a:hover{
+.feature i {
+  font-size: 28px;
   color: #e64d11;
 }
 
-.loginError{
-  color: rgb(219, 0, 0);
-  margin: 0px;
+.feature span {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+/* ========== RIGHT SIDE - FORM ========== */
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 40px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 480px;
+  background-color: white;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 10px;
+}
+
+.form-header p {
   font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Form Content */
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c1c1c;
+  margin-left: 5px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 15px;
+  font-size: 20px;
+  color: #999;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 15px 14px 45px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #e64d11;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(230, 77, 17, 0.1);
+}
+
+.input-wrapper input::placeholder {
+  color: #aaa;
+}
+
+/* Error Message */
+.loginError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e64d11;
+  background-color: #fee;
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 0;
+  border-left: 4px solid #e64d11;
+}
+
+.loginError i {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Buttons */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #e64d11 0%, #d43d01 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 77, 17, 0.3);
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 77, 17, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary i {
+  font-size: 20px;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+  padding: 0 15px;
+  color: #999;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Google Button */
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background-color: white;
+  color: #1c1c1c;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-google:hover {
+  border-color: #1c1c1c;
+  background-color: #f9f9f9;
+}
+
+.btn-google img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Form Footer */
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.form-footer a {
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.link-primary {
+  color: #e64d11;
+}
+
+.link-primary:hover {
+  color: #d43d01;
+  text-decoration: underline;
+}
+
+.link-secondary {
+  color: #666;
+}
+
+.link-secondary:hover {
+  color: #1c1c1c;
+  text-decoration: underline;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .form-container {
+    max-width: 500px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .main {
+    overflow-y: auto;
+  }
+
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left {
+    display: flex;
+    min-height: 250px;
+    flex: none;
+  }
+
+  .brand-content {
+    padding: 30px 20px;
+  }
+
+  .brand-text h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .brand-text>p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .brand-features {
+    display: none;
+  }
+
+  .login-right {
+    padding: 20px;
+    min-height: calc(100vh - 250px);
+  }
+
+  .form-container {
+    padding: 30px 20px;
+    box-shadow: none;
+  }
+
+  .form-header h2 {
+    font-size: 24px;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
 }

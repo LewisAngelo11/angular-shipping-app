@@ -1,8 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { RouterLink, RouterOutlet, Router} from '@angular/router';
-import { CommonModule } from '@angular/common';import { initializeApp } from "firebase/app";
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { NotificationService } from '../services/notification.service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDIjO8LB-EXmB11K4LYydDBDFFplHUbFHI",
@@ -29,10 +30,14 @@ export class LoginComponent {
   @ViewChild('username') usernameInput!: ElementRef;
   @ViewChild('password') passwordInput!: ElementRef;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
   mensajeError: string = ''; // Nuevo campo para manejar errores
 
-  login_google(){
+  login_google() {
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -41,26 +46,26 @@ export class LoginComponent {
           // Puedes usar el token si necesitas mandarlo a tu backend
         }
         const user = result.user;
-        alert('Bienvenido ${user.displayName}');
+        this.notificationService.success(`Bienvenido ${user.displayName}`);
         // Redirigir al menú tras el login exitoso
         this.router.navigate(['/menu']);
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   }
 
   login() {
     const usuario = this.usernameInput.nativeElement.value;
     const contrasena = this.passwordInput.nativeElement.value;
 
-    if (!usuario || !contrasena){ // Validar que los campos de las credenciales no estén vacíos
+    if (!usuario || !contrasena) { // Validar que los campos de las credenciales no estén vacíos
       this.mensajeError = 'Por favor ingrese sus credenciales en todos los campos.'
       return;
     }
@@ -79,8 +84,8 @@ export class LoginComponent {
         // Error de autenticacion
         if (error.status === 401) {
           this.mensajeError = error.error.mensaje// Muestra el mensaje de error al iniciar sesión en la página
-        } else{
-          alert('Error en el servidor. Intente más tarde.');
+        } else {
+          this.notificationService.error('Error en el servidor. Intente más tarde.');
         }
       }
     );

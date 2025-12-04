@@ -3,28 +3,29 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { RouterOutlet } from '@angular/router';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @Component({
   selector: 'app-root', // Vincula el componente a una etiqueta HTML <app-root>
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, NotificationComponent],
   templateUrl: './app.component.html', // Ruta del archivo HTML asociado
   styleUrls: ['./app.component.css'] // Ruta(s) del archivo CSS asociado
 })
 export class AppComponent {
-  constructor(private router: Router, private authService: AuthService){}
+  constructor(private router: Router, private authService: AuthService) { }
 
   // Método para verificar si el usuario está autenticado (si el token existe)
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
-  
-  irLogin(){
+
+  irLogin() {
     this.router.navigate(['/login']); // Navega a la ruta '/login'
   }
 
-  miCuenta(){
+  miCuenta() {
     this.router.navigate(['/miCuenta']);
   }
 }

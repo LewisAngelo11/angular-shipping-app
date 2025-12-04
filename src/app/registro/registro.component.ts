@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { response } from 'express';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +20,11 @@ export class RegistroComponent {
   @ViewChild('usuario') usuarioInput!: ElementRef;
   @ViewChild('contraseña') contrasenaInput!: ElementRef;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
 
   register() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,7 +32,7 @@ export class RegistroComponent {
     const nombreRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
     const dominiosValidos = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'icloud.com', 'protonmail.com'];
     const usuarioRegex = /^[a-zA-Z0-9_]{4,20}$/;
-  
+
     // Extraer valores antes de usarlos
     const nombre = this.nombreInput.nativeElement.value.trim();
     const apellido1 = this.apellido1Input.nativeElement.value.trim();
@@ -41,69 +46,69 @@ export class RegistroComponent {
 
     // Calcular la fecha máxima permitida, tener minimo 18 años
     const fechaMinima = new Date(
-     hoy.getFullYear() - 18,
-     hoy.getMonth(),
-     hoy.getDate()
+      hoy.getFullYear() - 18,
+      hoy.getMonth(),
+      hoy.getDate()
     );
 
     // Validar campos vacíos
     if (!nombre || !apellido1 || !apellido2 || !fechaNacimiento || !email || !usuario || !contrasena) {
-      alert('Por favor llene todos los campos del formulario.');
+      this.notificationService.warning('Por favor llene todos los campos del formulario.');
       return;
     }
 
     // Validar nombre y apellidos
     if (!nombreRegex.test(nombre) || !nombreRegex.test(apellido1) || !nombreRegex.test(apellido2)) {
-      alert('Nombre y apellidos solo deben contener letras y espacios.');
+      this.notificationService.warning('Nombre y apellidos solo deben contener letras y espacios.');
       return;
     }
 
     // Validacion sobre el dominio de correo
     const dominioCorreo = email.split('@')[1];
     if (!dominiosValidos.includes(dominioCorreo)) {
-      alert('El correo debe pertenecer a un dominio válido.');
+      this.notificationService.warning('El correo debe pertenecer a un dominio válido.');
       return;
     }
-  
+
     // Validaciones de correo
     if (!emailRegex.test(email)) {
-      alert('Ingrese un correo electrónico válido.');
+      this.notificationService.warning('Ingrese un correo electrónico válido.');
       return;
     }
 
     if (!emailRegex.test(email)) {
-      alert('Ingrese un correo electrónico válido.');
+      this.notificationService.warning('Ingrese un correo electrónico válido.');
       return;
     }
     // validar nombre de usuario
     if (!usuarioRegex.test(usuario)) {
-      alert('El nombre de usuario debe tener entre 4 y 20 caracteres y solo puede contener letras, números o guiones bajos.');
+      this.notificationService.warning('El nombre de usuario debe tener entre 4 y 20 caracteres y solo puede contener letras, números o guiones bajos.');
       return;
     }
-  
+
     // Validaciones de contraseña
     if (contrasena.length < 8) {
-      alert('La contraseña debe tener al menos 8 caracteres.');
+      this.notificationService.warning('La contraseña debe tener al menos 8 caracteres.');
       return;
     }
-  
+
     if (/\s/.test(contrasena)) {
-      alert('La contraseña no debe contener espacios.');
+      this.notificationService.warning('La contraseña no debe contener espacios.');
       return;
     }
-  
+
     //if (!passwordRegex.test(contrasena)) {
-      //alert('La contraseña debe contener al menos una letra y un número para mayor seguridad.');
-      //return;
+    //alert('La contraseña debe contener al menos una letra y un número para mayor seguridad.');
+    //return;
     //}
-  
+
     // Validacion de fecha (que no sea futura)
     const fecha = new Date(fechaNacimiento);
     if (fecha > hoy) {
-      alert('La fecha de nacimiento no puede ser futura.');
+      this.notificationService.warning('La fecha de nacimiento no puede ser futura.');
       return;
     }
-  
+
     // Crear el objeto body
     const body = {
       Nombre: nombre,
@@ -116,23 +121,23 @@ export class RegistroComponent {
     };
 
     if (fechaNacimiento > fechaMinima) {
-      alert('Debes tener al menos 18 años para registrarte.');
+      this.notificationService.warning('Debes tener al menos 18 años para registrarte.');
       return;
     }
-  
+
     // Llamar al servicio
     this.authService.register(body).subscribe(
       (response) => {
         if (response.status === 'success') {
-          alert('Usuario creado exitosamente: ' + response.rol);
+          this.notificationService.success('Usuario creado exitosamente');
           this.router.navigate(['/login']);
         } else {
-          alert('Error al registrar el usuario');
+          this.notificationService.error('Error al registrar el usuario');
         }
       },
       (error) => {
         console.error('Error en el registro:', error);
-        alert('Error en el servidor. Intente más tarde.');
+        this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
   }

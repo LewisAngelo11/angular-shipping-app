@@ -1,19 +1,81 @@
 <main class="main">
-  <div class="backgroundLogin">
-    <div class="photo-bg"></div>
-      <div class="componente">
-        <h1>{{ title }}</h1> <!-- Muestra el título dinámico desde el TypeScript -->
-        <input type="text" #username placeholder="Usuario">
-        <input type="password" #password placeholder="Contraseña">
-        <p *ngIf="mensajeError" class="loginError">{{ mensajeError }}</p>
-        <button (click)="login()"><strong>Iniciar Sesión</strong></button> <!-- Llama al método login -->
-        <div class="accountGoogle">
-          <button (click)="login_google()"><strong>Ingrese con Google</strong><img src="/google-icon.png" id="google-logo"></button>
-        </div>
-        <div class="moreInfo">
-          <a routerLink="/registro">Cree una cuenta</a>
-          <a routerLink="/recuperacion">Olvide mi Contraseña</a>
+  <div class="login-container">
+    <!-- Left Side - Branding & Visual -->
+    <div class="login-left">
+      <div class="photo-bg"></div>
+      <div class="brand-content">
+        <div class="brand-text">
+          <h1>Bienvenido a tu Paquetería</h1>
+          <p>Envíos rápidos, seguros y confiables</p>
+          <div class="brand-features">
+            <div class="feature">
+              <i class='bx bxs-truck'></i>
+              <span>Envíos Express</span>
+            </div>
+            <div class="feature">
+              <i class='bx bx-shield-quarter'></i>
+              <span>Seguro y Confiable</span>
+            </div>
+            <div class="feature">
+              <i class='bx bx-map'></i>
+              <span>Rastreo en Tiempo Real</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- Right Side - Login Form -->
+    <div class="login-right">
+      <div class="form-container">
+        <div class="form-header">
+          <h2>{{ title }}</h2>
+          <p>Ingresa tus credenciales para continuar</p>
+        </div>
+
+        <div class="form-content">
+          <div class="input-group">
+            <label for="username">Usuario</label>
+            <div class="input-wrapper">
+              <i class='bx bx-user'></i>
+              <input type="text" id="username" #username placeholder="Ingresa tu usuario" autocomplete="username">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Contraseña</label>
+            <div class="input-wrapper">
+              <i class='bx bx-lock-alt'></i>
+              <input type="password" id="password" #password placeholder="Ingresa tu contraseña"
+                autocomplete="current-password">
+            </div>
+          </div>
+
+          <p *ngIf="mensajeError" class="loginError">
+            <i class='bx bx-error-circle'></i>
+            {{ mensajeError }}
+          </p>
+
+          <button class="btn-primary" (click)="login()">
+            <strong>Iniciar Sesión</strong>
+            <i class='bx bx-right-arrow-alt'></i>
+          </button>
+
+          <div class="divider">
+            <span>o continúa con</span>
+          </div>
+
+          <button class="btn-google" (click)="login_google()">
+            <img src="/google-icon.png" id="google-logo" alt="Google">
+            <strong>Ingrese con Google</strong>
+          </button>
+
+          <div class="form-footer">
+            <a routerLink="/registro" class="link-primary">Cree una cuenta</a>
+            <a routerLink="/recuperacion" class="link-secondary">Olvidé mi contraseña</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
