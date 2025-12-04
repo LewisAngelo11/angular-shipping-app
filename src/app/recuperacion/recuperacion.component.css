@@ -6,20 +6,30 @@
 
 .componente {
   display: flex;
-  flex-direction: column; /* Organiza los elementos en una columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
-  height: auto; /* Usa el 100% del alto de la ventana */
-  padding: 25px; /* Espacio interno */
-  border-radius: 20px; /* Bordes redondeados */
-  margin: 10px auto; /* Centra el div en el contenedor */
-  background-color: #f9f9f98e; /* Fondo gris claro */
-  backdrop-filter: blur(5px); /* Aplica el desenfoque */
+  flex-direction: column;
+  /* Organiza los elementos en una columna */
+  align-items: center;
+  /* Centra los elementos horizontalmente */
+  justify-content: center;
+  /* Centra los elementos verticalmente */
+  height: auto;
+  /* Usa el 100% del alto de la ventana */
+  padding: 25px;
+  /* Espacio interno */
+  border-radius: 20px;
+  /* Bordes redondeados */
+  margin: 10px auto;
+  /* Centra el div en el contenedor */
+  background-color: #f9f9f98e;
+  /* Fondo gris claro */
+  backdrop-filter: blur(5px);
+  /* Aplica el desenfoque */
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
-  width: 300px; /* Ancho del div */
+  width: 300px;
+  /* Ancho del div */
   gap: 1rem;
 }
-  
+
 .titulo {
   display: flex;
   align-items: center;
@@ -27,19 +37,24 @@
   padding: 10px;
   width: 250px;
 }
-  
+
 .componente label {
   margin-top: 5px;
-  display: block; /* Hace que los labels se apilen verticalmente */
-  margin-bottom: 8px; /* Añade un espacio debajo de los labels */
+  display: block;
+  /* Hace que los labels se apilen verticalmente */
+  margin-bottom: 8px;
+  /* Añade un espacio debajo de los labels */
 }
-  
+
 .componente input {
-  width: 80%; /* Hace que los inputs ocupen el 100% del contenedor */
+  width: 80%;
+  /* Hace que los inputs ocupen el 100% del contenedor */
   padding: 10px;
   border: 10px #000000;
-  background-color: #f9f9f98e; /* Fondo gris claro */
-  backdrop-filter: blur(5px); /* Aplica el desenfoque */
+  background-color: #f9f9f98e;
+  /* Fondo gris claro */
+  backdrop-filter: blur(5px);
+  /* Aplica el desenfoque */
   border-radius: 15px;
   box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
   transition: all 0.2s ease-in;
@@ -64,6 +79,32 @@
   padding: 0;
   bottom: 37px;
   left: 88px;
+}
+
+.email-status {
+  position: relative;
+  bottom: 70px;
+  left: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.email-status i {
+  font-size: 28px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .new-passw {
@@ -94,14 +135,26 @@ button {
   height: 40px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgb(74, 74, 74);
-  transition: all 0.1s ease-in; /* Transición suave para el texto */
+  transition: all 0.1s ease-in;
+  /* Transición suave para el texto */
 }
-  
+
 button:hover {
   background-color: #363636;
 }
 
+button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 
-.credenciales{
+button:disabled:hover {
+  background-color: #666;
+  transform: none;
+}
+
+
+.credenciales {
   width: 80%;
 }

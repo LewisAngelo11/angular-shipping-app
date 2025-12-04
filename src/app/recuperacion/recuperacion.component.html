@@ -1,17 +1,23 @@
 <main class="main">
-    <div class="componente">
-      <div class="titulo">
-        <h2>Recupere su Contraseña</h2>
-      </div>
-      <div class="mail">
-        <input type="email" name="email" #email placeholder="Correo">
-        <button class="Boton"><i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'  ></i></button>
-      </div>
-      <div class="new-passw">
-        <input type="password" name="password1" #password1 placeholder="Nueva Contraseña">
-        <input type="password" name="password2" #password2 placeholder="Confirmar Contraseña">
-      </div>
-      <button (click)="actualizarContrasena()">Cambiar contraseña</button>
+  <div class="componente">
+    <div class="titulo">
+      <h2>Recupere su Contraseña</h2>
     </div>
-  </main>
-  <router-outlet></router-outlet>
+    <div class="mail">
+      <input type="email" name="email" #user placeholder="Correo" (input)="onEmailChange()">
+      <button class="Boton" (click)="verificarCorreo()" type="button">
+        <i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'></i>
+      </button>
+      <div class="email-status" *ngIf="emailVerificado !== null">
+        <i *ngIf="emailVerificado" class='bx bx-check-circle' style='color:#10b981'></i>
+        <i *ngIf="!emailVerificado" class='bx bx-x-circle' style='color:#e64d11'></i>
+      </div>
+    </div>
+    <div class="new-passw">
+      <input type="password" name="password1" #password1 placeholder="Nueva Contraseña">
+      <input type="password" name="password2" #password2 placeholder="Confirmar Contraseña">
+    </div>
+    <button (click)="actualizarContrasena()" [disabled]="!emailVerificado">Cambiar contraseña</button>
+  </div>
+</main>
+<router-outlet></router-outlet>
