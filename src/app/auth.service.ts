@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
 })
 
 export class AuthService {
-  private port_server = '5001'; // Cambiar al puerto del servido si es necesario
+  private port_server = '5002'; // Cambiar al puerto del servido si es necesario
   private ip_server = 'localhost'; // Cambiar la IP del servidor si es necesario
   private urlLogin = `http://${this.ip_server}:${this.port_server}/login`; // URL del procedimiento login
   private urlCrear = `http://${this.ip_server}:${this.port_server}/api/usuario`; // URL del procedimiento crear_usuario
@@ -20,8 +20,9 @@ export class AuthService {
   private urlEliminarUser = `http://${this.ip_server}:${this.port_server}/eliminarUsers`;
   private urlUsuarioActualizar = `http://${this.ip_server}:${this.port_server}/usuario/actualizar`
   private urlConsultarHistorialEnvios = `http://${this.ip_server}:${this.port_server}/usuario/historial`
+  private urlVerificarEmail = `http://${this.ip_server}:${this.port_server}/usuario/verificar-email`
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Login y almacenar el token
   login(usuario: string, contrasena: string): Observable<any> {
@@ -47,7 +48,7 @@ export class AuthService {
     }
     return false; // Retorna false si no hay un token de autenticacion
   }
-  
+
   // Cerrar sesión eliminando el token
   logout(): void {
     localStorage.removeItem('authToken');
@@ -67,49 +68,49 @@ export class AuthService {
     return this.http.post<any>(this.urlCrear, body, { headers });
   }
 
-  EnocntrarCP(body:any): Observable<any>{
+  EnocntrarCP(body: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.urlCotizar,body,{headers})
-  }
-  
-  CotizarPaquete(body:any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.urlCotizarpqte,body,{headers})
+    return this.http.post<any>(this.urlCotizar, body, { headers })
   }
 
-  cambiarContrasena(body:any): Observable<any>{
+  CotizarPaquete(body: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.urlCotizarpqte, body, { headers })
+  }
+
+  cambiarContrasena(body: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<any>(this.urlCambiarContrasena, body, { headers });
   }
 
-  ConsultarUser(): Observable<any>{
+  ConsultarUser(): Observable<any> {
     const token = localStorage.getItem('authToken')
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
     return this.http.get<any>(this.urlConsultarUser, { headers });
   }
 
-  ConsultarHistorialEnvios(): Observable<any>{
+  ConsultarHistorialEnvios(): Observable<any> {
     const token = localStorage.getItem('authToken')
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
     return this.http.get<any>(this.urlConsultarHistorialEnvios, { headers });
   }
 
-  EliminarUser(body:any): Observable<any>{
+  EliminarUser(body: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.urlEliminarUser, body, { headers });
   }
 
-  enviarpaquete(body:any): Observable<any>{
+  enviarpaquete(body: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(this.urlEnvios, body, { headers });
   }
 
   rastrearPaquete(rastreo: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  
+
     // Usar el cuerpo de la solicitud para enviar el número de rastreo
     const body = { Rastreo: rastreo };
-  
+
     // Llamada GET con los parámetros
     return this.http.post<any>(this.urlRastrearPaquete, body, { headers });
   }
@@ -123,6 +124,12 @@ export class AuthService {
     });
 
     return this.http.patch(this.urlUsuarioActualizar, datos, { headers });
-  
+
+  }
+
+  verificarEmail(email: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { Email: email };
+    return this.http.post<any>(this.urlVerificarEmail, body, { headers });
   }
 }
