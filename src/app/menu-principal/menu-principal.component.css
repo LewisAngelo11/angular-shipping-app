@@ -502,6 +502,7 @@ button {
   }
 }
 
+
 /* Tablets (601px - 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
   .notify {
@@ -516,5 +517,52 @@ button {
   .rastreo,
   .tracking {
     width: 80%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+  .paq-mens{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .paq-mens img {
+    position: relative;
+    width: 80%;
+    height: auto;
+    left: 0;
+    margin-top: 15px;
+  }
+
+  .info-paq {
+    width: 100%;
+    left: 0;
+    height: 400px;
+  }
+
+  .more-info-paq-mens{
+    font-size: 14px;
+    height: 150px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .more-info-paq-mens h2{
+    font-size: 18px;
+  }
+
+  .ir-cotizar {
+    width: 88%;
+    top: 10px;
+  }
+
+  .more-services {
+    width: 100%;
   }
 }

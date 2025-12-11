@@ -74,3 +74,32 @@
 .user-logo:hover {
     color: #e64d11;
 }
+
+@media (max-width: 600px) {
+    .navbar .logo {
+        margin-left: 20px;
+    }
+
+    .navbar .menu {
+        display: none;
+    }
+
+    .navbar .auth-button {
+        display: block;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 849px){
+    .navbar .menu {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .menu .preguntas {
+        display: none;
+    }
+
+    .navbar .auth-button {
+        margin-right: 20px;
+    }
+}

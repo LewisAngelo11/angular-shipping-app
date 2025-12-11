@@ -1,125 +1,313 @@
 .main {
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-.backgroundRegistro {
   position: relative;
+  height: 100vh;
   width: 100vw;
-  height: 100vh; /* ✅ cubre todo el viewport */
-  overflow: hidden;
-  /* Combina la imagen con el gradiente correctamente */
-  background-image:
-    linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.966) 0%,
-      rgba(114, 114, 114, 0.588) 20%,
-      rgba(130, 130, 130, 0.407) 70%,
-      rgba(255, 255, 255, 0.785) 100%
-    ),
-    url('/Fondo-registro.jpg'); /* ✅ tu imagen */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; /* ✅ hace que la imagen se escale correctamente */
-}
-
-.componente {
   display: flex;
-  flex-direction: column; /* Organiza los elementos en una columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
-  height: 520px; /* Usa el 100% del alto de la ventana */
-  padding: 20px; /* Espacio interno */
-  border-radius: 20px; /* Bordes redondeados */
-  margin: 10px auto; /* Centra el div en el contenedor */
-  margin-top: 110px;
-  gap: 1rem;
-  background-color: #f9f9f98e; /* Fondo gris claro */
-  backdrop-filter: blur(5px); /* Aplica el desenfoque */
-  width: 380px; /* Ancho del div */
-  font-size: 12px; /* Tamaño de fuente */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
-}
-  
-.componente h1 {
-  margin-bottom: 10px;
-}
-  
-.componente input {
-  display: block; /* Hace que los inputs se apilen verticalmente */
-  width: 90%; /* Hace que los inputs ocupen el 100% del contenedor */
-  height: 30px;
-  padding: 10px;
-  margin: 0;
-  background-color: #f9f9f98e; /* Fondo gris claro */
-  border-radius: 15px;
-  border: 0px;
-  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
-  transition: all 0.2s ease-in;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-input:focus{
-  transform: scale(1.04); /* Aumentar ligeramente el tamaño */
-}
-
-.nombres {
-  justify-content: center; /* Centra en el eje principal (horizontal) */
+.login-container {
+  display: flex;
   width: 100%;
+  height: 100%;
+}
+
+/* ========== LEFT SIDE - BRANDING ========== */
+.login-left {
+  position: relative;
+  flex: 1;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1c1c1c 0%, #363636 100%);
 }
 
-.fecha{
+.photo-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/Fondo-registro.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 60px;
+  max-width: 600px;
+}
+
+.brand-text h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: white;
+}
+
+.brand-text > p {
+  font-size: 20px;
+  margin-bottom: 50px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+}
+
+.brand-features {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(10px);
+}
+
+.feature i {
+  font-size: 28px;
+  color: #e64d11;
+}
+
+.feature span {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+/* ========== RIGHT SIDE - FORM ========== */
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 520px;
+  background-color: white;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.registro-form {
+  max-width: 580px;
+  padding: 35px 30px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+/* Form Content */
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1c1c1c;
+  margin-left: 5px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 15px;
+  font-size: 20px;
+  color: #999;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #e64d11;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(230, 77, 17, 0.1);
+}
+
+.input-wrapper input::placeholder {
+  color: #aaa;
+}
+
+/* Buttons */
+.btn-primary {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-}
-
-.fecha label {
-  font-size: 12px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #1c1c1c;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #e64d11 0%, #d43d01 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  width: 60%;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
-  transition: all 0.1s ease; /* Transición suave para el texto */
-}
-  
-button:hover {
-  background-color: #363636;
-  transform: scale(1.03); /* Aumentar ligeramente el tamaño */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 77, 17, 0.3);
+  margin-top: 5px;
 }
 
-.componente a{
-  margin: 8px; /* Margen del componente */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 77, 17, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary i {
+  font-size: 20px;
+}
+
+/* Form Footer */
+.form-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.registro-footer {
+  justify-content: center;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: #666;
+}
+
+.form-footer a {
+  font-size: 13px;
   text-decoration: none;
-  color: #1c1c1c;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
-.componente a:hover {
+.link-primary {
   color: #e64d11;
 }
 
-#date {
-  width: 100%;
-  margin: 0;
+.link-primary:hover {
+  color: #d43d01;
+  text-decoration: underline;
 }
 
-.credenciales{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+/* Responsive Design */
+@media (max-width: 968px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left {
+    min-height: 300px;
+  }
+
+  .brand-content {
+    padding: 40px;
+  }
+
+  .brand-text h1 {
+    font-size: 36px;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-container {
+    padding: 30px 25px;
+  }
+
+  .brand-content {
+    padding: 30px;
+  }
+
+  .brand-text h1 {
+    font-size: 28px;
+  }
+
+  .brand-text > p {
+    font-size: 16px;
+  }
+
+  .login-right {
+    padding: 20px;
+  }
 }

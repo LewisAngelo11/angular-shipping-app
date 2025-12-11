@@ -1,23 +1,150 @@
+<!-- HTML del componente de registro -->
 <main class="main">
-  <div class="backgroundRegistro">
-    <div class="componente">
-      <h1>{{title}}</h1>
-      <div class="nombres">
-        <input type="text" name="name" placeholder="Nombre" #nombre>
-        <input type="text" name="lastname1" placeholder="Apellido Paterno" #apellido1>
-        <input type="text" name="lastname2" placeholder="Apellido Materno" #apellido2>
+  <div class="login-container">
+    <!-- Left Side - Branding & Visual -->
+    <div class="login-left">
+      <div class="photo-bg"></div>
+      <div class="brand-content">
+        <div class="brand-text">
+          <h1>Únete a Nosotros</h1>
+          <p>Crea tu cuenta y comienza a enviar hoy</p>
+          <div class="brand-features">
+            <div class="feature">
+              <i class='bx bx-user-plus'></i>
+              <span>Registro Rápido</span>
+            </div>
+            <div class="feature">
+              <i class='bx bx-lock-alt'></i>
+              <span>Datos Protegidos</span>
+            </div>
+            <div class="feature">
+              <i class='bx bx-package'></i>
+              <span>Gestiona tus Envíos</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="fecha">
-        <label>Fecha de Nacimiento:</label>
-        <input type="date" name="date" id="date" #fecha>
+    </div>
+
+    <!-- Right Side - Registration Form -->
+    <div class="login-right">
+      <div class="form-container registro-form">
+        <div class="form-header">
+          <h2>{{ title }}</h2>
+          <p>Completa tus datos para crear tu cuenta</p>
+        </div>
+
+        <div class="form-content">
+          <!-- Nombres -->
+          <div class="input-group">
+            <label for="nombre">Nombre</label>
+            <div class="input-wrapper">
+              <i class='bx bx-user'></i>
+              <input 
+                type="text" 
+                id="nombre" 
+                #nombre 
+                placeholder="Tu nombre"
+                autocomplete="given-name">
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="apellido1">Apellido Paterno</label>
+              <div class="input-wrapper">
+                <i class='bx bx-user'></i>
+                <input 
+                  type="text" 
+                  id="apellido1" 
+                  #apellido1 
+                  placeholder="Apellido paterno"
+                  autocomplete="family-name">
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="apellido2">Apellido Materno</label>
+              <div class="input-wrapper">
+                <i class='bx bx-user'></i>
+                <input 
+                  type="text" 
+                  id="apellido2" 
+                  #apellido2 
+                  placeholder="Apellido materno"
+                  autocomplete="family-name">
+              </div>
+            </div>
+          </div>
+
+          <!-- Fecha de Nacimiento -->
+          <div class="input-group">
+            <label for="fecha">Fecha de Nacimiento</label>
+            <div class="input-wrapper">
+              <i class='bx bx-calendar'></i>
+              <input 
+                type="date" 
+                id="fecha" 
+                #fecha
+                autocomplete="bday">
+            </div>
+          </div>
+
+          <!-- Correo Electrónico -->
+          <div class="input-group">
+            <label for="correo">Correo Electrónico</label>
+            <div class="input-wrapper">
+              <i class='bx bx-envelope'></i>
+              <input 
+                type="email" 
+                id="correo" 
+                #correo 
+                placeholder="correo@ejemplo.com"
+                autocomplete="email">
+            </div>
+          </div>
+
+          <!-- Usuario -->
+          <div class="input-group">
+            <label for="usuario">Usuario</label>
+            <div class="input-wrapper">
+              <i class='bx bx-user-circle'></i>
+              <input 
+                type="text" 
+                id="usuario" 
+                #usuario 
+                placeholder="Elige un nombre de usuario"
+                autocomplete="username">
+            </div>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="input-group">
+            <label for="contraseña">Contraseña</label>
+            <div class="input-wrapper">
+              <i class='bx bx-lock-alt'></i>
+              <input 
+                type="password" 
+                id="contraseña" 
+                #contraseña 
+                placeholder="Mínimo 8 caracteres"
+                autocomplete="new-password">
+            </div>
+          </div>
+
+          <!-- Botón de Registro -->
+          <button class="btn-primary" (click)="register()">
+            <strong>Registrar Cuenta</strong>
+            <i class='bx bx-right-arrow-alt'></i>
+          </button>
+
+          <!-- Footer -->
+          <div class="form-footer registro-footer">
+            <span class="footer-text">¿Ya tienes una cuenta?</span>
+            <a routerLink="/login" class="link-primary">Iniciar Sesión</a>
+          </div>
+        </div>
       </div>
-      <input type="email" name="email" placeholder="Correo electrónico" #correo>
-      <div class="credenciales">
-        <input type="text" name="username" placeholder="Usuario" #usuario>
-        <input type="password" name="password" placeholder="Contraseña" #contraseña>
-      </div>
-      <button (click)="register()"><strong>Registrar cuenta</strong></button>
-      <a routerLink="/login">Ya tengo una cuenta</a>
     </div>
   </div>
 </main>
