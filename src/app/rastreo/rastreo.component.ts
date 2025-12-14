@@ -3,10 +3,12 @@ import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';  // Importar CommonModule
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-rastreo',
-  imports: [CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   templateUrl: './rastreo.component.html',
   styleUrl: './rastreo.component.css'
 })
