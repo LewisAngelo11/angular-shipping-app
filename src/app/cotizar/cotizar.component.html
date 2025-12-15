@@ -123,7 +123,20 @@
           </tr>
         </tbody>
       </table>
-      <button (click)="EnviarPaquete()"class="Boton">Hacer envío</button>
+      @if (isAutenticated) {
+        <button 
+          (click)="EnviarPaquete()" class="Boton"
+        >
+          Hacer envío
+        </button>
+      }
+      @else if (!isAutenticated) {
+        <button 
+          (click)="goToLogin()" class="Boton"
+        >
+          Iniciar sesión
+        </button>
+      }
     </div>
   </div>
 </main>

@@ -36,6 +36,7 @@ export class CotizarComponent {
   apellidoMaterno: string = '';
   email: string = '';
   rows: number = 1;
+  isAutenticated = false;
 
   // Arreglo para mantener los datos de cada fila
   rowsData: { peso: string, largo: string, ancho: string, alto: string }[] = [
@@ -89,6 +90,7 @@ export class CotizarComponent {
         );
       }
     }
+    this.isAutenticated = !!localStorage.getItem('authToken');
   }
 
   // Función para solicitar la ubicacion actual del usuario
@@ -108,6 +110,10 @@ export class CotizarComponent {
       // Si la geolocalización no está soportada, se muestra un mensaje en la consola
       console.error('Geolocalización no soportada por el navegador.');
     }
+  }
+
+  goToLogin() {
+    this.router.navigate(['login'])
   }
 
   buscarCPorigen() {

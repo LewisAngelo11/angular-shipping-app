@@ -10,6 +10,12 @@
         <a class="edit-name" (click)="habilitarEdicion('edit-name')"><i class='bx bxs-edit' ></i></a>
         <a class="edit-mail" (click)="confirmarEdicion('edit-name')" *ngIf="edicion.name"><i class='bx bx-check'></i></a>
       </div>
+      <label for="telefono">Teléfono:</label>
+      <div class="phone">
+        <input type="text" id="telefono" [(ngModel)]="telefono" [disabled]="!edicion.phone">
+        <a class="edit-phone" (click)="habilitarEdicion('edit-phone')"><i class='bx bxs-edit'></i></a>
+        <a class="edit-phone" (click)="confirmarEdicion('edit-phone')" *ngIf="edicion.phone"><i class='bx bx-check'></i></a>
+      </div>
       <label for="email">Correo:</label>
       <div class="mail">
         <input type="text" id="email" [(ngModel)]="email" [disabled]="!edicion.mail" #Correo>
@@ -37,14 +43,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let envio of envios; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ envio.Fecha_Envio }}</td>
-            <td>{{ envio.Codigo_Rastreo }}</td>
-            <td>{{ envio.Origen }}</td>
-            <td>{{ envio.Destino }}</td>
-            <td>{{ envio.Estatus }}</td>
-          </tr>
+          @for (envio of envios; track $index) {
+            <tr>
+              <td>{{ $index + 1}}</td>
+              <td>{{ envio.Fecha_Envio }}</td>
+              <td>{{ envio.Codigo_Rastreo }}</td>
+              <td>{{ envio.Origen }}</td>
+              <td>{{ envio.Destino }}</td>
+              <td>{{ envio.Estatus }}</td>
+            </tr>
+          }
+          @empty {
+            <tr>
+              <td colspan="6">Sin envíos realizados</td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
@@ -58,6 +71,3 @@
     </div>
   </div>
 </main>
-
-  
-

@@ -18,7 +18,8 @@ export class CuentaComponent {
   edicion = {
     name: false,
     mail: false,
-    user: false
+    user: false,
+    phone: false,
   };
 
   envios: Envio[] = [];
@@ -31,6 +32,7 @@ export class CuentaComponent {
   apellidoPaterno: string = '';
   apellidoMaterno: string = '';
   email: string = '';
+  telefono: string = '';
   username: string = '';
   password: string = '';
   @ViewChild('Contraseña') Contraseña!: ElementRef;
@@ -56,6 +58,7 @@ export class CuentaComponent {
         this.apellidoMaterno = perfil.Apellido2;
         this.email = perfil.Email;
         this.username = perfil.User;
+        this.telefono = perfil.Telefono;
       },
       error => {
         console.error("Error al obtener el perfil:", error);
@@ -74,14 +77,12 @@ export class CuentaComponent {
     this.edicion.name = false;
     this.edicion.mail = false;
     this.edicion.user = false;
+    this.edicion.phone = false;
 
-    if (id === 'edit-name') {
-      this.edicion.name = true;
-    } else if (id === 'edit-mail') {
-      this.edicion.mail = true;
-    } else if (id === 'edit-user') {
-      this.edicion.user = true;
-    }
+    if (id === 'edit-name') this.edicion.name = true;
+    else if (id === 'edit-mail') this.edicion.mail = true;
+    else if (id === 'edit-user') this.edicion.user = true;
+    else if (id === 'edit-phone') this.edicion.phone = true;
   }
 
   // Funcion para desabilitar los inputs (Proximamente se implementará el metodo PATCH)
@@ -90,28 +91,27 @@ export class CuentaComponent {
 
     if (id === 'edit-name') {
       this.edicion.name = false;
-
-      // Solo agrega si hay cambios o siempre si lo deseas
       datos.Nombre = this.nombre;
       datos.Apellido1 = this.apellidoPaterno;
       datos.Apellido2 = this.apellidoMaterno;
+
     } else if (id === 'edit-mail') {
       this.edicion.mail = false;
       datos.Email = this.email;
+
     } else if (id === 'edit-user') {
       this.edicion.user = false;
-      datos.Usuario = this.username
+      datos.Usuario = this.username;
+
+    } else if (id === 'edit-phone') {
+      this.edicion.phone = false;
+      datos.Telefono = this.telefono;
     }
 
-    // Llamar al servicio si hay al menos un campo
     if (Object.keys(datos).length > 0) {
       this.authService.actualizarDatosUsuario(datos).subscribe({
-        next: (response) => {
-          console.log('Datos actualizados:', response);
-        },
-        error: (error) => {
-          console.error('Error al actualizar:', error);
-        }
+        next: () => this.notificationService.success('Datos actualizados'),
+        error: () => this.notificationService.error('Error al actualizar')
       });
     }
   }

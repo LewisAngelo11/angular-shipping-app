@@ -16,6 +16,7 @@ export class RegistroComponent {
   @ViewChild('apellido1') apellido1Input!: ElementRef;
   @ViewChild('apellido2') apellido2Input!: ElementRef;
   @ViewChild('fecha') fechaInput!: ElementRef;
+  @ViewChild('telefono') telefonoInput!: ElementRef;
   @ViewChild('correo') correoInput!: ElementRef;
   @ViewChild('usuario') usuarioInput!: ElementRef;
   @ViewChild('contraseña') contrasenaInput!: ElementRef;
@@ -38,12 +39,13 @@ export class RegistroComponent {
     const apellido1 = this.apellido1Input.nativeElement.value.trim();
     const apellido2 = this.apellido2Input.nativeElement.value.trim();
     const fechaNacimientoStr = this.fechaInput.nativeElement.value;
+    const telefono  = this.telefonoInput.nativeElement.value;
     const email = this.correoInput.nativeElement.value.trim();
     const usuario = this.usuarioInput.nativeElement.value.trim();
     const contrasena = this.contrasenaInput.nativeElement.value;
 
     // Validar campos vacíos
-    if (!nombre || !apellido1 || !apellido2 || !fechaNacimientoStr || !email || !usuario || !contrasena) {
+    if (!nombre || !apellido1 || !apellido2 || !fechaNacimientoStr || !telefono || !email || !usuario || !contrasena) {
       this.notificationService.warning('Por favor llene todos los campos del formulario.');
       return;
     }
@@ -121,6 +123,7 @@ export class RegistroComponent {
       Apellido1: apellido1,
       Apellido2: apellido2,
       Fecha_Nacimiento: fechaNacimientoStr,
+      Telefono: telefono,
       Email: email,
       Usuario: usuario,
       Contrasena: contrasena

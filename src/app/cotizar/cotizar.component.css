@@ -321,6 +321,12 @@ input {
 .Boton:hover {
   background-color: #e64d11;
 }
+
+.Boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
   
 .paquete-row {
   margin-top: 20px;
