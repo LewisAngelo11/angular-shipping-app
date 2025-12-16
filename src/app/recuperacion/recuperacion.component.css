@@ -1,160 +1,366 @@
 .main {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 50px 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  padding: 20px;
 }
 
 .componente {
-  display: flex;
-  flex-direction: column;
-  /* Organiza los elementos en una columna */
-  align-items: center;
-  /* Centra los elementos horizontalmente */
-  justify-content: center;
-  /* Centra los elementos verticalmente */
-  height: auto;
-  /* Usa el 100% del alto de la ventana */
-  padding: 25px;
-  /* Espacio interno */
+  background: white;
   border-radius: 20px;
-  /* Bordes redondeados */
-  margin: 10px auto;
-  /* Centra el div en el contenedor */
-  background-color: #f9f9f98e;
-  /* Fondo gris claro */
-  backdrop-filter: blur(5px);
-  /* Aplica el desenfoque */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.816);
-  width: 300px;
-  /* Ancho del div */
-  gap: 1rem;
-}
-
-.titulo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  width: 250px;
-}
-
-.componente label {
-  margin-top: 5px;
-  display: block;
-  /* Hace que los labels se apilen verticalmente */
-  margin-bottom: 8px;
-  /* Añade un espacio debajo de los labels */
-}
-
-.componente input {
-  width: 80%;
-  /* Hace que los inputs ocupen el 100% del contenedor */
-  padding: 10px;
-  border: 10px #000000;
-  background-color: #f9f9f98e;
-  /* Fondo gris claro */
-  backdrop-filter: blur(5px);
-  /* Aplica el desenfoque */
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.816);
-  transition: all 0.2s ease-in;
-}
-
-.mail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
   width: 100%;
+  animation: slideIn 0.3s ease-out;
 }
 
-.mail button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  padding: 0;
-  bottom: 37px;
-  left: 88px;
-}
-
-.email-status {
-  position: relative;
-  bottom: 70px;
-  left: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.email-status i {
-  font-size: 28px;
-  animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translateY(-20px);
   }
 
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.titulo h2 {
+  color: #1c1c1c;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.subtitulo {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Steps Container */
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Groups */
+.mail-input-group,
+.code-input-group,
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c1c1c;
+  margin-left: 5px;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 15px;
+  font-size: 20px;
+  color: #999;
+  pointer-events: none;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding: 14px 15px 14px 45px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.input-with-icon input:focus {
+  outline: none;
+  border-color: #e64d11;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(230, 77, 17, 0.1);
+}
+
+/* Email Sent Info Card */
+.email-sent-info {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.email-sent-info i {
+  font-size: 48px;
+  color: #10b981;
+  margin-bottom: 10px;
+}
+
+.email-sent-info p {
+  margin: 5px 0;
+  color: #1c1c1c;
+  font-size: 14px;
+}
+
+.email-sent-info strong {
+  color: #e64d11;
+  font-size: 16px;
+  display: block;
+  margin: 10px 0;
+  word-break: break-all;
+}
+
+/* Success Info Card (Paso 3) */
+.success-info {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.success-info i {
+  font-size: 56px;
+  color: #10b981;
+  margin-bottom: 10px;
+  animation: checkPop 0.5s ease-out;
+}
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
     transform: scale(1);
   }
 }
 
-.new-passw {
+.success-info p {
+  margin: 8px 0;
+  color: #1c1c1c;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.success-info .small-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Button Links */
+.btn-link {
+  background: transparent;
+  color: #e64d11;
+  border: none;
+  padding: 5px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+  width: auto;
+  height: auto;
+  box-shadow: none;
+}
+
+.btn-link:hover {
+  background: transparent;
+  color: #d43d01;
+}
+
+.btn-link-simple {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: #666;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
   width: 100%;
-  gap: 1rem;
+  transition: all 0.3s ease;
 }
 
-.mail input,
-.new-passw input {
-  width: 90%;
-  position: relative;
-  height: 40px;
-  border-radius: 20px;
+.btn-link-simple:hover {
+  background: transparent;
+  color: #e64d11;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #1c1c1c;
+.btn-link-simple i {
+  font-size: 18px;
+}
+
+/* Code Input Special Styling */
+.code-container input {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 10px;
+  font-family: 'Courier New', monospace;
+  padding: 18px 15px;
+}
+
+/* Password Inputs */
+.password-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #e64d11 0%, #d43d01 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  width: 70%;
-  height: 40px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgb(74, 74, 74);
-  transition: all 0.1s ease-in;
-  /* Transición suave para el texto */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 77, 17, 0.3);
+  width: 100%;
+  min-height: 50px;
 }
 
-button:hover {
-  background-color: #363636;
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 77, 17, 0.4);
 }
 
-button:disabled {
-  background-color: #666;
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  color: #e64d11;
+  border: 2px solid #e64d11;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  min-height: 45px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e64d11;
+  color: white;
+}
+
+.btn-secondary:disabled {
+  border-color: #ccc;
+  color: #999;
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-button:disabled:hover {
-  background-color: #666;
-  transform: none;
+.btn-secondary:disabled:hover {
+  background: white;
+  color: #999;
 }
 
+/* Loading Spinner */
+.bx-spin {
+  animation: spin 1s linear infinite;
+}
 
-.credenciales {
-  width: 80%;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Step Transitions */
+.step {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .componente {
+    padding: 30px 20px;
+  }
+
+  .titulo h2 {
+    font-size: 24px;
+  }
+
+  .subtitulo {
+    font-size: 13px;
+  }
+
+  .code-container input {
+    font-size: 24px;
+    letter-spacing: 8px;
+  }
+
+  .email-sent-info strong,
+  .success-info p {
+    font-size: 14px;
+  }
 }

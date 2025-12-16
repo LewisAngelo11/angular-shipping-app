@@ -132,4 +132,32 @@ export class AuthService {
     const body = { Email: email };
     return this.http.post<any>(this.urlVerificarEmail, body, { headers });
   }
+
+  solicitarCodigoRecuperacion(email: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { Email: email };
+    const urlSolicitarCodigo = `http://${this.ip_server}:${this.port_server}/usuario/solicitar-codigo`;
+    return this.http.post<any>(urlSolicitarCodigo, body, { headers });
+  }
+
+  verificarCodigoRecuperacion(email: string, codigo: string, nuevaContrasena: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = {
+      Email: email,
+      Codigo: codigo,
+      NuevaContrasena: nuevaContrasena
+    };
+    const urlVerificarCodigo = `http://${this.ip_server}:${this.port_server}/usuario/verificar-codigo`;
+    return this.http.post<any>(urlVerificarCodigo, body, { headers });
+  }
+
+  validarCodigoSolo(email: string, codigo: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = {
+      Email: email,
+      Codigo: codigo
+    };
+    const urlValidarCodigo = `http://${this.ip_server}:${this.port_server}/usuario/validar-codigo`;
+    return this.http.post<any>(urlValidarCodigo, body, { headers });
+  }
 }

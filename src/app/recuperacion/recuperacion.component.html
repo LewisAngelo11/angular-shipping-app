@@ -2,22 +2,96 @@
   <div class="componente">
     <div class="titulo">
       <h2>Recupere su Contraseña</h2>
+      <p class="subtitulo">{{ stepMessage }}</p>
     </div>
-    <div class="mail">
-      <input type="email" name="email" #user placeholder="Correo" (input)="onEmailChange()">
-      <button class="Boton" (click)="verificarCorreo()" type="button">
-        <i class='bx bx-arrow-back bx-rotate-180' style='color:#ffffff'></i>
-      </button>
-      <div class="email-status" *ngIf="emailVerificado !== null">
-        <i *ngIf="emailVerificado" class='bx bx-check-circle' style='color:#10b981'></i>
-        <i *ngIf="!emailVerificado" class='bx bx-x-circle' style='color:#e64d11'></i>
+
+    <!-- PASO 1: Ingresar Email -->
+    <div class="step step-1" *ngIf="currentStep === 1">
+      <div class="mail-input-group">
+        <label for="email">Correo Electrónico</label>
+        <div class="input-with-icon">
+          <i class='bx bx-envelope'></i>
+          <input type="email" id="email" name="email" #emailInput placeholder="ejemplo@correo.com"
+            (input)="onEmailChange()">
+        </div>
       </div>
+      <button class="btn-primary" (click)="enviarCodigo()" [disabled]="enviandoCodigo">
+        <span *ngIf="!enviandoCodigo">Enviar Código de Verificación</span>
+        <span *ngIf="enviandoCodigo">
+          <i class='bx bx-loader-alt bx-spin'></i> Enviando...
+        </span>
+      </button>
     </div>
-    <div class="new-passw">
-      <input type="password" name="password1" #password1 placeholder="Nueva Contraseña">
-      <input type="password" name="password2" #password2 placeholder="Confirmar Contraseña">
+
+    <!-- PASO 2: Ingresar Código (SOLO guardarlo, no verificar) -->
+    <div class="step step-2" *ngIf="currentStep === 2">
+      <div class="email-sent-info">
+        <i class='bx bx-mail-send'></i>
+        <p>Hemos enviado un código de verificación a:</p>
+        <strong>{{ emailUsuario }}</strong>
+        <button class="btn-link" (click)="volverPaso1()">Cambiar correo</button>
+      </div>
+
+      <div class="code-input-group">
+        <label for="codigo">Código de Verificación (6 dígitos)</label>
+        <div class="input-with-icon code-container">
+          <i class='bx bx-key'></i>
+          <input type="text" id="codigo" name="codigo" #codigoInput placeholder="000000" maxlength="6"
+            (input)="onCodigoInput($event)">
+        </div>
+      </div>
+
+      <button class="btn-primary" (click)="verificarCodigo()" [disabled]="verificandoCodigo">
+        <span *ngIf="!verificandoCodigo">Verificar Código</span>
+        <span *ngIf="verificandoCodigo">
+          <i class='bx bx-loader-alt bx-spin'></i> Verificando...
+        </span>
+      </button>
+
+      <button class="btn-secondary" (click)="reenviarCodigo()" [disabled]="!puedeReenviar">
+        <i class='bx bx-refresh'></i>
+        <span *ngIf="puedeReenviar">Reenviar Código</span>
+        <span *ngIf="!puedeReenviar">Espera {{ tiempoRestante }}s para reenviar</span>
+      </button>
     </div>
-    <button (click)="actualizarContrasena()" [disabled]="!emailVerificado">Cambiar contraseña</button>
+
+    <!-- PASO 3: Nueva Contraseña (AQUÍ se verifica código + cambia contraseña) -->
+    <div class="step step-3" *ngIf="currentStep === 3">
+      <div class="success-info">
+        <i class='bx bx-check-circle'></i>
+        <p>¡Código verificado correctamente!</p>
+        <p class="small-text">Ahora crea una nueva contraseña segura</p>
+      </div>
+
+      <div class="password-inputs">
+        <div class="input-group">
+          <label for="password1">Nueva Contraseña</label>
+          <div class="input-with-icon">
+            <i class='bx bx-lock-alt'></i>
+            <input type="password" id="password1" name="password1" #password1 placeholder="Mínimo 8 caracteres">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="password2">Confirmar Contraseña</label>
+          <div class="input-with-icon">
+            <i class='bx bx-lock-alt'></i>
+            <input type="password" id="password2" name="password2" #password2 placeholder="Repite la contraseña">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" (click)="cambiarContrasena()" [disabled]="cambiandoContrasena">
+        <span *ngIf="!cambiandoContrasena">Cambiar Contraseña</span>
+        <span *ngIf="cambiandoContrasena">
+          <i class='bx bx-loader-alt bx-spin'></i> Cambiando...
+        </span>
+      </button>
+
+      <button class="btn-link-simple" (click)="volverPaso2()">
+        <i class='bx bx-arrow-back'></i> Volver a ingresar código
+      </button>
+    </div>
   </div>
 </main>
 <router-outlet></router-outlet>
