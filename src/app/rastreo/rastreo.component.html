@@ -46,12 +46,34 @@
       </div>
     </div>
     <div *ngIf="contenidoVisible" class="DetalleEnvio">
-      <h2>Detalle del Envío</h2>
-      <p><strong>Número de Envío:</strong> {{ idEnvio }}</p>
-      <p><strong>Número de Paquetes:</strong> {{ idPaquete }}</p>
-      <p><strong>Estatus:</strong> {{ estatus }}</p>
-      <p><strong>Remitente:</strong> {{ remitente }}</p>
-      <p><strong>Destinatario:</strong> {{ destinatario }}</p>
+      <div class="detalle-header">
+        <h2>Detalle del Envío</h2>
+        <span class="envio-id">Número de Envío #{{ idEnvio }}</span>
+      </div>
+
+      <div class="detalle-grid">
+        <!-- Datos del envío -->
+        <div class="detalle-card">
+          <h3>📦 Datos del envío</h3>
+          <p><strong>Paquetes:</strong> {{ idPaquete }}</p>
+          <p><strong>Estatus:</strong> {{ estatus }}</p>
+          <p><strong>Entrega estimada:</strong> {{ fechaEntrega | date:'longDate' }}</p>
+        </div>
+
+        <!-- Personas -->
+        <div class="detalle-card">
+          <h3>👤 Personas</h3>
+          <p><strong>Remitente:</strong> {{ remitente }}</p>
+          <p><strong>Destinatario:</strong> {{ destinatario }}</p>
+        </div>
+      </div>
+
+      <!-- Direcciones -->
+      <div class="detalle-direcciones">
+        <h3>📍 Direcciones</h3>
+        <p><strong>Origen:</strong> {{ direccionOrigen }}</p>
+        <p><strong>Destino:</strong> {{ direccionDestino }}</p>
+      </div>
     </div>
   </div>
 </main>

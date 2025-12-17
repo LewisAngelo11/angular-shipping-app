@@ -24,6 +24,9 @@ export class RastreoComponent {
   destinatario: string | null = null;
   status: string = 'DESCONOCIDO'; // Aquí se guarda el estado actual del paquete
   mensajeError: string | null = null; // Nuevo campo para manejar errores
+  fechaEntrega: string | null = null;
+  direccionOrigen: string | null = null;
+  direccionDestino: string | null = null;
 
   // Este metodo se ejecuta en cuanto se carga el componente
   ngOnInit(): void {
@@ -49,14 +52,16 @@ export class RastreoComponent {
     this.authService.rastrearPaquete(rastreoLimpio).subscribe(
       (response) => {
         if (response.status === 'success') {
-          this.contenidoVisible = !this.contenidoVisible;
+          this.contenidoVisible = true;
           this.idEnvio = response.id_Envio;
           this.idPaquete = response.id_Paquete;
           this.estatus = response.Estatus;
           this.remitente = response.Remitente;
           this.destinatario = response.Destinatario;
+          this.fechaEntrega = response.Fecha_Entrega;
+          this.direccionOrigen = response.Direccion_Origen;
+          this.direccionDestino = response.Direccion_Destino;
           this.status = response.Estatus;
-          console.log(this.status); // Verifica el valor de status
         }
       },
       (error) => {

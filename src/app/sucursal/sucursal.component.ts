@@ -1,16 +1,21 @@
-import { Component, Inject, signal } from '@angular/core';
+import { Component, Inject, signal, viewChild, viewChildren } from '@angular/core';
 import type { Location } from '../models/location';
-import { GoogleMap } from '@angular/google-maps';
+import { GoogleMap, MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-sucursal',
-  imports: [GoogleMap],
+  imports: [GoogleMap, MapAdvancedMarker, MapInfoWindow, HeaderComponent, FooterComponent],
   templateUrl: './sucursal.component.html',
   styleUrl: './sucursal.component.css'
 })
 export class SucursalComponent {
+
+  infoWindow = viewChild.required(MapInfoWindow);
+  markerReference = viewChildren(MapAdvancedMarker);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
@@ -51,8 +56,26 @@ export class SucursalComponent {
     });
   }
 
+  goToPlace(location: Location, position: number){
+    const markers = this.markerReference();
+    const markerRef = markers[position];
+
+    this.openInfoWindow(location, markerRef)
+  }
+
+  // Funcion para abrir la pestaña de infrmación del marker seleccionado
+  openInfoWindow(location: Location, marker: MapAdvancedMarker) {
+    console.log('Marker clicked:', location)
+    const contenido = `
+      <p><i class='bx bx-package' style="font-size: 40px; margin: 10px 10px;"></i></p>
+      <h2 class="font-bold text-xl" style="margin: 10px 10px">${location.name}</h2>
+      <p style="margin: 10px 10px">${location.description}</p>
+      `;
+    this.infoWindow().open(marker, false, contenido);
+  }
+
   center = signal<google.maps.LatLngLiteral>({ lat: 0, lng: 0 })
-  zoom = signal(13)
+  zoom = signal(14)
 
   $locations = signal<Location[]>([
     {
@@ -72,16 +95,23 @@ export class SucursalComponent {
     {
       id: 3,
       name: 'Sucursal Campeon Los Mochis',
-      description: 'Description 3',
-      latitude: 0,
-      longitude: 0,
+      description: 'Adolfo López Mateos, Blvd. Juan de Dios Bátiz y, 81200 Los Mochis, Sin.',
+      latitude: 25.801682,
+      longitude: -108.985904,
     },
     {
       id: 4,
+      name: 'Sucursal Norte',
+      description: 'Plaza Viñedos, Blvd. Antonio Rosales 2211, Viñedos, 81228 Los Mochis, Sin.',
+      latitude: 25.81678452,
+      longitude: -108.98279517,
+    },
+    {
+      id: 5,
       name: 'Sucursal Sur',
-      description: 'Description 4',
-      latitude: 0,
-      longitude: 0,
+      description: 'Blvrd Pedro Anaya No. 805 Poniente, Ejido Francisco Villa, 81278 Los Mochis, Sin.',
+      latitude: 25.7620389,
+      longitude: -108.995824,
     },
   ]);
 }

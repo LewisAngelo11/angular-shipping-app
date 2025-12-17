@@ -1,7 +1,8 @@
+<app-header></app-header>
 <div class="principal-container">
     <div class="locations">
         @for(location of $locations(); track location){
-            <div class="location-contnent">
+            <div class="location-contnent" (click)="goToPlace(location, $index)">
                 <div class="location-info">
                     <dt class="name-location">{{ location.name }}</dt>
                     <dt class="description-location">{{ location.description }}</dt>
@@ -9,15 +10,23 @@
             </div>
         }
     </div>
-    <div style="height: 600px; width: 100%;">
+    <div style="height: 700px; width: 100%;">
         <div class="map">
             <google-map
+            mapId="7803dc2bff402fb88d8d5539"
             [height]="'100%'"
             [width]="'100%'"
             [zoom]="zoom()"
             [center]="center()">
+            @for (location of $locations(); track location) {
+                <map-advanced-marker
+                    #marker="mapAdvancedMarker"
+                    [position]="{ lat: location.latitude, lng: location.longitude }"
+                    (mapClick)="openInfoWindow(location, marker)"/>
+            }
+            <map-info-window/>
         </google-map>
         </div>
     </div>
 </div>
-
+<app-footer></app-footer>

@@ -83,22 +83,33 @@
 }
 
 .remitente-destinatario {
+  display: flex;
+  padding: 30px;
+  flex-direction: row;
   gap: 3rem;
+  justify-content: space-between;
   align-items: center;
 }
 
 .CP {
+  display: flex;
   flex-direction: column;
+}
+
+.Data-container-cp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .OrigenComponent,
 .DestinoComponent {
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
   border: none;
   width: 100%;
   padding: 10px 20px;
-  gap: 1rem;
 }
 
 .RemitenteComponent,
@@ -106,7 +117,7 @@
   display: flex;
   flex-direction: column;
   border: none;
-  width: 250px;
+  width: 350px;
   margin: 10px;
   gap: 10px;
 }
@@ -280,6 +291,7 @@ label {
 .origen-info,
 .destino-info {
   display: flex;
+  flex-direction: column;
   align-items: start;
   justify-content: center;
   gap: 10px;
@@ -289,7 +301,7 @@ label {
 
 .origen-info input,
 .destino-info input {
-  width: 190px;
+  width: 100%;
   border-radius: 0;
   box-shadow: none;
   background-color: transparent;
@@ -382,6 +394,37 @@ table .total-servicio {
   display: none;
 }
 
+/* Estilos para el input de dirección */
+.input-direccion {
+  height: 35px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.581);
+  border-radius: 20px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-direccion:focus {
+  outline: none;
+  box-shadow: 0px 0px 15px rgba(230, 77, 17, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .input-direccion {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .input-direccion {
+    width: 100%;
+  }
+}
+
 /* Telefonos pequeños (hasta 600px) */
 @media (max-width: 600px) {
   .main {
@@ -415,6 +458,7 @@ table .total-servicio {
 
   .OrigenComponent,
   .DestinoComponent {
+    display: flex;
     flex-direction: column;
     align-items: start;
     gap: 0;
@@ -673,6 +717,41 @@ table .total-servicio {
   
   .label-dimensiones-movil {
     display: flex;
+  }
+}
+
+.select-asentamiento {
+  height: 35px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 10px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.581);
+  border-radius: 20px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.select-asentamiento:focus {
+  outline: none;
+  box-shadow: 0px 0px 15px rgba(230, 77, 17, 0.6);
+}
+
+.select-asentamiento option {
+  padding: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .select-asentamiento {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .select-asentamiento {
+    width: 100%;
   }
 }
 

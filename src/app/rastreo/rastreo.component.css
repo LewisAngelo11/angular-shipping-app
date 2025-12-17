@@ -91,7 +91,7 @@ button:hover {
 /* Contenedor principal */
 .more-info{
   padding: 20px;
-  height: 500px;
+  height: 100%;
   background-color: white;
 
   display: flex;
@@ -173,19 +173,73 @@ button:hover {
 }
 
 
-.DetalleEnvio{
-  margin-top: 20px;
-  width: 50%;
-  height: 200px;
+.DetalleEnvio {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
-  gap: 1vh;
-  text-align: left;
-  align-items: flex-start;
+  gap: 25px;
+}
+
+/* Header */
+.detalle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.detalle-header h2 {
+  margin: 0;
+}
+
+.envio-id {
+  font-size: 14px;
+  color: #666;
+  font-weight: bold;
+}
+
+/* Grid principal */
+.detalle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Tarjetas */
+.detalle-card {
+  background: #f7f7f7;
+  border-radius: 10px;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px gray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detalle-card h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #1c1c1c;
+}
+
+/* Direcciones */
+.detalle-direcciones {
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detalle-direcciones h3 {
+  margin-bottom: 8px;
 }
 
 .error {

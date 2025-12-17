@@ -30,13 +30,18 @@ export class CotizarComponent {
   txtIVA = "";
   txtCosto = "";
   txtDistancia = "";
+  txtFechaEntrega = "";
   // Propiedades para los datos del usuario
   nombre: string = '';
   apellidoPaterno: string = '';
   apellidoMaterno: string = '';
+  telefono: string = '';
   email: string = '';
   rows: number = 1;
   isAutenticated = false;
+
+  asentamientosOrigen: string[] = [];
+  asentamientosDestino: string[] = [];
 
   // Arreglo para mantener los datos de cada fila
   rowsData: { peso: string, largo: string, ancho: string, alto: string }[] = [
@@ -48,22 +53,27 @@ export class CotizarComponent {
   @ViewChild('Municipio') Mun!: ElementRef;
   @ViewChild('Ciudad') CD!: ElementRef;
   @ViewChild('Estado') Entidad!: ElementRef;
+  @ViewChild('AsentamientoOrigen') AsentamientoOrigen!: ElementRef;
+  @ViewChild('DireccionOrigen') DireccionOrigen!: ElementRef;
   // Inputs de Destino
   @ViewChild('CPD') CPD!: ElementRef;
   @ViewChild('MunicipioD') MunD!: ElementRef;
   @ViewChild('EstadoD') EntidadD!: ElementRef;
   @ViewChild('CiudadD') CDD!: ElementRef;
+  @ViewChild('AsentamientoDestino') AsentamientoDestino!: ElementRef;
+  @ViewChild('DireccionDestino') DireccionDestino!: ElementRef;
   // Inputs del Remitente
   @ViewChild('nombreR') NombreR!: ElementRef;
   @ViewChild('ape1R') Apellido1R!: ElementRef;
   @ViewChild('ape2R') Apellido2R!: ElementRef;
+  @ViewChild('phoneR') TeledonoR!: ElementRef;
   @ViewChild('emailR') EmailR!: ElementRef;
   // Inputs del Destinatario
   @ViewChild('nombreD') NombreD!: ElementRef;
   @ViewChild('ape1D') Apellido1D!: ElementRef;
   @ViewChild('ape2D') Apellido2D!: ElementRef;
+  @ViewChild('phoneD') TelefonoD!: ElementRef;
   @ViewChild('emailD') EmailD!: ElementRef;
-  @ViewChild('fechaR') FechaR!: ElementRef;
   @ViewChild('Tarifa') Tarifa!: ElementRef;
 
   constructor(
@@ -82,6 +92,7 @@ export class CotizarComponent {
             this.nombre = perfil.Nombre;
             this.apellidoPaterno = perfil.Apellido1;
             this.apellidoMaterno = perfil.Apellido2;
+            this.telefono = perfil.Telefono;
             this.email = perfil.Email;
           },
           error => {
@@ -124,16 +135,23 @@ export class CotizarComponent {
     this.authService.EnocntrarCP(body).subscribe(
       (response) => {
         if (response.status === 'success') {
-          this.Mun.nativeElement.value = response.municipio
-          this.CD.nativeElement.value = response.localidad
-          this.Entidad.nativeElement.value = response.entidad
+          this.Mun.nativeElement.value = response.municipio;
+          this.CD.nativeElement.value = response.localidad;
+          this.Entidad.nativeElement.value = response.entidad;
+          
+          // Aqui carga los asentamientos relacionados a ese CP de origen
+          this.asentamientosOrigen = response.asentamientos || [];
+          
+          console.log(`${this.asentamientosOrigen.length} asentamientos cargados`);
         } else {
           this.notificationService.error('Error al buscar el código postal');
+          this.asentamientosOrigen = []; // Limpiar si hay error
         }
       },
       (error) => {
         console.error('Error en el inicio de sesión:', error);
         this.notificationService.error('Error en el servidor. Intente más tarde.');
+        this.asentamientosOrigen = [];
       }
     );
   }
@@ -146,17 +164,23 @@ export class CotizarComponent {
     this.authService.EnocntrarCP(body).subscribe(
       (response) => {
         if (response.status === 'success') {
-          //alert('datos obtenidos exitosamente: ' + response.rol);
-          this.MunD.nativeElement.value = response.municipio
-          this.CDD.nativeElement.value = response.localidad
-          this.EntidadD.nativeElement.value = response.entidad
+          this.MunD.nativeElement.value = response.municipio;
+          this.CDD.nativeElement.value = response.localidad;
+          this.EntidadD.nativeElement.value = response.entidad;
+          
+          // Aqui carga los asentamientos relacionados al CP de destino
+          this.asentamientosDestino = response.asentamientos || [];
+          
+          console.log(`${this.asentamientosDestino.length} asentamientos cargados`);
         } else {
           this.notificationService.error('Error al buscar el código postal');
+          this.asentamientosDestino = [];
         }
       },
       (error) => {
         console.error('Error en el inicio de sesión:', error);
         this.notificationService.error('Error en el servidor. Intente más tarde.');
+        this.asentamientosDestino = [];
       }
     );
   }
@@ -176,7 +200,6 @@ export class CotizarComponent {
   }
 
   enviarDatos() {
-    // Ejemplo de envío al backend si deseas enviar todos los paquetes
     const paquetes = this.rowsData.map(row => ({
       largo: row.largo,
       ancho: row.ancho,
@@ -194,9 +217,8 @@ export class CotizarComponent {
       LocalidadD: this.CDD.nativeElement.value,
     }
 
-    console.log(this.rowsData);  // Aquí tienes TODAS las filas con sus valores
+    console.log(this.rowsData);
 
-    //Lamo al servicio cotizarpaquete que lo que hara es llamar al web service calculador del peso volumetrico
     this.authService.CotizarPaquete(body).subscribe(
       (response) => {
         if (response.status === 'success') {
@@ -210,6 +232,11 @@ export class CotizarComponent {
           this.txtIVA = "$" + (tarifa * 0.16).toFixed(2);
           this.txtCosto = "$" + (tarifa + (tarifa * 0.16)).toFixed(2);
           this.txtDistancia = response.distancia + " Km";
+          
+          // ✨ GUARDAR LA FECHA ESTIMADA
+          this.txtFechaEntrega = response.fecha_entrega;
+          
+          console.log(`Fecha estimada de entrega: ${this.txtFechaEntrega}`);
         } else {
           this.notificationService.error('Error al cotizar el paquete');
         }
@@ -225,6 +252,7 @@ export class CotizarComponent {
     this.contenidoVisible = !this.contenidoVisible;
   }
 
+
   EnviarPaquete() {
     const paquetes = this.rowsData.map(row => ({
       largo: row.largo,
@@ -233,26 +261,64 @@ export class CotizarComponent {
       peso: row.peso,
     }));
 
+    // VALIDACIONES
+    if (!this.AsentamientoOrigen?.nativeElement?.value) {
+      this.notificationService.error('Por favor selecciona un asentamiento de origen');
+      return;
+    }
+
+    if (!this.AsentamientoDestino?.nativeElement?.value) {
+      this.notificationService.error('Por favor selecciona un asentamiento de destino');
+      return;
+    }
+
+    if (!this.DireccionOrigen?.nativeElement?.value) {
+      this.notificationService.error('Por favor ingresa la dirección de origen');
+      return;
+    }
+
+    if (!this.DireccionDestino?.nativeElement?.value) {
+      this.notificationService.error('Por favor ingresa la dirección de destino');
+      return;
+    }
+
+    if (!this.EmailD?.nativeElement?.value) {
+      this.notificationService.error('Por favor ingresa el email del destinatario');
+      return;
+    }
+
+    if (!this.TelefonoD?.nativeElement?.value) {
+      this.notificationService.error('Por favor ingresa el teléfono del destinatario');
+      return;
+    }
+
     const body = {
       tarifa: this.txtCosto,
-      Origen: this.Entidad.nativeElement.value + "," + this.CD.nativeElement.value,
-      Destino: this.EntidadD.nativeElement.value + "," + this.CDD.nativeElement.value + "," + this.MunD.nativeElement.value,
+      Origen: `${this.Entidad.nativeElement.value}, ${this.CD.nativeElement.value}, ${this.Mun.nativeElement.value}`,
+      DireccionOrigen: `${this.AsentamientoOrigen.nativeElement.value}, ${this.DireccionOrigen.nativeElement.value}`,
+      Destino: `${this.EntidadD.nativeElement.value}, ${this.CDD.nativeElement.value}, ${this.MunD.nativeElement.value}`,
+      DireccionDestino: `${this.AsentamientoDestino.nativeElement.value}, ${this.DireccionDestino.nativeElement.value}`,
       NombreR: this.NombreR.nativeElement.value,
       ApellidoR: this.Apellido1R.nativeElement.value,
       Apellido2R: this.Apellido2R.nativeElement.value,
+      TelefonoR: this.TeledonoR.nativeElement.value,
       EmailR: this.EmailR.nativeElement.value,
       NombreD: this.NombreD.nativeElement.value,
       ApellidoD: this.Apellido1D.nativeElement.value,
       Apellido2D: this.Apellido2D.nativeElement.value,
+      TelefonoD: this.TelefonoD.nativeElement.value,
       EmailD: this.EmailD.nativeElement.value,
-      FechaR: this.FechaR.nativeElement.value,
+      FechaEntrega: this.txtFechaEntrega,  // ✨ ENVIAR LA FECHA CALCULADA
       paquetes: paquetes
-    }
+    };
+
+    console.log('Datos a enviar:', body);
 
     this.authService.enviarpaquete(body).subscribe(
       (response) => {
         if (response.status === 'success') {
-          this.notificationService.success('Entrega añadida. Código de rastreo: ' + response.Rastreo_Code);
+          this.notificationService.success(`Entrega añadida. Código de rastreo: ${response.Rastreo_Code}. Fecha estimada de entrega: ${this.txtFechaEntrega}`);
+          this.limpiarFormulario();
         } else {
           this.notificationService.error('Error al registrar la entrega');
         }
@@ -262,5 +328,40 @@ export class CotizarComponent {
         this.notificationService.error('Error en el servidor. Intente más tarde.');
       }
     );
+  }
+
+  limpiarFormulario() {
+    // Limpiar origen
+    this.CP.nativeElement.value = '';
+    this.Mun.nativeElement.value = '';
+    this.CD.nativeElement.value = '';
+    this.Entidad.nativeElement.value = '';
+    this.DireccionOrigen.nativeElement.value = '';
+    this.asentamientosOrigen = [];
+
+    // Limpiar destino
+    this.CPD.nativeElement.value = '';
+    this.MunD.nativeElement.value = '';
+    this.CDD.nativeElement.value = '';
+    this.EntidadD.nativeElement.value = '';
+    this.DireccionDestino.nativeElement.value = '';
+    this.asentamientosDestino = [];
+
+    // Limpiar destinatario
+    this.NombreD.nativeElement.value = '';
+    this.Apellido1D.nativeElement.value = '';
+    this.Apellido2D.nativeElement.value = '';
+    this.EmailD.nativeElement.value = '';
+    this.TelefonoD.nativeElement.value = '';
+
+    // Limpiar paquetes
+    this.rows = 1;
+    this.rowsData = [{ peso: '', largo: '', ancho: '', alto: '' }];
+
+    // Limpiar fecha
+    this.txtFechaEntrega = '';
+
+    // Ocultar detalle del servicio
+    this.contenidoVisible = false;
   }
 }
