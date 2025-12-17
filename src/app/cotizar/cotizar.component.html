@@ -131,46 +131,69 @@
   </div>
   <div *ngIf="contenidoVisible" class="detalle-servicio">
     <div class="container-detalle-servicio">
-      <h2>Detalle del Servicio</h2>
-      <p>Peso físico: {{txtPeso}}</p>
-      <p>Peso volumétrico: {{txtPesoVM}}</p>
-      <p>Distancia: {{txtDistancia}}</p>
-      <p><strong>Fecha estimada de entrega: {{txtFechaEntrega}}</strong></p>
-      <table border="1">
-        <thead>
-          <tr>
-            <th colspan="2">Costos del servicio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Costo inicial:</td>
-            <td>{{txtTarifa}}</td>
-          </tr>
-          <tr>
-            <td>IVA:</td>
-            <td>{{txtIVA}}</td>
-          </tr>
-          <tr class="total-servicio">
-            <td>Total:</td>
-            <td>{{txtCosto}}</td>
-          </tr>
-        </tbody>
-      </table>
-      @if (isAutenticated) {
-        <button 
-          (click)="EnviarPaquete()" class="Boton"
-        >
-          Hacer envío
-        </button>
-      }
-      @else if (!isAutenticated) {
-        <button 
-          (click)="goToLogin()" class="Boton"
-        >
-          Iniciar sesión
-        </button>
-      }
+
+      <h2 class="titulo">Detalle del Servicio</h2>
+
+      <div class="contenido">
+
+        <!-- INFO IZQUIERDA -->
+        <div class="info-envio">
+          <div class="item">
+            <span>Peso físico</span>
+            <strong>{{txtPeso}}</strong>
+          </div>
+
+          <div class="item">
+            <span>Peso volumétrico</span>
+            <strong>{{txtPesoVM}}</strong>
+          </div>
+
+          <div class="item">
+            <span>Distancia</span>
+            <strong>{{txtDistancia}}</strong>
+          </div>
+
+          <div class="fecha">
+            Entrega estimada: <strong>{{txtFechaEntrega}}</strong>
+          </div>
+        </div>
+
+        <!-- COSTOS DERECHA -->
+        <div class="costos-card">
+          <h3>Costos del servicio</h3>
+
+          <div class="fila">
+            <span>Costo inicial</span>
+            <span>{{txtTarifa}}</span>
+          </div>
+
+          <div class="fila">
+            <span>IVA</span>
+            <span>{{txtIVA}}</span>
+          </div>
+
+          <div class="fila total">
+            <span>Total</span>
+            <span>{{txtCosto}}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTÓN -->
+      <div class="acciones">
+        @if (isAutenticated) {
+          <button (click)="EnviarPaquete()" class="btn">
+            Hacer envío
+          </button>
+        }
+        @else {
+          <button (click)="goToLogin()" class="btn">
+            Iniciar sesión
+          </button>
+        }
+      </div>
+
     </div>
   </div>
 </main>

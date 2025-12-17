@@ -350,40 +350,93 @@ input {
 
 .detalle-servicio {
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 50px 0;
 }
 
 .container-detalle-servicio {
+  background: #fff;
+  width: 900px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.titulo {
+  margin-bottom: 25px;
+}
+
+.contenido {
+  display: flex;
+  gap: 30px;
+}
+
+/* IZQUIERDA */
+.info-envio {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  border: none;
+  gap: 15px;
+}
+
+.info-envio .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background: #f3f3f3;
+  border-radius: 10px;
+}
+
+.fecha {
+  margin-top: 15px;
+  padding: 15px;
+  background: #ececec;
+  border-left: 5px solid #e64d11b7;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* DERECHA */
+.costos-card {
+  width: 320px;
+  background: #f7f7f7;
+  border-radius: 15px;
   padding: 20px;
-  border-radius: 20px;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgb(74, 74, 74);
-  width: 900px;
-  height: auto;
-  gap: 10px;
 }
 
-.container-detalle-servicio table {
-  width: 40%;
-  border: #1c1c1c;
+.costos-card h3 {
+  margin-bottom: 15px;
 }
 
-.container-detalle-servicio table th {
-  background-color: #ccc;
+.fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
 }
 
-.container-detalle-servicio table td {
-  padding: 0 10px;
-  background-color: #ececec;
+.fila.total {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e64d11;
+  border-bottom: none;
 }
 
-table .total-servicio {
-  background-color: #e64d11b7;
+/* BOTÓN */
+.acciones {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #1c1c1c;
+  color: white;
+  cursor: pointer;
 }
 
 .label-peso-movil {

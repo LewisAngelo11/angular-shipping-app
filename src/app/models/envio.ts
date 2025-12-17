@@ -1,5 +1,5 @@
 export interface Envio {
-  Fecha_Envio: string;
+  Fecha_Entrega: string;
   Codigo_Rastreo: string;
   Origen: string;
   Destino: string;

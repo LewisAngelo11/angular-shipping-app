@@ -34,8 +34,8 @@
       <table>
         <thead>
           <tr>
-            <th></th>
-            <th>Fecha</th>
+            <th>ID</th>
+            <th>Entrega</th>
             <th>Código de Rastreo</th>
             <th>Origen</th>
             <th>Destino</th>
@@ -46,7 +46,7 @@
           @for (envio of envios; track $index) {
             <tr>
               <td>{{ $index + 1}}</td>
-              <td>{{ envio.Fecha_Envio }}</td>
+              <td>{{ envio.Fecha_Entrega }}</td>
               <td>{{ envio.Codigo_Rastreo }}</td>
               <td>{{ envio.Origen }}</td>
               <td>{{ envio.Destino }}</td>
@@ -63,7 +63,6 @@
     </div>
     <div class="buttons">
         <button (click)="cerrarSesion()">Cerrar Sesión</button>
-        <button (click)="EliminarInfo()">Eliminar mi cuenta</button>
       </div>
     <div *ngIf="ContenidoVisibleDelete" class="info">
       <label for="nombre">Contraseña:</label>
